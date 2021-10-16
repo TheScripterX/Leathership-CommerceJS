@@ -1,0 +1,144 @@
+@use "/src/styles" as *;
+
+// Banner--Leather::Start
+
+.banner__container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+
+  .banner {
+    flex: 1 1 42rem;
+    overflow: hidden;
+    height: 30rem;
+    position: relative;
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: fill;
+    }
+
+    &:hover img {
+      transform: scale(1.1);
+    }
+
+    .content {
+      position: absolute;
+      top: 50%;
+      right: 5rem;
+      transform: translateY(-50%);
+
+      span {
+        font-size: 2rem;
+        color: $light-color;
+      }
+
+      h3 {
+        font-size: 3.2rem;
+        color: $black;
+        padding-top: 0.5rem;
+      }
+    }
+  }
+}
+
+// Banner--Leather::End
+
+// Trending Section::Start
+
+.deal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: center;
+  background: linear-gradient(#fff 20%, $light-bg 20.1%);
+
+  .image {
+    flex: 1 1 42rem;
+
+    img {
+      width: 40rem;
+    }
+  }
+
+  .content {
+    flex: 1 1 42rem;
+
+    span {
+      color: $red;
+      font-size: 1.7rem;
+    }
+
+    h3 {
+      color: $black;
+      font-size: 3rem;
+      padding: 0.5rem 0;
+    }
+
+    p {
+      color: $light-color;
+      font-size: 2rem;
+    }
+  }
+}
+
+// Trending Section::End
+
+// Media Queries::Start
+
+@media (max-width: 991px) {
+  section {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+}
+
+@media (max-width: 450px) {
+  .heading {
+    font-size: 3rem;
+  }
+
+  .banner__container {
+    .banner {
+      .content {
+        right: 2rem;
+
+        h3 {
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+
+  .deal {
+    .image {
+      img {
+        width: 100%;
+      }
+    }
+
+    .content {
+      padding-top: 2rem;
+      text-align: center;
+    }
+  }
+
+  .contact {
+    .row {
+      form {
+        .inputBox {
+          input {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Media Queries::End

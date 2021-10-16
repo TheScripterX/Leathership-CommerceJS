@@ -1,0 +1,186 @@
+<section class="featured" id="featured">
+  <h1 class="heading"><span>Featured</span> Products</h1>
+
+  <div class="swiper featured__slider">
+    <div class="swiper-wrapper">
+      <div
+        class="swiper-slide slide"
+        *ngFor="let product of products; let i = index"
+      >
+        <div class="icons">
+          <a href="#" class="fas fa-shopping-cart"></a>
+          <a href="#" class="fas fa-heart"></a>
+          <a href="#" class="fas fa-search"></a>
+          <a href="#" class="fas fa-eye"></a>
+        </div>
+        <div class="image">
+          <!-- <img src="./assets/images/product_img1.jpg" alt="" /> -->
+          <img [src]="product.assets[i].url" alt="Black Hero CommerceJS" />
+        </div>
+        <div class="content">
+          <!-- <h3>product name</h3> -->
+          <h3>{{ product.name }}</h3>
+          <div class="price">
+            <div class="amount">
+              {{ product?.price.formatted_with_code }}
+            </div>
+            <!-- <div class="amount">$20.00</div> -->
+            <div class="cut">$25.00</div>
+            <div class="offer">20% off</div>
+          </div>
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="far fa-star"></i>
+            <span>(50)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="swiper-slide slide">
+        <div class="icons">
+          <a href="#" class="fas fa-shopping-cart"></a>
+          <a href="#" class="fas fa-heart"></a>
+          <a href="#" class="fas fa-search"></a>
+          <a href="#" class="fas fa-eye"></a>
+        </div>
+        <div class="image">
+          <img src="./assets/images/product_img2.jpg" alt="" />
+        </div>
+        <div class="content">
+          <h3>product name</h3>
+          <div class="price">
+            <div class="amount">$20.00</div>
+            <div class="cut">$25.00</div>
+            <div class="offer">20% off</div>
+          </div>
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="far fa-star"></i>
+            <span>(50)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide slide">
+        <div class="icons">
+          <a href="#" class="fas fa-shopping-cart"></a>
+          <a href="#" class="fas fa-heart"></a>
+          <a href="#" class="fas fa-search"></a>
+          <a href="#" class="fas fa-eye"></a>
+        </div>
+        <div class="image">
+          <img src="./assets/images/product_img3.jpg" alt="" />
+        </div>
+        <div class="content">
+          <h3>product name</h3>
+          <div class="price">
+            <div class="amount">$20.00</div>
+            <div class="cut">$25.00</div>
+            <div class="offer">20% off</div>
+          </div>
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="far fa-star"></i>
+            <span>(50)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide slide">
+        <div class="icons">
+          <a href="#" class="fas fa-shopping-cart"></a>
+          <a href="#" class="fas fa-heart"></a>
+          <a href="#" class="fas fa-search"></a>
+          <a href="#" class="fas fa-eye"></a>
+        </div>
+        <div class="image">
+          <img src="./assets/images/product_img4.jpg" alt="" />
+        </div>
+        <div class="content">
+          <h3>product name</h3>
+          <div class="price">
+            <div class="amount">$20.00</div>
+            <div class="cut">$25.00</div>
+            <div class="offer">20% off</div>
+          </div>
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="far fa-star"></i>
+            <span>(50)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide slide">
+        <div class="icons">
+          <a href="#" class="fas fa-shopping-cart"></a>
+          <a href="#" class="fas fa-heart"></a>
+          <a href="#" class="fas fa-search"></a>
+          <a href="#" class="fas fa-eye"></a>
+        </div>
+        <div class="image">
+          <img src="./assets/images/product_img5.jpg" alt="" />
+        </div>
+        <div class="content">
+          <h3>product name</h3>
+          <div class="price">
+            <div class="amount">$20.00</div>
+            <div class="cut">$25.00</div>
+            <div class="offer">20% off</div>
+          </div>
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="far fa-star"></i>
+            <span>(50)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide slide">
+        <div class="icons">
+          <a href="#" class="fas fa-shopping-cart"></a>
+          <a href="#" class="fas fa-heart"></a>
+          <a href="#" class="fas fa-search"></a>
+          <a href="#" class="fas fa-eye"></a>
+        </div>
+        <div class="image">
+          <img src="./assets/images/product_img6.jpg" alt="" />
+        </div>
+        <div class="content">
+          <h3>product name</h3>
+          <div class="price">
+            <div class="amount">$20.00</div>
+            <div class="cut">$25.00</div>
+            <div class="offer">20% off</div>
+          </div>
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="far fa-star"></i>
+            <span>(50)</span>
+          </div>
+        </div>
+      </div> -->
+    </div>
+
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+</section>

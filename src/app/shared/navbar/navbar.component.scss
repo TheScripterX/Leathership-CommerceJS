@@ -1,0 +1,153 @@
+@use "/src/styles" as *;
+
+// Header Style::Start
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  box-shadow: $box-shadow;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 9%;
+  background: $light-bg;
+
+  .logo {
+    font-size: 2.5rem;
+    color: $black;
+    font-weight: bolder;
+
+    i {
+      color: $red;
+    }
+  }
+
+  .navbar {
+    a {
+      font-size: 1.7rem;
+      color: $light-color;
+      margin: 0 1rem;
+
+      &:hover {
+        color: $red;
+      }
+    }
+  }
+
+  .icons div,
+  .icons a {
+    font-size: 2.5rem;
+    margin-left: 2rem;
+
+    &:hover {
+      color: $light-color;
+    }
+  }
+
+  .search__form {
+    position: absolute;
+    top: 115%;
+    right: -105%;
+    width: 50rem;
+    height: 5.5rem;
+    background: $light-bg;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    box-shadow: $box-shadow;
+    border: $border;
+
+    &.active {
+      right: 2rem;
+      transition: 0.4s linear;
+    }
+
+    input {
+      height: 100%;
+      width: 100%;
+      font-size: 1.6rem;
+      text-transform: none;
+      color: $black;
+      padding: 0 1.2rem;
+    }
+
+    label {
+      font-size: 2.2rem;
+      margin-right: 1.7rem;
+
+      &:hover {
+        color: $light-color;
+      }
+    }
+  }
+}
+
+.menu__btn {
+  display: none;
+}
+
+// Media Queries for Header::Start
+
+@media (max-width: 991px) {
+  html {
+    font-size: 55%;
+  }
+
+  .header {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .menu__btn {
+    display: inline-block;
+  }
+  .header .navbar {
+    position: absolute;
+    top: 99%;
+    left: 0;
+    right: 0;
+    background: $light-bg;
+    border-bottom: $border;
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+
+    &.active {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    a {
+      font-size: 2rem;
+      margin: 2rem;
+      display: block;
+    }
+  }
+
+  .header .search__form {
+    width: 100%;
+    top: 100%;
+    border-radius: 0;
+
+    &.active {
+      right: 0;
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  html {
+    font-size: 50%;
+  }
+  .header {
+    .logo {
+      font-size: 2.1rem;
+    }
+  }
+}
+
+// Media Queries for Header::End
+
+// Header Style::End

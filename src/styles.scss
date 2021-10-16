@@ -1,0 +1,130 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,600;1,100&display=swap");
+@import "/src/assets/fa/css/all.min";
+/*  Swiper Imports  */
+@import "swiper/css/bundle";
+
+*,
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  text-transform: capitalize;
+  transition: 0.1s linear;
+}
+
+$red: #eb4d4b;
+$black: #130f40;
+$light-color: #666;
+$light-gray: #eeeeee;
+$light-bg: #f9f9f9;
+$border: 0.1rem solid rgba(0, 0, 0, 0.3);
+$box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+
+@mixin grid($value) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($value, 1fr));
+  gap: 1.5rem;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  scroll-padding-top: 7rem;
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    width: 1rem;
+  }
+  &::-webkit-scrollbar-track {
+    background: #fff;
+  }
+  &::-webkit-scrollbar {
+    background: $red;
+    border-radius: 5rem;
+  }
+}
+
+section {
+  padding: 2rem 9%;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.9rem 3rem;
+  border-radius: 0.5rem;
+  background: $red;
+  color: $light-bg;
+  font-size: 1.7rem;
+  cursor: pointer;
+
+  &:hover {
+    background: $black;
+  }
+}
+
+.heading {
+  font-size: 3.5rem;
+  color: $black;
+  padding-bottom: 2rem;
+  text-align: center;
+
+  span {
+    color: $red;
+  }
+}
+
+// Swiper Buttons Global Style::Start
+
+.swiper-button-next,
+.swiper-button-prev {
+  height: 5rem;
+  width: 5rem;
+  border-radius: 0.5rem;
+  background: $light-bg;
+  color: $black;
+  box-shadow: $box-shadow;
+  border: $border;
+
+  &:hover {
+    background: $light-color;
+    color: $light-bg;
+  }
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-size: 2rem;
+}
+
+// Swiper Buttons Global Style::End
+
+// Global Media Queries::Start
+
+// media queries
+
+@media (max-width: 991px) {
+  html {
+    font-size: 55%;
+  }
+
+  section {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+}
+
+@media (max-width: 450px) {
+  html {
+    font-size: 50%;
+  }
+}
+
+// Global Media Queries::End

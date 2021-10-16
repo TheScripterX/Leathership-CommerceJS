@@ -1,0 +1,31 @@
+<!-- App-Header::Start -->
+<!-- <fa-icon [icon]="faCoffee"></fa-icon> -->
+
+<header class="header">
+  <a href="#" class="logo">
+    <i class="fas fa-shopping-cart"></i>
+    Leathership
+  </a>
+
+  <nav class="navbar" #menuBtn>
+    <a href="#">Home</a>
+    <a href="#">Products</a>
+    <a href="#">Featured</a>
+    <a href="#">Review</a>
+    <a href="#">Contact</a>
+  </nav>
+
+  <div class="icons">
+    <div class="fas fa-bars menu__btn" (click)="togglerMenu()"></div>
+    <div class="fas fa-search search__btn" (click)="togglerSearch()"></div>
+    <a href="#" class="fas fa-shopping-cart"></a>
+    <a href="#" class="fas fa-heart"></a>
+  </div>
+
+  <form class="search__form" #searchForm>
+    <input type="search" class="search__box" placeholder="Search Here..." />
+    <label for="search__box" class="fas fa-search"></label>
+  </form>
+</header>
+
+<!-- App-Header::End -->

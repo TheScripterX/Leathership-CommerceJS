@@ -1,0 +1,115 @@
+@use "/src/styles" as *;
+
+.home {
+  padding: 0;
+  padding-top: 7.8rem;
+
+  .home__slider {
+    .slide {
+      min-height: 65vh;
+      display: flex;
+      align-items: center;
+      padding: 2rem;
+      padding-left: 7%;
+      background-size: cover;
+      background-position: center;
+
+      .content {
+        p {
+          font-size: 2rem;
+          color: $light-color;
+        }
+        h3 {
+          font-size: 5rem;
+          color: $black;
+          padding-top: 0.5rem;
+        }
+      }
+    }
+  }
+
+  .swiper-button-next {
+    top: 90%;
+    right: 2rem;
+  }
+  .swiper-button-prev {
+    top: 90%;
+    right: 8rem;
+    left: auto;
+  }
+}
+
+.slide--1 {
+  background: url("../../../../assets/images/amethyste__slider--1.png")
+    no-repeat;
+}
+.slide--2 {
+  background: url("../../../../assets/images/amethyste__slider--1.png")
+    no-repeat;
+}
+.slide--3 {
+  background: url("../../../../assets/images/amethyste__slider--1.png")
+    no-repeat;
+}
+
+// Media Queries::Start
+
+@media (max-width: 991px) {
+}
+
+@media (max-width: 768px) {
+  .home .home__slider .slide {
+    padding-left: 2rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .home {
+    padding-top: 7.2rem;
+
+    .home__slider {
+      .slide {
+        align-items: flex-end;
+        justify-content: center;
+
+        .content {
+          text-align: center;
+
+          .btn {
+            padding: 0.9rem 5rem;
+            position: relative;
+            left: 6px;
+            bottom: 45px;
+            background: #cabdd9;
+          }
+          h3 {
+            display: none;
+          }
+          p {
+            display: none;
+          }
+        }
+      }
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      display: none;
+    }
+  }
+
+  .slide--1 {
+    background: url("../../../../assets/images/amethyste__slider_mobile--1.png")
+      no-repeat;
+  }
+  .slide--2 {
+    background: url("../../../../assets/images/amethyste__slider_mobile--1.png")
+      no-repeat;
+  }
+  .slide--2 {
+    background: url("../../../../assets/images/amethyste__slider_mobile--1.png")
+      no-repeat;
+  }
+}
+
+// Media Queries::End

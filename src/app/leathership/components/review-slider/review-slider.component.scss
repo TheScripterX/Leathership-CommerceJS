@@ -1,0 +1,67 @@
+@use "/src/styles" as *;
+
+// Review Section::Start
+
+.review {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  background: $light-bg;
+
+  .slide {
+    border-radius: 0.5rem;
+    background: #fff;
+    border: $border;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: $box-shadow;
+
+    p {
+      font-size: 1.4rem;
+      color: $light-color;
+      line-height: 2;
+    }
+
+    .user {
+      padding-top: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      justify-content: center;
+
+      img {
+        height: 7rem;
+        width: 7rem;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+
+      h3 {
+        font-size: 2.2rem;
+        color: $black;
+      }
+
+      span {
+        font-size: 1.5rem;
+        color: $red;
+      }
+    }
+  }
+}
+
+// Review Section::End
+
+// Media Queries::Start
+
+@media (max-width: 991px) {
+  section {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+}
+
+@media (max-width: 450px) {
+}
+
+// Media Queries::End
