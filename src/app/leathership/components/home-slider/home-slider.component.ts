@@ -18,7 +18,6 @@ export class HomeSliderComponent implements OnInit {
   };
 
   ngOnInit() {
-    // this.initSwiper();
     this.initSwiper();
   }
 
