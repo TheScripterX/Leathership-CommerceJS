@@ -19,11 +19,9 @@ SwiperCore.use([Navigation, Scrollbar, Autoplay]);
 export class FeaturedSliderComponent implements OnInit {
   config: SwiperOptions = {
     slidesPerView: 3,
+    loop: true,
     spaceBetween: 30,
     navigation: true,
-    slidesPerGroup: 3,
-    loop: true,
-    loopFillGroupWithBlank: true,
     pagination: {
       clickable: true,
     },
@@ -54,7 +52,12 @@ export class FeaturedSliderComponent implements OnInit {
     await commerce.products
       .list()
       .then((product) => (this.products = product.data));
-
     console.log(this.products);
+  }
+
+  async getProductDetail(product: any) {
+    await commerce.products
+      .retrieve(product)
+      .then((product) => console.log(product.id));
   }
 }

@@ -8,10 +8,13 @@
       *ngFor="let product of products; let i = index"
     >
       <div class="icons">
-        <a href="#" class="fas fa-shopping-cart"></a>
+        <a
+          class="fas fa-shopping-cart"
+          (click)="getProductDetail(product.id)"
+        ></a>
         <a href="#" class="fas fa-heart"></a>
         <a href="#" class="fas fa-search"></a>
-        <a href="#" class="fas fa-eye"></a>
+        <a [routerLink]="['product-detail', product.id]" class="fas fa-eye"></a>
       </div>
       <div class="image">
         <!-- <img src="./assets/images/product_img1.jpg" alt="" /> -->

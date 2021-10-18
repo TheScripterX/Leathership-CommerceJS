@@ -54,7 +54,7 @@
   flex-wrap: wrap;
   gap: 2rem;
   align-items: center;
-  background: linear-gradient(#fff 20%, $light-bg 20.1%);
+  background: linear-gradient(#fff 20%, #cb90900f 20.1%);
 
   .image {
     flex: 1 1 42rem;
@@ -123,8 +123,19 @@
     }
 
     .content {
-      padding-top: 2rem;
+      background: blanchedalmond;
+      border-radius: 5%;
+      padding: 2rem 0;
       text-align: center;
+
+      span {
+        font-weight: 600;
+        font-size: 1.8rem;
+      }
+
+      h3 {
+        font-size: 3rem;
+      }
     }
   }
 

@@ -10,6 +10,8 @@ import { SwiperModule } from 'swiper/angular';
 import { FeaturedSliderComponent } from './components/featured-slider/featured-slider.component';
 import { ReviewSliderComponent } from './components/review-slider/review-slider.component';
 import { ExclusiveProductComponent } from './components/exclusive-product/exclusive-product.component';
+import { SingleProductComponent } from './components/single-product/single-product.component';
+import { SinglePageProductComponent } from './pages/single-page-product/single-page-product.component';
 
 @NgModule({
   declarations: [
@@ -18,8 +20,15 @@ import { ExclusiveProductComponent } from './components/exclusive-product/exclus
     FeaturedSliderComponent,
     ReviewSliderComponent,
     ExclusiveProductComponent,
+    SingleProductComponent,
+    SinglePageProductComponent,
   ],
   imports: [CommonModule, LeathershipRoutingModule, SwiperModule],
-  exports: [HomepageComponent, HomeSliderComponent],
+  exports: [
+    HomepageComponent,
+    HomeSliderComponent,
+    SinglePageProductComponent,
+    SingleProductComponent,
+  ],
 })
 export class LeathershipModule {}
