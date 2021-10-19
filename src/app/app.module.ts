@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 //
 import { LeathershipModule } from './leathership/leathership.module';
 import { SharedModule } from './shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
 // TS Libraries
 
 @NgModule({
@@ -17,6 +18,7 @@ import { SharedModule } from './shared/shared.module';
     SharedModule,
     LeathershipModule,
     RouterModule,
+    HttpClientModule,
   ],
 
   providers: [],

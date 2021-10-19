@@ -13,7 +13,6 @@ body {
   outline: none;
   border: none;
   text-decoration: none;
-  text-transform: capitalize;
   transition: 0.1s linear;
 }
 
@@ -65,17 +64,6 @@ section {
 
   &:hover {
     background: $black;
-  }
-}
-
-.heading {
-  font-size: 3.5rem;
-  color: $black;
-  padding-bottom: 2rem;
-  text-align: center;
-
-  span {
-    color: $red;
   }
 }
 

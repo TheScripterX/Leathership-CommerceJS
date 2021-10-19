@@ -1,3 +1,49 @@
+@use "/src/styles.scss" as *;
+
+// Swiper Init::Start
+
+.swiper {
+  width: 100%;
+  height: 100%;
+
+  width: 100%;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+
+    background-size: cover;
+    background-position: center;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+}
+
+// Swiper Init::End
+
 .single__product {
   img {
     width: 100%;
@@ -12,12 +58,38 @@
         .image__display {
           overflow: hidden;
           .image__showcase {
-            display: flex;
-            width: 100%;
+            // display: flex;
+            width: 55rem;
+            height: 55rem;
             transition: all 0.5s ease;
             img {
               min-width: 100%;
             }
+
+            // Swiper::Start
+
+            .swiper1 {
+              height: 80%;
+              width: 100%;
+            }
+
+            .swiper2 {
+              height: 20%;
+              box-sizing: border-box;
+              padding: 10px 0;
+
+              .swiper-slide {
+                width: 25%;
+                height: 100%;
+                opacity: 0.4;
+              }
+
+              .swiper-slide-thumb-active {
+                opacity: 1;
+              }
+            }
+
+            // Swiper::End
           }
         }
 
