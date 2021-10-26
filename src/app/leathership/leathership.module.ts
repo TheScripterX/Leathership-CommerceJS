@@ -12,6 +12,7 @@ import { ReviewSliderComponent } from './components/review-slider/review-slider.
 import { ExclusiveProductComponent } from './components/exclusive-product/exclusive-product.component';
 import { SingleProductComponent } from './components/single-product/single-product.component';
 import { SinglePageProductComponent } from './pages/single-page-product/single-page-product.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,12 @@ import { SinglePageProductComponent } from './pages/single-page-product/single-p
     SingleProductComponent,
     SinglePageProductComponent,
   ],
-  imports: [CommonModule, LeathershipRoutingModule, SwiperModule],
+  imports: [
+    CommonModule,
+    LeathershipRoutingModule,
+    SwiperModule,
+    ReactiveFormsModule,
+  ],
   exports: [
     HomepageComponent,
     HomeSliderComponent,

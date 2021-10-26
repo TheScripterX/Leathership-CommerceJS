@@ -1,13 +1,15 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 //
-import { commerce } from 'src/app/lib/commerce';
-//
+import { Product, RootProduct } from '../../models/commerce';
+import { CommercejsService } from '../../services/commercejs.service';
+
 import SwiperCore, {
   SwiperOptions,
   Navigation,
   Scrollbar,
   Autoplay,
 } from 'swiper';
+
 SwiperCore.use([Navigation, Scrollbar, Autoplay]);
 
 @Component({
@@ -40,24 +42,23 @@ export class FeaturedSliderComponent implements OnInit {
       },
     },
   };
-  products: any;
+  products!: Product[];
 
-  constructor() {}
+  constructor(private commerce: CommercejsService) {}
 
   ngOnInit(): void {
     this.getProducts();
   }
 
-  async getProducts() {
-    await commerce.products
-      .list()
-      .then((product) => (this.products = product.data));
-    console.log(this.products);
-  }
+  // async getProducts() {
+  //   await commerce.products
+  //     .list()
+  //     .then((product) => (this.products = product.data));
+  // }
 
-  async getProductDetail(product: any) {
-    await commerce.products
-      .retrieve(product)
-      .then((product) => console.log(product.id));
+  getProducts() {
+    this.commerce.getAllProducts().subscribe((data: RootProduct) => {
+      this.products = data.data;
+    });
   }
 }

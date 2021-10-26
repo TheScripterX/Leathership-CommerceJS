@@ -36,72 +36,129 @@
       </div>
       <!-- card right -->
       <div class="product__content">
-        <!-- <h2 class="product__title">Black Hero</h2> -->
-        <h2 class="product__title">{{ products?.name }}</h2>
-        <a class="product__link">Visit our Page</a>
-        <div class="product__rating">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star-half-alt"></i>
-        </div>
+        <form [formGroup]="productForm">
+          <!-- <h2 class="product__title">Black Hero</h2> -->
+          <h2 class="product__title">
+            {{ product?.name }}
+          </h2>
 
-        <div class="product__price">
-          <p class="last__price">Prix Initial: <span>257.00 MAD</span></p>
-          <!-- <p class="new__price">Prix Promo: <span>249.00 MAD (5%)</span></p> -->
-          <p class="new__price">
-            Prix Promo:
-            <span>{{ products?.price.formatted_with_code }} (5%)</span>
-          </p>
-        </div>
+          <a
+            target="_blank"
+            href="https://instagram.com/leathershipcasablanca"
+            class="product__link"
+            >N'hesitez pas à nous rendre visite.</a
+          >
 
-        <div class="product__detail">
-          <h2>Description de l'article:</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo
-            eveniet veniam tempora fuga tenetur placeat sapiente architecto
-            illum soluta consequuntur, aspernatur quidem at sequi ipsa!
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Consequatur, perferendis eius. Dignissimos, labore suscipit. Unde.
-          </p>
-          <ul>
-            <li>Couleur: <span>Noir</span></li>
-            <li>Disponibilité: <span>En Stock</span></li>
-            <li>Categorie: <span>Coques en vrai cuir</span></li>
-            <li>Livraison: <span>A domicile</span></li>
-            <li>Frais de livraison: <span>Gratuite</span></li>
-          </ul>
-        </div>
+          <div class="product__price">
+            <!-- <p class="last__price">Prix Initial: <span>257.00 MAD</span></p> -->
+            <!-- <p class="new__price">Prix Promo: <span>249.00 MAD (5%)</span></p> -->
+            <p class="new__price">
+              Prix:
+              <span>
+                {{ product_Price }}
+              </span>
+            </p>
+          </div>
 
-        <div class="purchase__info">
-          <input type="number" min="0" value="1" placeholder="Quantity" />
-          <button type="button" class="btn">
-            Ajouter au Panier <i class="fas fa-shopping-cart"></i>
-          </button>
-          <button type="button" class="btn">Commander</button>
-        </div>
+          <div class="product__variant">
+            <select
+              formControlName="variant_Group_ID"
+              (change)="onVariantGroupChange($event.currentTarget)"
+            >
+              <option selected disabled value="Pour">-- Pour --</option>
+              <option
+                [value]="variant.id"
+                *ngFor="let variant of variant_Group; let i = index"
+              >
+                {{ variant.name }}
+              </option>
+            </select>
+            <select
+              formControlName="variant_Options_ID"
+              (change)="onVariantOptionsChange($event.currentTarget)"
+            >
+              <option selected disabled value="Modele de Téléphone">
+                -- Modèle de Téléphone --
+              </option>
+              <option
+                [value]="option.id"
+                *ngFor="let option of variantOptions; let i = index"
+              >
+                {{ option?.name }}
+              </option>
+              <!-- <option *ngFor="let variant of variants">
+              
+              </option> -->
+            </select>
+          </div>
 
-        <div class="social__links">
-          <p>Partager cet article:</p>
-          <a>
-            <i class="fab fa-facebook-f"></i>
-          </a>
-          <a>
-            <i class="fab fa-twitter"></i>
-          </a>
-          <a>
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a>
-            <i class="fab fa-whatsapp"></i>
-          </a>
-          <a>
-            <i class="fab fa-pinterest"></i>
-          </a>
-        </div>
+          <div class="product__detail">
+            <h2>Description de l'article:</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo
+              eveniet veniam tempora fuga tenetur placeat sapiente architecto
+              illum soluta consequuntur, aspernatur quidem at sequi ipsa!
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Consequatur, perferendis eius. Dignissimos, labore suscipit. Unde.
+            </p>
+            <ul>
+              <li>Couleur: <span>Noir</span></li>
+              <li>Disponibilité: <span>En Stock</span></li>
+              <li>Categorie: <span>Coques en vrai cuir</span></li>
+              <li>Livraison: <span>A domicile</span></li>
+              <li>Frais de livraison: <span>Gratuite</span></li>
+              <ul>
+                <li class="rating">
+                  Notes :
+                  <div class="product__rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                  </div>
+                </li>
+              </ul>
+            </ul>
+          </div>
+
+          <div class="purchase__info">
+            <input
+              type="number"
+              min="0"
+              value="1"
+              placeholder="Quantity"
+              formControlName="quantity"
+            />
+            <button type="button" class="btn">
+              Ajouter au Panier <i class="fas fa-shopping-cart"></i>
+            </button>
+            <button type="button" class="btn" (click)="commander()">
+              Commander
+            </button>
+          </div>
+
+          <div class="social__links">
+            <p>Partager cet article:</p>
+            <a>
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a>
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a>
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a>
+              <i class="fab fa-whatsapp"></i>
+            </a>
+            <a>
+              <i class="fab fa-pinterest"></i>
+            </a>
+          </div>
+        </form>
       </div>
     </div>
   </div>

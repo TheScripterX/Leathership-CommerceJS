@@ -1,50 +1,50 @@
 @use "/src/styles.scss" as *;
 
-// Swiper Init::Start
+.single__product {
+  // Swiper Init::Start
 
-.swiper {
-  width: 100%;
-  height: 100%;
+  padding-top: 18rem;
 
-  width: 100%;
-  height: 300px;
-  margin-left: auto;
-  margin-right: auto;
+  .swiper {
+    width: 100%;
+    height: 100%;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 
-  .swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: #fff;
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
 
-    /* Center slide text vertically */
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    align-items: center;
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
 
-    background-size: cover;
-    background-position: center;
+      background-size: cover;
+      background-position: center;
 
-    img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
     }
   }
-}
 
-// Swiper Init::End
+  // Swiper Init::End
 
-.single__product {
   img {
     width: 100%;
     display: block;
@@ -147,23 +147,6 @@
           }
         }
 
-        .product__rating {
-          display: flex;
-          align-items: center;
-          color: #6772fb;
-          gap: 0.5rem;
-
-          span {
-            margin-left: 0.2rem;
-            font-weight: 600;
-            color: #252525;
-          }
-          .fas,
-          span {
-            font-size: 1.3rem;
-          }
-        }
-
         .product__price {
           margin: 2rem 0;
           font-size: 2rem;
@@ -183,6 +166,37 @@
           .new__price {
             span {
               color: #256eff;
+            }
+          }
+        }
+
+        .product__variant {
+          padding: 0 0 2rem;
+          select {
+            /* Reset */
+            appearance: none;
+            border: 0;
+            outline: 0;
+            /* Personalize */
+            width: 30em;
+            height: 3em;
+            padding: 0 4em 0 1em;
+            background: url("https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg")
+                no-repeat right 0.8em center / 1.4em,
+              linear-gradient(to left, #256effbf 3em, #f0f1f1fa 3em);
+            font-weight: 500;
+            border-radius: 0.25em;
+            cursor: pointer;
+            /* <option> colors */
+            option {
+              color: black;
+              background-color: #f0f1f1fa;
+              font-size: 1.5rem;
+              font-weight: inherit;
+            }
+            /* Remove focus outline */
+            &:focus {
+              outline: none;
             }
           }
         }
@@ -217,6 +231,28 @@
 
               span {
                 font-weight: 400;
+              }
+            }
+
+            .rating {
+              display: flex;
+              gap: 1rem;
+
+              .product__rating {
+                display: flex;
+                align-items: center;
+                color: #6772fb;
+                gap: 0.5rem;
+
+                span {
+                  margin-left: 0.2rem;
+                  font-weight: 600;
+                  color: #252525;
+                }
+                .fas,
+                span {
+                  font-size: 1.8rem;
+                }
               }
             }
           }

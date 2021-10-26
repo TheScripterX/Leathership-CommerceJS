@@ -19,7 +19,7 @@
 
     .buttons {
       font-size: 1.7rem;
-      color: $light-color;
+      color: $dark-grey;
       cursor: pointer;
 
       &:hover,
@@ -31,7 +31,7 @@
 
   .heading {
     font-size: 3.5rem;
-    color: $black;
+    color: $blue;
     padding-bottom: 2rem;
     text-align: center;
     span {
@@ -48,7 +48,7 @@
     justify-content: center;
 
     .box {
-      width: 26rem;
+      width: 30%;
       border-radius: 0.5rem;
       overflow: hidden;
       position: relative;
@@ -80,7 +80,7 @@
           font-size: 2rem;
           height: 5rem;
           width: 5rem;
-          background: $light-bg;
+          background: $dark-grey;
           border-radius: 0.5rem;
           line-height: 5rem;
           text-align: center;
@@ -101,7 +101,7 @@
         img {
           height: 100%;
           width: 100%;
-          object-fit: cover;
+          object-fit: contain;
         }
       }
       &:hover .image img {
@@ -113,7 +113,7 @@
 
         h3 {
           font-size: 2rem;
-          color: $black;
+          color: $blue;
           font-weight: normal;
         }
 
@@ -126,13 +126,13 @@
           .amount {
             font-size: 2.2rem;
             font-weight: bolder;
-            color: $black;
+            color: $blue;
           }
 
           .cut {
             font-size: 1.5rem;
             text-decoration: line-through;
-            color: $light-color;
+            color: $dark-grey;
           }
 
           .offer {
@@ -149,7 +149,7 @@
           }
 
           span {
-            color: $light-color;
+            color: $dark-grey;
           }
         }
       }
@@ -180,7 +180,7 @@
 
         .image {
           img {
-            object-fit: fill;
+            object-fit: contain;
           }
         }
       }

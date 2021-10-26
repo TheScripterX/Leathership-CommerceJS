@@ -8,10 +8,7 @@
       *ngFor="let product of products; let i = index"
     >
       <div class="icons">
-        <a
-          class="fas fa-shopping-cart"
-          (click)="getProductDetail(product.id)"
-        ></a>
+        <a class="fas fa-shopping-cart"></a>
         <a href="#" class="fas fa-heart"></a>
         <a href="#" class="fas fa-search"></a>
         <a [routerLink]="['product-detail', product.id]" class="fas fa-eye"></a>
@@ -25,7 +22,7 @@
         <h3>{{ product.name }}</h3>
         <div class="price">
           <div class="amount">
-            {{ product?.price.formatted_with_code }}
+            {{ product?.price?.formatted_with_code }}
           </div>
           <!-- <div class="amount">$20.00</div> -->
           <div class="cut">$25.00</div>

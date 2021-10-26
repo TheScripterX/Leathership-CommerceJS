@@ -7,7 +7,7 @@ section {
 }
 
 .footer {
-  background: $light-bg;
+  background: $white;
 
   .box__container {
     @include grid(25rem);
@@ -16,13 +16,13 @@ section {
       padding: 0 1rem;
       h3 {
         font-size: 2.2rem;
-        color: $black;
+        color: $blue;
         padding: 1rem 0;
       }
 
       p {
         font-size: 1.5rem;
-        color: $light-color;
+        color: $dark-grey;
         padding: 1rem 0;
         line-height: 2;
         text-align: justify;
@@ -32,7 +32,7 @@ section {
       a {
         display: block;
         font-size: 1.4rem;
-        color: $light-color;
+        color: $dark-grey;
         padding: 1rem 0;
 
         i {
@@ -61,7 +61,7 @@ section {
       width: 5rem;
       line-height: 5rem;
       border-radius: 50%;
-      background: $black;
+      background: $blue;
       color: #fff;
       margin: 0.3rem;
 
@@ -78,7 +78,7 @@ section {
     padding-top: 2rem;
     border-top: $border;
     text-align: center;
-    color: $light-color;
+    color: $dark-grey;
     font-size: 2rem;
 
     span {

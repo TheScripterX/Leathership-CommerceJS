@@ -1,38 +1,37 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import Swiper, { SwiperOptions, Navigation, Scrollbar, Autoplay } from 'swiper';
+import {
+  AfterViewInit,
+  Component,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+  ViewEncapsulation,
+} from '@angular/core';
+// import Swiper, { SwiperOptions, Navigation, Scrollbar, Autoplay } from 'swiper';
 
-Swiper.use([Navigation, Scrollbar, Autoplay]);
+// Swiper.use([Navigation, Scrollbar, Autoplay]);
+
+import { SwiperComponent } from 'swiper/angular';
+
+// import Swiper core and required modules
+import SwiperCore, { Navigation, SwiperOptions } from 'swiper';
+
+// install Swiper modules
+SwiperCore.use([Navigation]);
 
 @Component({
   selector: 'app-home-slider',
   templateUrl: './home-slider.component.html',
   styleUrls: ['./home-slider.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class HomeSliderComponent implements OnInit {
+  swiper3!: boolean;
+
   config: SwiperOptions = {
-    slidesPerView: 3,
-    spaceBetween: 50,
     navigation: true,
-    pagination: { clickable: true },
-    scrollbar: { draggable: true },
+    loop: true,
+    lazy: true,
   };
 
-  ngOnInit() {
-    this.initSwiper();
-  }
-
-  initSwiper() {
-    let swiper = new Swiper('.home__slider', {
-      centeredSlides: true,
-      loop: true,
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      // autoplay: {
-      //   delay: 4500,
-      //   disableOnInteraction: false,
-      // },
-    });
-  }
+  ngOnInit() {}
 }

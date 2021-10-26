@@ -16,11 +16,11 @@ body {
   transition: 0.1s linear;
 }
 
-$red: #eb4d4b;
-$black: #130f40;
-$light-color: #666;
-$light-gray: #eeeeee;
-$light-bg: #f9f9f9;
+$red: #ce4968;
+$blue: #2a4f7c;
+$light-grey: #b7b7b78c;
+$dark-grey: #666;
+$white: #ffffff;
 $border: 0.1rem solid rgba(0, 0, 0, 0.3);
 $box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 
@@ -57,13 +57,13 @@ section {
   margin-top: 1rem;
   padding: 0.9rem 3rem;
   border-radius: 0.5rem;
-  background: $red;
-  color: $light-bg;
+  background: #fcf9f9;
+  color: #070707;
   font-size: 1.7rem;
   cursor: pointer;
 
   &:hover {
-    background: $black;
+    background: #fff;
   }
 }
 
@@ -74,14 +74,14 @@ section {
   height: 5rem;
   width: 5rem;
   border-radius: 0.5rem;
-  background: $light-bg;
-  color: $black;
+  background: $white;
+  color: $blue;
   box-shadow: $box-shadow;
   border: $border;
 
   &:hover {
-    background: $light-color;
-    color: $light-bg;
+    background: $dark-grey;
+    color: $white;
   }
 }
 

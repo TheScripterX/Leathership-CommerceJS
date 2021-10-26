@@ -2,44 +2,67 @@
 
 // Banner--Leather::Start
 
-.banner__container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-
-  .banner {
-    flex: 1 1 42rem;
-    overflow: hidden;
-    height: 30rem;
-    position: relative;
-
-    img {
-      height: 100%;
-      width: 100%;
-      object-fit: fill;
+.banner__section {
+  .heading {
+    font-size: 3.5rem;
+    color: $blue;
+    padding-bottom: 2rem;
+    text-align: center;
+    span {
+      color: $red;
     }
+  }
+  .banner__container {
+    display: flex;
+    justify-content: center;
+    grid-gap: 1.5rem;
+    gap: 1.5rem;
+    padding-top: 1rem;
+    padding-bottom: 5rem;
 
-    &:hover img {
-      transform: scale(1.1);
-    }
+    .banner {
+      width: 400px;
+      height: 400px;
+      // flex: 1 1 30%;
+      overflow: hidden;
+      // height: 30rem;
+      position: relative;
 
-    .content {
-      position: absolute;
-      top: 50%;
-      right: 5rem;
-      transform: translateY(-50%);
-
-      span {
-        font-size: 2rem;
-        color: $light-color;
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        transition: 1s;
       }
 
-      h3 {
-        font-size: 3.2rem;
-        color: $black;
-        padding-top: 0.5rem;
+      &:hover img {
+        transform: scale(1.1);
+        transition: 1s;
+      }
+
+      .content {
+        position: absolute;
+        left: 10px;
+        bottom: 10px;
+        width: 100%;
+
+        h3 {
+          font-size: 1.8rem;
+          // color: $black;
+          color: #fff;
+          padding-top: 0.5rem;
+        }
+        .btn {
+          font-weight: 500;
+          background-color: $white;
+          transition: 0.5s;
+
+          &:hover {
+            background-color: $red;
+            color: $white;
+            transition: 0.5s;
+          }
+        }
       }
     }
   }
@@ -51,36 +74,56 @@
 
 .deal {
   display: flex;
+  justify-content: space-around;
   flex-wrap: wrap;
+  grid-gap: 2rem;
   gap: 2rem;
   align-items: center;
-  background: linear-gradient(#fff 20%, #cb90900f 20.1%);
+  background: #e1e1e9;
 
   .image {
-    flex: 1 1 42rem;
+    // flex: 1 1 42rem;
 
     img {
-      width: 40rem;
+      width: 22rem;
     }
   }
 
   .content {
-    flex: 1 1 42rem;
+    // flex: 1 1 42rem;
 
     span {
-      color: $red;
+      color: #ce4968;
       font-size: 1.7rem;
+      font-weight: 700;
     }
 
     h3 {
-      color: $black;
-      font-size: 3rem;
+      color: $dark-grey;
+      font-size: 2.5rem;
       padding: 0.5rem 0;
     }
 
+    h4 {
+      color: #ce4968;
+      font-size: 1.7rem;
+      font-weight: 700;
+    }
+
     p {
-      color: $light-color;
+      color: $dark-grey;
       font-size: 2rem;
+    }
+
+    .btn {
+      background-color: $white;
+      transition: 0.4s;
+
+      &:hover {
+        background-color: $red;
+        color: $white;
+        transition: 0.4s;
+      }
     }
   }
 }
@@ -96,6 +139,9 @@
 }
 
 @media (max-width: 768px) {
+  .banner__container {
+    flex-wrap: wrap;
+  }
 }
 
 @media (max-width: 450px) {
@@ -104,6 +150,8 @@
   }
 
   .banner__container {
+    flex-wrap: wrap;
+
     .banner {
       .content {
         right: 2rem;
@@ -118,7 +166,7 @@
   .deal {
     .image {
       img {
-        width: 100%;
+        width: 22rem;
       }
     }
 
