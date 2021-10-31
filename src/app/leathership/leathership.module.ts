@@ -13,6 +13,7 @@ import { ExclusiveProductComponent } from './components/exclusive-product/exclus
 import { SingleProductComponent } from './components/single-product/single-product.component';
 import { SinglePageProductComponent } from './pages/single-page-product/single-page-product.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CartModule } from './pages/cart/cart.module';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     LeathershipRoutingModule,
     SwiperModule,
     ReactiveFormsModule,
+    CartModule,
   ],
   exports: [
     HomepageComponent,

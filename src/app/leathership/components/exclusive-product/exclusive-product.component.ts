@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 //
-import { CommercejsService } from '../../services/commercejs.service';
+import { ProductService } from '../../services/product.service';
 import { Product, RootProduct } from '../../models/commerce';
 
 @Component({
@@ -11,14 +11,14 @@ import { Product, RootProduct } from '../../models/commerce';
 export class ExclusiveProductComponent implements OnInit {
   products: Product[] = [];
 
-  constructor(private commerce: CommercejsService) {}
+  constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
     this.getProducts();
   }
 
   getProducts() {
-    this.commerce.getAllProducts().subscribe(
+    this.productService.getAllProducts().subscribe(
       (product: RootProduct) => {
         this.products = product.data;
       },

@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 //
 import { Product, RootProduct } from '../../models/commerce';
-import { CommercejsService } from '../../services/commercejs.service';
+import { ProductService } from '../../services/product.service';
 
 import SwiperCore, {
   SwiperOptions,
@@ -44,7 +44,7 @@ export class FeaturedSliderComponent implements OnInit {
   };
   products!: Product[];
 
-  constructor(private commerce: CommercejsService) {}
+  constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
     this.getProducts();
@@ -57,7 +57,7 @@ export class FeaturedSliderComponent implements OnInit {
   // }
 
   getProducts() {
-    this.commerce.getAllProducts().subscribe((data: RootProduct) => {
+    this.productService.getAllProducts().subscribe((data: RootProduct) => {
       this.products = data.data;
     });
   }

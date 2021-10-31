@@ -38,6 +38,45 @@
     }
   }
 
+  .icons {
+    .fas {
+      color: darkgrey;
+    }
+    .menu__btn {
+      display: none;
+    }
+
+    .cart__quantity {
+      position: relative;
+      font-size: 3rem;
+      color: black;
+      cursor: pointer;
+      transition: 0.5s;
+
+      &:hover {
+        color: steelblue;
+
+        transition: 0.5s;
+      }
+
+      span {
+        position: absolute;
+        bottom: 9px;
+        left: 9px;
+        font-size: 1.5rem;
+        margin: 0 0.5rem;
+        padding: 2px;
+        color: #fff;
+        transition: 0.5s;
+
+        &:hover {
+          color: #fff;
+          transition: 0.5s;
+        }
+      }
+    }
+  }
+
   .icons div,
   .icons a {
     font-size: 2.5rem;
@@ -86,10 +125,6 @@
       }
     }
   }
-}
-
-.menu__btn {
-  display: none;
 }
 
 // Media Queries for Header::Start

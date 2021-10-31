@@ -1,20 +1,25 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {
+  AfterContentChecked,
+  Component,
+  OnInit,
+  ViewEncapsulation,
+} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 //
-import { CommercejsService } from '../../services/commercejs.service';
+import { ProductService } from '../../services/product.service';
 import {
   Product,
   Asset,
   Option,
-  RootVariantGroup,
   VariantGroup,
   VariantData,
 } from '../../models/commerce';
 
 // SwiperJS::Start
 import SwiperCore, { Navigation, Thumbs } from 'swiper';
-import { Variants, Cart, RootCart } from '../../models/commerce';
+import { Variants, Cart, RootCart, LineItem } from '../../models/commerce';
+import { CartService } from '../../pages/cart/cart.service';
 SwiperCore.use([Navigation, Thumbs]);
 // SwiperJS::End
 
@@ -24,26 +29,30 @@ SwiperCore.use([Navigation, Thumbs]);
   styleUrls: ['./single-product.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class SingleProductComponent implements OnInit {
+export class SingleProductComponent implements OnInit, AfterContentChecked {
   thumbsSwiper: any;
   //
   product!: Product;
   assets!: Asset[];
   variantOptions!: Option[];
-  variants!: Variants[];
   variant_Group!: VariantGroup[];
-  //
+
+  // Product Part
   productForm!: FormGroup;
-  //
   product_ID: string = 'No Value';
   product_Price: string = "Choisissez votre modèle d'iPhone";
   variant_Group_ID: string = 'No Value';
   variant_Option_ID: string = 'No Value';
   variant_Data!: VariantData;
 
+  // Cart Part
+  total_Items!: number;
+  cart_Items!: LineItem[];
+
   constructor(
     private activeRoute: ActivatedRoute,
-    private commerce: CommercejsService,
+    private productService: ProductService,
+    private cartService: CartService,
     private fb: FormBuilder
   ) {}
 
@@ -52,10 +61,12 @@ export class SingleProductComponent implements OnInit {
     this.initProductForm();
   }
 
+  ngAfterContentChecked(): void {}
+
   productId() {
     this.activeRoute.params.subscribe(({ id }) => {
       // console.log(id);
-      this.commerce.getProduct(id).subscribe((product: Product) => {
+      this.productService.getProduct(id).subscribe((product: Product) => {
         this.product = product;
         this.product_ID = product.id; // --> For binding with Product_Variant_Group
         this.variant_Group = product.variant_groups;
@@ -79,7 +90,7 @@ export class SingleProductComponent implements OnInit {
   onVariantGroupChange(changes: any) {
     this.variant_Group_ID = changes.value;
     // console.log('Variant Group : ', this.variant_Group_ID, this.product_ID);
-    this.commerce
+    this.productService
       .getVariantGroupsOptions(this.product_ID, this.variant_Group_ID)
       .subscribe((data: VariantGroup) => {
         this.variantOptions = data.options;
@@ -103,15 +114,51 @@ export class SingleProductComponent implements OnInit {
   }
 
   commander() {
+    // this.cartService.generateCart().subscribe(({ id: cart_ID }: Cart) => {
+    //   this.cartService
+    //     .addToCart(cart_ID, this.product_ID, quantity, this.variant_Data)
+    //     .subscribe((cart: RootCart) => {
+    //       console.log(cart.cart);
+    //       console.log(cart.cart.line_items);
+    //       this.cartService.cart_Items.push(cart.cart.line_items);
+    //       // console.log(cart.cart.line_items[0].product_id)
+    //     });
+    // });
+  }
+
+  addToCart() {
     const { quantity } = this.productForm.value;
-    this.commerce.generateCart().subscribe(({ id: cart_ID }: Cart) => {
-      console.log('Cart ID : ', cart_ID);
-      this.commerce
-        .addToCart(cart_ID, this.product_ID, quantity, this.variant_Data)
-        .subscribe((cart: RootCart) => {
-          console.log(cart);
-          // TODO
-        });
-    });
+    const sessionCart = sessionStorage.getItem('cart_Session');
+
+    // Get Cart ID from SessionStorage
+    this.cartService
+      .retrieveCart(sessionCart!)
+      .subscribe(({ id: cart_ID }: Cart) => {
+        console.log('ID Cart : ', cart_ID);
+        console.log('Cart Already init');
+
+        // Add to cart method
+        this.cartService
+          .addToCart(cart_ID, this.product_ID, quantity, this.variant_Data)
+          .subscribe(
+            () => {
+              // Get current cart items to send Total items to Header
+              this.cartService.retrieveCart(cart_ID).subscribe((items) => {
+                this.cart_Items = items.line_items;
+                this.total_Items = items.total_unique_items;
+                this.cartService._totalItems$.next(this.total_Items);
+              });
+              // Modal Success TODO !!
+            },
+
+            (err) => {
+              console.log('Error in Request !!!', err);
+            },
+
+            () => {
+              console.log('Add to Cart Finish.');
+            }
+          );
+      });
   }
 }

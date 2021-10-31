@@ -112,7 +112,7 @@ export interface LineItem {
   is_valid: boolean;
   product_meta: any[];
   selected_options: any[];
-  variant: null;
+  variant: Object;
   image: Image;
 }
 

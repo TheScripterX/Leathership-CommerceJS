@@ -14,7 +14,7 @@ import {
 @Injectable({
   providedIn: 'root',
 })
-export class CommercejsService {
+export class ProductService {
   _apiUrl = 'https://api.chec.io/v1';
 
   constructor(private http: HttpClient) {}
@@ -58,32 +58,5 @@ export class CommercejsService {
       `${this._apiUrl}/products/${productId}/variant_groups/${variantId}`,
       { headers: this.headers }
     );
-  }
-
-  generateCart(): Observable<Cart> {
-    return this.http.get<Cart>(`${this._apiUrl}/carts`, {
-      headers: this.headers,
-    });
-  }
-  retrieveCart(id: string): Observable<Cart> {
-    return this.http.get<Cart>(`${this._apiUrl}/carts/${id}`, {
-      headers: this.headers,
-    });
-  }
-
-  addToCart(
-    cart_id: string,
-    product_ID: string,
-    quantity: number,
-    variant_Data: VariantData
-  ): Observable<RootCart> {
-    const body = {
-      id: product_ID,
-      quantity: quantity,
-      options: variant_Data,
-    };
-    return this.http.post<RootCart>(`${this._apiUrl}/carts/${cart_id}`, body, {
-      headers: this.headers,
-    });
   }
 }

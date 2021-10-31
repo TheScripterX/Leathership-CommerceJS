@@ -86,9 +86,6 @@
               >
                 {{ option?.name }}
               </option>
-              <!-- <option *ngFor="let variant of variants">
-              
-              </option> -->
             </select>
           </div>
 
@@ -132,7 +129,7 @@
               placeholder="Quantity"
               formControlName="quantity"
             />
-            <button type="button" class="btn">
+            <button type="button" class="btn" (click)="addToCart()">
               Ajouter au Panier <i class="fas fa-shopping-cart"></i>
             </button>
             <button type="button" class="btn" (click)="commander()">

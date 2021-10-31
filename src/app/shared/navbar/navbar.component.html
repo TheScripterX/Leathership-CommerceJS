@@ -18,7 +18,11 @@
   <div class="icons">
     <div class="fas fa-bars menu__btn" (click)="togglerMenu()"></div>
     <div class="fas fa-search search__btn" (click)="togglerSearch()"></div>
-    <a href="#" class="fas fa-shopping-cart"></a>
+    <div class="fas fa-shopping-cart cart__quantity" routerLink="/cart">
+      <!-- <span *ngFor="let item of cart_Items; let c = count">{{ c }}</span> -->
+      <!-- <span>{{ cart_Items?.length }}</span> -->
+      <span>{{ _totalItems }}</span>
+    </div>
     <a href="#" class="fas fa-heart"></a>
   </div>
 
