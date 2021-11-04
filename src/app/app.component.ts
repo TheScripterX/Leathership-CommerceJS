@@ -25,14 +25,7 @@ export class AppComponent implements OnInit {
       this.cartService
         .retrieveCart(this.cart_Session_ID)
         .subscribe((cart: Cart) => {
-          // this.cartService.cart_Items?.next(...cart.line_items);
-          // console.log('Cart Items : ', this.cartService.cart_Items);
-          console.log('Init Success : ', cart.line_items);
           this.cartService._totalItems$.next(cart.total_unique_items);
-          console.log(
-            'Init Total Items: ',
-            this.cartService._totalItems$.getValue()
-          );
         });
     } else {
       this.cartService.initCart().subscribe((cart) => {

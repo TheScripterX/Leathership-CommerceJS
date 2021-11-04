@@ -129,10 +129,20 @@
               placeholder="Quantity"
               formControlName="quantity"
             />
-            <button type="button" class="btn" (click)="addToCart()">
+            <button
+              type="button"
+              class="btn"
+              (click)="addToCart()"
+              [disabled]="productForm.invalid"
+            >
               Ajouter au Panier <i class="fas fa-shopping-cart"></i>
             </button>
-            <button type="button" class="btn" (click)="commander()">
+            <button
+              type="button"
+              class="btn"
+              (click)="commander()"
+              [disabled]="productForm.invalid"
+            >
               Commander
             </button>
           </div>

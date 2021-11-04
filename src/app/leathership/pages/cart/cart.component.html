@@ -1,53 +1,64 @@
-<div id="page">
-  <table id="cart">
-    <thead>
-      <tr>
-        <th class="first">Product ID</th>
-        <th class="second">Qty</th>
-        <th class="third">Product Name</th>
-        <th class="fourth">Line Total</th>
-        <th class="fifth">&nbsp;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- shopping cart contents -->
-      <tr class="productitm">
-        <!-- <td>{{ item.id }}</td> -->
-        <td>
-          <input type="number" value="1" min="0" max="99" class="qtyinput" />
-        </td>
-        <!-- <td>{{ item.name }}</td> -->
-        <!-- <td>{{ item.price.formatted_with_code }}</td> -->
-        <td>
-          <span class="remove"
-            ><img src="https://i.imgur.com/h1ldGRr.png" alt="X"
-          /></span>
-        </td>
-      </tr>
+<section class="cart">
+  <div class="cart__container" *ngIf="(cart_Items$ | async)?.length">
+    <div class="cart__header">
+      <h3 class="cart__title">Shopping Cart</h3>
+      <!-- <h5 class="cart__action" (click)="emptyCart()">Remove all</h5> -->
+      <button class="btn btn-danger" (click)="emptyCart()">Remove all</button>
+    </div>
+    <div class="cart__items" *ngFor="let item of cart_Items$ | async">
+      <div class="item__image">
+        <img [src]="item.image.url" alt="Product Image" />
+      </div>
+      <div class="item__about">
+        <!-- <h2 class="about__title">Apple Juice</h2> -->
+        <h2 class="about__title">{{ item.name }}</h2>
+        <!-- <h5 class="about__subtitle">250ml</h5> -->
 
-      <!-- tax + subtotal -->
-      <tr class="extracosts">
-        <td class="light">Shipping &amp; Tax</td>
-        <td colspan="2" class="light"></td>
-        <td>$35.00</td>
-        <td>&nbsp;</td>
-      </tr>
-      <tr class="totalprice">
-        <td class="light">Total:</td>
-        <td colspan="2">&nbsp;</td>
-        <td colspan="2"><span class="thick">$225.45</span></td>
-      </tr>
+        <h5
+          class="about__subtitle"
+          *ngFor="let variant of item.selected_options"
+        >
+          {{ variant.option_name }}
+        </h5>
 
-      <!-- checkout btn -->
-      <tr class="checkoutrow">
-        <td colspan="5" class="checkout">
-          <button id="submitbtn">Checkout Now!</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+        <!-- <i class="fas fa-circle"></i> -->
+      </div>
+      <div class="item__counter">
+        <button type="button" class="counter__btn">-</button>
+        <!-- <span class="counter__count">2</span> -->
+        <span class="counter__count">{{ item.quantity }}</span>
+        <button type="button" class="counter__btn">+</button>
+      </div>
+      <div class="item__price">
+        <!-- <h3 class="price__title">Total :</h3> -->
+        <!-- <h3 class="item__amount">$2.99</h3> -->
+        <h3 class="item__amount">{{ item.line_total.formatted_with_code }}</h3>
+        <a (click)="removeCartItem(item.id)"
+          ><p class="item__remove">Remove</p></a
+        >
+      </div>
+    </div>
+    <hr />
+    <div class="cart__checkout">
+      <div class="checkout__total">
+        <div>
+          <h3 class="checkout__subtotal">Sub-Total</h3>
+          <!-- <h5 class="checkout__items">2 produit(s)</h5> -->
+          <h5 class="checkout__items">{{ cart?.total_items }} produit(s)</h5>
+        </div>
+        <!-- <h2 class="checkout__total-amount">$6.18</h2> -->
+        <h2 class="checkout__total-amount">
+          {{ cart?.subtotal?.formatted_with_code }}
+        </h2>
+      </div>
+      <button class="checkout__btn">Checkout</button>
+    </div>
+  </div>
 
-  <!-- <div *ngIf="(items$ | async)?.length === 0">
-    Your shopping cart is empty!!!
-  </div> -->
-</div>
+  <div class="cart__container" *ngIf="!(cart_Items$ | async)?.length">
+    <div class="container">
+      <h3>Cart Empty</h3>
+      <button class="btn btn-primary" routerLink="/">Go Shopping</button>
+    </div>
+  </div>
+</section>

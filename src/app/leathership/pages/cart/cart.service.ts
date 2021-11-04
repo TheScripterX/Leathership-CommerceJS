@@ -54,8 +54,17 @@ export class CartService {
     });
   }
 
-  removeItemFromCart(cart: Cart, item_ID: LineItem) {
-    this.http.delete(`${this._apiUrl}/carts/${cart.id}/items/${item_ID.id}`, {
+  removeItemFromCart(cart_ID: string, item_ID: string): Observable<Cart> {
+    return this.http.delete<Cart>(
+      `${this._apiUrl}/carts/${cart_ID}/items/${item_ID}`,
+      {
+        headers: this.headers,
+      }
+    );
+  }
+
+  emptyCart(cart_ID: string): Observable<Cart> {
+    return this.http.delete<Cart>(`${this._apiUrl}/carts/${cart_ID}/items`, {
       headers: this.headers,
     });
   }
