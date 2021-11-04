@@ -1,4 +1,10 @@
-@use "/src/styles" as *;
+// @use "/src/styles" as *;
+
+@mixin grid($value) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($value, 1fr));
+  gap: 1.5rem;
+}
 
 // Footer Section::Start
 
@@ -7,7 +13,7 @@ section {
 }
 
 .footer {
-  background: $white;
+  background: #fff;
 
   .box__container {
     @include grid(25rem);
@@ -16,13 +22,13 @@ section {
       padding: 0 1rem;
       h3 {
         font-size: 2.2rem;
-        color: $blue;
+        color: #2a4f7c;
         padding: 1rem 0;
       }
 
       p {
         font-size: 1.5rem;
-        color: $dark-grey;
+        color: #666;
         padding: 1rem 0;
         line-height: 2;
         text-align: justify;
@@ -32,16 +38,16 @@ section {
       a {
         display: block;
         font-size: 1.4rem;
-        color: $dark-grey;
+        color: #666;
         padding: 1rem 0;
 
         i {
           padding-right: 0.5rem;
-          color: $red;
+          color: #ce4968;
         }
 
         &:hover {
-          color: $red;
+          color: #ce4968;
         }
 
         &:hover i {
@@ -61,12 +67,12 @@ section {
       width: 5rem;
       line-height: 5rem;
       border-radius: 50%;
-      background: $blue;
+      background: #2a4f7c;
       color: #fff;
       margin: 0.3rem;
 
       &:hover {
-        background: $red;
+        background: #ce4968;
         transform: rotate(360deg);
       }
     }
@@ -76,13 +82,13 @@ section {
     margin-top: 2.5rem;
     padding: 1rem;
     padding-top: 2rem;
-    border-top: $border;
+    border-top: 0.1rem solid rgba(0, 0, 0, 0.3);
     text-align: center;
-    color: $dark-grey;
+    color: #666;
     font-size: 2rem;
 
     span {
-      color: $red;
+      color: #ce4968;
     }
   }
 }

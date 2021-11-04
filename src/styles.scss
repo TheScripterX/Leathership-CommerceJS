@@ -1,9 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,600;1,100&display=swap");
-@import "/src/assets/fa/css/all.min";
-/*  Swiper Imports  */
-@import "swiper/css/bundle";
 
+/*  Swiper Imports  */
+@import "swiper/scss";
+@import "swiper/scss/navigation";
+@import "swiper/scss/pagination";
 *,
 body {
   font-family: "Poppins", sans-serif;
@@ -52,20 +53,20 @@ section {
   padding: 2rem 9%;
 }
 
-.btn {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.9rem 3rem;
-  border-radius: 0.5rem;
-  background: #fcf9f9;
-  color: #070707;
-  font-size: 1.7rem;
-  cursor: pointer;
+// .btn {
+//   display: inline-block;
+//   margin-top: 1rem;
+//   padding: 0.9rem 3rem;
+//   border-radius: 0.5rem;
+//   background: #fcf9f9;
+//   color: #070707;
+//   font-size: 1.7rem;
+//   cursor: pointer;
 
-  &:hover {
-    background: #fff;
-  }
-}
+//   &:hover {
+//     background: #fff;
+//   }
+// }
 
 // Swiper Buttons Global Style::Start
 

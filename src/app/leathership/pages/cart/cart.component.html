@@ -1,5 +1,5 @@
 <section class="cart">
-  <div class="cart__container" *ngIf="(cart_Items$ | async)?.length">
+  <div class="cart__container">
     <div class="cart__header">
       <h3 class="cart__title">Shopping Cart</h3>
       <!-- <h5 class="cart__action" (click)="emptyCart()">Remove all</h5> -->
@@ -55,10 +55,10 @@
     </div>
   </div>
 
-  <div class="cart__container" *ngIf="!(cart_Items$ | async)?.length">
+  <!-- <div class="cart__container" *ngIf="!(cart_Items$ | async)?.length">
     <div class="container">
       <h3>Cart Empty</h3>
       <button class="btn btn-primary" routerLink="/">Go Shopping</button>
     </div>
-  </div>
+  </div> -->
 </section>

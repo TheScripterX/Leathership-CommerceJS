@@ -1,0 +1,76 @@
+// @use "/src/styles" as *;
+
+// Review Section::Start
+
+.review {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  background: #b7b7b78c;
+  .heading {
+    font-size: 3.5rem;
+    color: #2a4f7c;
+    padding-bottom: 2rem;
+    text-align: center;
+    span {
+      color: #ce4968;
+    }
+  }
+
+  .slide {
+    border-radius: 0.5rem;
+    background: #fff;
+    border: 0.1rem solid rgba(0, 0, 0, 0.3);
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+
+    p {
+      font-size: 1.4rem;
+      color: #666;
+      line-height: 2;
+    }
+
+    .user {
+      padding-top: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      justify-content: center;
+
+      img {
+        height: 7rem;
+        width: 7rem;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+
+      h3 {
+        font-size: 2.2rem;
+        color: #2a4f7c;
+      }
+
+      span {
+        font-size: 1.5rem;
+        color: #ce4968;
+      }
+    }
+  }
+}
+
+// Review Section::End
+
+// Media Queries::Start
+
+@media (max-width: 991px) {
+  section {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+}
+
+@media (max-width: 450px) {
+}
+
+// Media Queries::End

@@ -1,16 +1,23 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 //
-import { ProductService } from '../../leathership/services/product.service';
-import { CartService } from '../../leathership/pages/cart/cart.service';
-import { RootCart, LineItem, Cart } from '../../leathership/models/commerce';
-import { retry } from 'rxjs/operators';
+import { CartService } from '../../leathership/services/cart.service';
+//
+import { LineItem } from '../../leathership/models/commerce';
+//
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnDestroy {
   @ViewChild('searchForm') searchForm!: ElementRef;
   @ViewChild('menuBtn') menuBtn!: ElementRef;
 
@@ -18,10 +25,10 @@ export class NavbarComponent implements OnInit {
   cart_Items!: LineItem[];
   _totalItems: any;
 
-  constructor(
-    private productService: ProductService,
-    private cartService: CartService
-  ) {}
+  // RxJS Part
+  subscriptions: Subscription = new Subscription();
+
+  constructor(private cartService: CartService) {}
 
   ngOnInit(): void {
     this.getCartSession();
@@ -55,25 +62,33 @@ export class NavbarComponent implements OnInit {
   }
 
   getCartItems(cart_Session: string) {
-    this.cartService.getCartContents(cart_Session).subscribe(
-      (items) => {
-        this.cart_Items = items;
-        // this.totalItem = items.length;
-      },
-      (err) => {
-        console.error('Navbar Count Error ', err);
-      },
+    this.subscriptions.add(
+      this.cartService.getCartContents(cart_Session).subscribe(
+        (items) => {
+          this.cart_Items = items;
+          // this.totalItem = items.length;
+        },
+        (err) => {
+          console.error('Navbar Count Error ', err);
+        },
 
-      () => {
-        console.log('Navbar Count Complete', this.cart_Items);
-      }
+        () => {
+          console.log('Navbar Count Complete', this.cart_Items);
+        }
+      )
     );
   }
 
   getTotalItems() {
-    this.cartService._totalItems$.subscribe((data: any) => {
-      console.log('Navbar$ Total Items : ', data);
-      this._totalItems = data;
-    });
+    this.subscriptions.add(
+      this.cartService._totalItems$.subscribe((data: any) => {
+        console.log('Navbar$ Total Items : ', data);
+        this._totalItems = data;
+      })
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
   }
 }
