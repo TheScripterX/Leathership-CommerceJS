@@ -6,14 +6,8 @@ import { Product, RootProduct } from 'src/app/leathership/models/commerce';
 import { ProductService } from 'src/app/leathership/services/product.service';
 
 // Swipper::Start
-import SwiperCore, {
-  SwiperOptions,
-  Navigation,
-  Scrollbar,
-  Autoplay,
-} from 'swiper';
+import { SwiperOptions } from 'swiper';
 
-SwiperCore.use([Navigation, Scrollbar, Autoplay]);
 // Swipper::End
 
 @Component({
@@ -24,7 +18,7 @@ SwiperCore.use([Navigation, Scrollbar, Autoplay]);
 })
 export class FeaturedSliderComponent implements OnInit, OnDestroy {
   config: SwiperOptions = {
-    slidesPerView: 3,
+    slidesPerView: 2,
     loop: true,
     spaceBetween: 30,
     navigation: true,
@@ -41,7 +35,7 @@ export class FeaturedSliderComponent implements OnInit, OnDestroy {
         spaceBetween: 30,
       },
       '991': {
-        slidesPerView: 3,
+        slidesPerView: 2,
         spaceBetween: 30,
       },
     },
@@ -58,12 +52,6 @@ export class FeaturedSliderComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.getProducts();
   }
-
-  // async getProducts() {
-  //   await commerce.products
-  //     .list()
-  //     .then((product) => (this.products = product.data));
-  // }
 
   getProducts() {
     this.subscriptions.add(

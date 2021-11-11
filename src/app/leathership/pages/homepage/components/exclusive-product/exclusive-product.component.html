@@ -1,46 +1,16 @@
-<section class="products" id="products">
-  <h1 class="heading">Exclusive <span>Products</span></h1>
-
-  <div class="filter__buttons">
-    <div class="buttons" data-filter="all">All</div>
-    <div class="buttons" data-filter="arrivals">New Arrivals</div>
-    <div class="buttons" data-filter="featured">Featured</div>
-    <div class="buttons" data-filter="special">Special Offer</div>
-    <div class="buttons" data-filter="seller">Best Seller</div>
-  </div>
-  <div class="box__container">
+<section class="products">
+  <div class="container">
     <!-- Product Box::Start -->
-    <div
-      class="box"
-      data-item="featured"
-      *ngFor="let product of products; let i = index"
-    >
-      <div class="icons">
-        <a href="#" class="fas fa-shopping-cart"></a>
-        <a href="#" class="fas fa-heart"></a>
-        <a href="#" class="fas fa-search"></a>
-        <a href="#" class="fas fa-eye"></a>
-      </div>
-      <div class="image">
-        <!-- <img src="./assets/images/product_img1.jpg" alt="Prdouct" /> -->
-        <img [src]="product.assets[0].url" [alt]="product.name" />
-      </div>
-      <div class="content">
-        <!-- <h3>Black Hero</h3> -->
-        <h3>{{ product.name }}</h3>
-        <div class="price">
-          <!-- <div class="amount">$20.00</div> -->
-          <div class="amount">{{ product.price.formatted_with_code }}</div>
-          <div class="cut">$25.00</div>
-          <div class="offer">20% Off</div>
-        </div>
-        <div class="stars">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="far fa-star"></i>
-          <span>(50)</span>
+    <div class="row p-2 text-center">
+      <div class="col-md-4 g-2" *ngFor="let product of products; let i = index">
+        <div
+          class="card border-0"
+          [routerLink]="['product-detail', product.id]"
+        >
+          <img [src]="product.assets[0].url" [alt]="product.name" />
+          <div class="card-body border">
+            <h5 class="card-title">{{ product.name }}</h5>
+          </div>
         </div>
       </div>
     </div>

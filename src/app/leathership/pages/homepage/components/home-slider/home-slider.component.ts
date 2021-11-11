@@ -1,22 +1,7 @@
-import {
-  AfterViewInit,
-  Component,
-  OnDestroy,
-  OnInit,
-  ViewChild,
-  ViewEncapsulation,
-} from '@angular/core';
-// import Swiper, { SwiperOptions, Navigation, Scrollbar, Autoplay } from 'swiper';
-
-// Swiper.use([Navigation, Scrollbar, Autoplay]);
-
-import { SwiperComponent } from 'swiper/angular';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 // import Swiper core and required modules
-import SwiperCore, { Navigation, SwiperOptions } from 'swiper';
-
-// install Swiper modules
-SwiperCore.use([Navigation]);
+import { SwiperOptions } from 'swiper';
 
 @Component({
   selector: 'app-home-slider',
@@ -25,11 +10,7 @@ SwiperCore.use([Navigation]);
   encapsulation: ViewEncapsulation.None,
 })
 export class HomeSliderComponent implements OnInit {
-  swiper3!: boolean;
-
   config: SwiperOptions = {
-    navigation: true,
-    loop: true,
     lazy: true,
   };
 

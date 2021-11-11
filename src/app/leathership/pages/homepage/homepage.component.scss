@@ -1,128 +1,18 @@
-// @use "/src/styles" as *;
-
-// Banner--Leather::Start
-
-.banner__section {
-  .heading {
-    font-size: 3.5rem;
-    color: #2a4f7c;
-    padding-bottom: 2rem;
-    text-align: center;
-    span {
-      color: #ce4968;
-    }
-  }
-  .banner__container {
-    display: flex;
-    justify-content: center;
-    grid-gap: 1.5rem;
-    gap: 1.5rem;
-    padding-top: 1rem;
-    padding-bottom: 5rem;
-
-    .banner {
-      width: 400px;
-      height: 400px;
-      // flex: 1 1 30%;
-      overflow: hidden;
-      // height: 30rem;
-      position: relative;
-
-      img {
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-        transition: 1s;
-      }
-
-      &:hover img {
-        transform: scale(1.1);
-        transition: 1s;
-      }
-
-      .content {
-        position: absolute;
-        left: 10px;
-        bottom: 10px;
-        width: 100%;
-
-        h3 {
-          font-size: 1.8rem;
-          color: #fff;
-          padding-top: 0.5rem;
-        }
-        .btn {
-          font-weight: 500;
-          background-color: #ffffff;
-          transition: 0.5s;
-
-          &:hover {
-            background-color: #ce4968;
-            color: #ffffff;
-            transition: 0.5s;
-          }
-        }
-      }
-    }
-  }
-}
-
-// Banner--Leather::End
-
 // Trending Section::Start
 
-.deal {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  grid-gap: 2rem;
-  gap: 2rem;
-  align-items: center;
+.banner__newC {
   background: #e1e1e9;
 
-  .image {
-    // flex: 1 1 42rem;
-
-    img {
-      width: 22rem;
-    }
+  img {
+    width: 11rem;
   }
 
-  .content {
-    // flex: 1 1 42rem;
-
-    span {
-      color: #ce4968;
-      font-size: 1.7rem;
-      font-weight: 700;
-    }
-
-    h3 {
-      color: #666;
-      font-size: 2.5rem;
-      padding: 0.5rem 0;
-    }
-
-    h4 {
-      color: #ce4968;
-      font-size: 1.7rem;
-      font-weight: 700;
-    }
-
-    p {
-      color: #666;
-      font-size: 2rem;
-    }
-
-    .btn {
-      background-color: #ffffff;
-      transition: 0.4s;
-
-      &:hover {
-        background-color: #ce4968;
-        color: #ffffff;
-        transition: 0.4s;
-      }
+  .btn {
+    transition: 0.5s;
+    &:hover {
+      transition: 0.5s;
+      border-color: #e35d6a;
+      background-color: #e35d6a;
     }
   }
 }
@@ -132,71 +22,12 @@
 // Media Queries::Start
 
 @media (max-width: 991px) {
-  section {
-    padding: 2rem;
-  }
 }
 
 @media (max-width: 768px) {
-  .banner__container {
-    flex-wrap: wrap;
-  }
 }
 
 @media (max-width: 450px) {
-  .heading {
-    font-size: 3rem;
-  }
-
-  .banner__container {
-    flex-wrap: wrap;
-
-    .banner {
-      .content {
-        right: 2rem;
-
-        h3 {
-          font-size: 2rem;
-        }
-      }
-    }
-  }
-
-  .deal {
-    .image {
-      img {
-        width: 22rem;
-      }
-    }
-
-    .content {
-      background: blanchedalmond;
-      border-radius: 5%;
-      padding: 2rem 0;
-      text-align: center;
-
-      span {
-        font-weight: 600;
-        font-size: 1.8rem;
-      }
-
-      h3 {
-        font-size: 3rem;
-      }
-    }
-  }
-
-  .contact {
-    .row {
-      form {
-        .inputBox {
-          input {
-            width: 100%;
-          }
-        }
-      }
-    }
-  }
 }
 
 // Media Queries::End

@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,600;1,100&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap");
 
 /*  Swiper Imports  */
 @import "swiper/scss";
@@ -7,13 +8,10 @@
 @import "swiper/scss/pagination";
 *,
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: "Lato", sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  outline: none;
-  border: none;
-  text-decoration: none;
   transition: 0.1s linear;
 }
 
@@ -32,64 +30,35 @@ $box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
 
 html {
-  font-size: 62.5%;
   scroll-behavior: smooth;
-  scroll-padding-top: 7rem;
-  overflow-x: hidden;
-
-  &::-webkit-scrollbar {
-    width: 1rem;
-  }
-  &::-webkit-scrollbar-track {
-    background: #fff;
-  }
-  &::-webkit-scrollbar {
-    background: $red;
-    border-radius: 5rem;
-  }
 }
 
-section {
-  padding: 2rem 9%;
-}
-
-// .btn {
-//   display: inline-block;
-//   margin-top: 1rem;
-//   padding: 0.9rem 3rem;
-//   border-radius: 0.5rem;
-//   background: #fcf9f9;
-//   color: #070707;
-//   font-size: 1.7rem;
-//   cursor: pointer;
-
-//   &:hover {
-//     background: #fff;
-//   }
+// section {
+//   padding: 2rem 0;
 // }
 
 // Swiper Buttons Global Style::Start
 
-.swiper-button-next,
-.swiper-button-prev {
-  height: 5rem;
-  width: 5rem;
-  border-radius: 0.5rem;
-  background: $white;
-  color: $blue;
-  box-shadow: $box-shadow;
-  border: $border;
+// .swiper-button-next,
+// .swiper-button-prev {
+//   height: 3.2rem;
+//   width: 3.2rem;
+//   border-radius: 0.5rem;
+//   background: $white;
+//   color: $blue;
+//   box-shadow: $box-shadow;
+//   border: $border;
 
-  &:hover {
-    background: $dark-grey;
-    color: $white;
-  }
-}
+//   &:hover {
+//     background: $dark-grey;
+//     color: $white;
+//   }
+// }
 
-.swiper-button-next:after,
-.swiper-button-prev:after {
-  font-size: 2rem;
-}
+// .swiper-button-next:after,
+// .swiper-button-prev:after {
+//   font-size: 1.5rem;
+// }
 
 // Swiper Buttons Global Style::End
 
@@ -98,10 +67,6 @@ section {
 // media queries
 
 @media (max-width: 991px) {
-  html {
-    font-size: 55%;
-  }
-
   section {
     padding: 2rem;
   }
@@ -111,9 +76,6 @@ section {
 }
 
 @media (max-width: 450px) {
-  html {
-    font-size: 50%;
-  }
 }
 
 // Global Media Queries::End

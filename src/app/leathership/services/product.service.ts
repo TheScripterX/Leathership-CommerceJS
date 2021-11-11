@@ -3,7 +3,14 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 //
 import { environment } from 'src/environments/environment';
-import { Cart, RootVariants, RootCart, VariantData } from '../models/commerce';
+import {
+  Cart,
+  RootVariants,
+  RootCart,
+  VariantData,
+  Category,
+  RootCategory,
+} from '../models/commerce';
 import {
   RootProduct,
   Product,
@@ -16,6 +23,7 @@ import {
 })
 export class ProductService {
   _apiUrl = 'https://api.chec.io/v1';
+  _iPhoneCategory = 'cat_BkyN5YPL7o0b69';
 
   constructor(private http: HttpClient) {}
   private headers = new HttpHeaders({
@@ -32,6 +40,15 @@ export class ProductService {
     return this.http.get<Product>(`${this._apiUrl}/products/${id}`, {
       headers: this.headers,
     });
+  }
+
+  getIPhoneCategories(): Observable<Category> {
+    return this.http.get<Category>(
+      `${this._apiUrl}/categories/${this._iPhoneCategory}`,
+      {
+        headers: this.headers,
+      }
+    );
   }
 
   getVariants(productId: string): Observable<RootVariants> {

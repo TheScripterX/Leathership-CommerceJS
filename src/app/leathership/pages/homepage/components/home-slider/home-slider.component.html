@@ -1,31 +1,47 @@
 <!-- Home Slider::Start -->
 
-<section class="home">
+<section class="home border border-5 border-primary">
   <div class="home__slider">
     <swiper [config]="config" class="swiper">
-      <ng-template swiperSlide class="slide slide--1">
-        <div class="content">
-          <h3>Lilas Spring</h3>
-          <p>" I'm Amazing - I'm Unique "</p>
-
-          <a href="#" class="btn">Explore</a>
-        </div>
-      </ng-template>
-      <ng-template swiperSlide class="slide slide--2">
-        <div class="content">
-          <span>Upto 50%</span>
-          <h3>Slide 2</h3>
-          <a href="#" class="btn">Shop Now</a>
-        </div>
-      </ng-template>
-      <ng-template swiperSlide class="slide slide--3">
-        <div class="content">
-          <span>Upto 50%</span>
-          <h3>Slide 3</h3>
-          <a href="#" class="btn">Shop Now</a>
+      <ng-template
+        swiperSlide
+        class="
+          slide__content
+          h-100
+          d-flex
+          align-items-center
+          justify-content-center
+        "
+      >
+        <div class="text-center text-white">
+          <h4>We have dream to connect wholesalers to independent Customers</h4>
+          <button class="btn btn-primary">Explore</button>
         </div>
       </ng-template>
     </swiper>
   </div>
 </section>
 <!-- Home Slider::End -->
+
+<!-- <ng-template swiperSlide class="slide slide--1">
+  <div class="content">
+    <h3>Lilas Spring</h3>
+    <p>" I'm Amazing - I'm Unique "</p>
+
+    <a href="#" class="btn">Explore</a>
+  </div>
+</ng-template>
+<ng-template swiperSlide class="slide slide--2">
+  <div class="content">
+    <span>Upto 50%</span>
+    <h3>Slide 2</h3>
+    <a href="#" class="btn">Shop Now</a>
+  </div>
+</ng-template>
+<ng-template swiperSlide class="slide slide--3">
+  <div class="content">
+    <span>Upto 50%</span>
+    <h3>Slide 3</h3>
+    <a href="#" class="btn">Shop Now</a>
+  </div>
+</ng-template> -->

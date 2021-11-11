@@ -13,6 +13,7 @@ import { SinglePageProductComponent } from './pages/single-page-product/single-p
 import { FeaturedSliderComponent } from './pages/homepage/components/featured-slider/featured-slider.component';
 import { HomeSliderComponent } from './pages/homepage/components/home-slider/home-slider.component';
 import { ExclusiveProductComponent } from './pages/homepage/components/exclusive-product/exclusive-product.component';
+import { CategorySliderComponent } from './pages/homepage/components/category-slider/category-slider.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ExclusiveProductComponent } from './pages/homepage/components/exclusive
     ReviewSliderComponent,
     SingleProductComponent,
     SinglePageProductComponent,
+    CategorySliderComponent,
   ],
   imports: [
     CommonModule,

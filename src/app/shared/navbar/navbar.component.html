@@ -1,13 +1,12 @@
 <!-- App-Header::Start -->
-<!-- <fa-icon [icon]="faCoffee"></fa-icon> -->
 
-<header class="header">
+<!-- <header class="header d-flex align-items-center justify-content-between">
   <a href="/" class="logo">
     <i class="fas fa-shopping-cart"></i>
     Leathership
   </a>
 
-  <nav class="navbar" #menuBtn>
+  <nav class="navbar text-decoration-none" #menuBtn>
     <a routerLink="">Accueil</a>
     <a href="#">Produits</a>
     <a href="#">Promo</a>
@@ -15,12 +14,10 @@
     <a href="#">Contact</a>
   </nav>
 
-  <div class="icons">
+  <div class="icons text-decoration-none">
     <div class="fas fa-bars menu__btn" (click)="togglerMenu()"></div>
     <div class="fas fa-search search__btn" (click)="togglerSearch()"></div>
     <div class="fas fa-shopping-cart cart__quantity" routerLink="/cart">
-      <!-- <span *ngFor="let item of cart_Items; let c = count">{{ c }}</span> -->
-      <!-- <span>{{ cart_Items?.length }}</span> -->
       <span>{{ _totalItems }}</span>
     </div>
     <a href="#" class="fas fa-heart"></a>
@@ -30,7 +27,70 @@
     <input type="search" class="search__box" placeholder="Search Here..." />
     <label for="search__box" class="fas fa-search"></label>
   </form>
-</header>
+</header> -->
 
 <!-- App-Header::End -->
+
+<!-- Test Navbar::Start -->
+
+<header class="container navbar__container">
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"
+        ><img
+          src="../../../assets/logo/ls_logo.png"
+          width="100%"
+          height="100%"
+          alt=""
+      /></a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarMobile"
+        aria-controls="navbarMobile"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarMobile">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <form>
+              <div class="input-group search__form">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Rechercher un produit ..."
+                  aria-label="Recipient's username"
+                  aria-describedby="button-addon2"
+                />
+                <button
+                  class="btn btn-outline-secondary"
+                  type="button"
+                  id="button-addon2"
+                >
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
+            </form>
+          </li>
+        </ul>
+      </div>
+      <div class="navbar__icons text-decoration-none">
+        <!-- <div class="fas fa-shopping-cart cart__quantity" routerLink="/cart">
+          <span>{{ _totalItems }}</span>
+        </div> -->
+        <div>
+          <img src="../../../assets/ico/cart_icon.png" alt="Cart" />
+          <span class="badge bg-secondary">{{ _totalItems }}</span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Test Navbar::End -->
+
 <router-outlet></router-outlet>

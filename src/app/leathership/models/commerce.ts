@@ -200,10 +200,29 @@ export interface VariantGroup {
   options: Option[];
 }
 
+export interface RootCategory {
+  data: Category[];
+  meta: Meta;
+}
+
 export interface Category {
+  id: string;
+  parent_id: null;
+  slug: string;
+  name: string;
+  description: string;
+  products: number;
+  created: number;
+  updated: number;
+  meta: null;
+  assets: any[];
+  children: Child[];
+}
+export interface Child {
   id: string;
   slug: string;
   name: string;
+  assets: Asset[];
 }
 
 export interface ImageDimensions {
