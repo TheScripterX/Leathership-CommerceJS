@@ -1,10 +1,28 @@
-// Trending Section::Start
+// Banner Section::Start
+.banner__container {
+  .aboutUs__container {
+    min-height: 500px;
+    background: linear-gradient(to right, #484b50b9 0%, #cbd7e900 100%),
+      url(https://leathership.s3.eu-central-1.amazonaws.com/images/ls__banners/banner__aboutUs.jpg)
+        no-repeat;
+    background-size: cover;
+    background-position: center;
 
-.banner__newC {
-  background: #e1e1e9;
+    .card {
+      background-color: transparent;
+    }
+  }
+  .leader__container {
+    min-height: 500px;
+    background: linear-gradient(to right, #101010b9 0%, #c3cfe20c 100%),
+      url(https://leathership.s3.eu-central-1.amazonaws.com/images/ls__banners/banner__leader.jpg)
+        no-repeat;
+    background-size: cover;
+    background-position: center;
 
-  img {
-    width: 11rem;
+    .card {
+      background-color: transparent;
+    }
   }
 
   .btn {
@@ -17,17 +35,48 @@
   }
 }
 
-// Trending Section::End
+// Banner Section::End
 
 // Media Queries::Start
 
-@media (max-width: 991px) {
+@media (min-width: 991px) {
+  .card-text {
+    text-align: justify;
+  }
 }
 
 @media (max-width: 768px) {
 }
 
 @media (max-width: 450px) {
+  .banner__container {
+    .aboutUs__container {
+      min-height: 560px;
+      background: linear-gradient(to right, #020202b9 0%, #cbd7e900 100%),
+        url(https://leathership.s3.eu-central-1.amazonaws.com/images/ls__banners/banner__aboutUs--mobile.jpg)
+          no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+    .leader__container {
+      min-height: 560px;
+      background: linear-gradient(to right, #101010de 0%, #000000ab 100%),
+        url(https://leathership.s3.eu-central-1.amazonaws.com/images/ls__banners/banner__leader--mobile.jpg)
+          no-repeat;
+      background-size: cover;
+      background-position: center;
+
+      .card {
+        background-color: transparent;
+      }
+    }
+    .card {
+      background-color: transparent;
+      .card-text {
+        text-align: justify;
+      }
+    }
+  }
 }
 
 // Media Queries::End

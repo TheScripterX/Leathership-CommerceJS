@@ -1,7 +1,7 @@
 // Header Style::Start
 
 .navbar__container {
-  margin-bottom: 3.8rem;
+  // margin-bottom: 3.8rem;
   .navbar-collapse {
     flex-grow: 0;
   }
@@ -9,6 +9,10 @@
   .search__form {
     width: 33rem;
   }
+}
+
+.router__container {
+  padding-top: 3.8rem;
 }
 
 // Media Queries for Header::Start

@@ -28,6 +28,14 @@ export class CategorySliderComponent implements OnInit {
     },
     navigation: true,
     lazy: true,
+    breakpoints: {
+      320: {
+        slidesPerView: 1,
+      },
+      900: {
+        slidesPerView: 3,
+      },
+    },
   };
   constructor(private productService: ProductService) {}
 

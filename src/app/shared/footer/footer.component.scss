@@ -2,7 +2,19 @@
 
 .footer {
   background-color: cornflowerblue;
-  padding: 2rem 0;
+
+  .card {
+    background-color: transparent;
+  }
+  .list-group-item {
+    background-color: transparent;
+    transition: 0.6s;
+
+    &:hover {
+      padding: 0.5rem 0;
+      transition: 0.5s;
+    }
+  }
 }
 
 // Footer Section::End

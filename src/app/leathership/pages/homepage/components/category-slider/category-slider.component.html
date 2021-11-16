@@ -1,11 +1,14 @@
 <div class="container">
   <div class="category__container">
-    <div class="category__slider">
+    <div class="category__slider p-2">
       <swiper class="swiper" [config]="config">
         <ng-template swiperSlide *ngFor="let category of categories">
           <!-- Card::Start -->
-          <div class="card" *ngFor="let image of category.assets">
-            <img [src]="image.url" class="card-img-top" alt="..." />
+          <div
+            class="card align-items-center"
+            *ngFor="let image of category.assets"
+          >
+            <img [src]="image.url" class="card-img-top w-50" alt="..." />
             <div class="card-body">
               <h5 class="card-title">{{ category.name }} Cases</h5>
             </div>

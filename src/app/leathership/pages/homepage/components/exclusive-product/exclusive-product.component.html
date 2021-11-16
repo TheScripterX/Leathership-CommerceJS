@@ -1,8 +1,11 @@
 <section class="products">
   <div class="container">
     <!-- Product Box::Start -->
-    <div class="row p-2 text-center">
-      <div class="col-md-4 g-2" *ngFor="let product of products; let i = index">
+    <div class="row p-2 text-center justify-content-center">
+      <div
+        class="col-6 col-md-3 g-2"
+        *ngFor="let product of products; let i = index"
+      >
         <div
           class="card border-0"
           [routerLink]="['product-detail', product.id]"

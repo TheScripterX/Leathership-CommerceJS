@@ -1,36 +1,3 @@
-<!-- App-Header::Start -->
-
-<!-- <header class="header d-flex align-items-center justify-content-between">
-  <a href="/" class="logo">
-    <i class="fas fa-shopping-cart"></i>
-    Leathership
-  </a>
-
-  <nav class="navbar text-decoration-none" #menuBtn>
-    <a routerLink="">Accueil</a>
-    <a href="#">Produits</a>
-    <a href="#">Promo</a>
-    <a href="#">F.A.Q</a>
-    <a href="#">Contact</a>
-  </nav>
-
-  <div class="icons text-decoration-none">
-    <div class="fas fa-bars menu__btn" (click)="togglerMenu()"></div>
-    <div class="fas fa-search search__btn" (click)="togglerSearch()"></div>
-    <div class="fas fa-shopping-cart cart__quantity" routerLink="/cart">
-      <span>{{ _totalItems }}</span>
-    </div>
-    <a href="#" class="fas fa-heart"></a>
-  </div>
-
-  <form class="search__form" #searchForm>
-    <input type="search" class="search__box" placeholder="Search Here..." />
-    <label for="search__box" class="fas fa-search"></label>
-  </form>
-</header> -->
-
-<!-- App-Header::End -->
-
 <!-- Test Navbar::Start -->
 
 <header class="container navbar__container">
@@ -79,11 +46,10 @@
         </ul>
       </div>
       <div class="navbar__icons text-decoration-none">
-        <!-- <div class="fas fa-shopping-cart cart__quantity" routerLink="/cart">
-          <span>{{ _totalItems }}</span>
-        </div> -->
         <div>
-          <img src="../../../assets/ico/cart_icon.png" alt="Cart" />
+          <a routerLink="/cart">
+            <img src="../../../assets/ico/cart_icon.png" alt="Cart"
+          /></a>
           <span class="badge bg-secondary">{{ _totalItems }}</span>
         </div>
       </div>
@@ -91,6 +57,6 @@
   </nav>
 </header>
 
-<!-- Test Navbar::End -->
-
-<router-outlet></router-outlet>
+<div class="router__container">
+  <router-outlet></router-outlet>
+</div>
