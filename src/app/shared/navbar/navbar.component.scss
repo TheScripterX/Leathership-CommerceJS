@@ -1,7 +1,6 @@
 // Header Style::Start
 
 .navbar__container {
-  // margin-bottom: 3.8rem;
   .navbar-collapse {
     flex-grow: 0;
   }
@@ -17,13 +16,30 @@
 
 // Media Queries for Header::Start
 
-@media (max-width: 991px) {
+@media (min-width: 1201px) {
+  // Extra Large Screens - TV
 }
 
-@media (max-width: 768px) {
+@media (min-width: 1025px) and (max-width: 1200px) {
+  // Desktops - Large Screens
 }
 
-@media (max-width: 450px) {
+@media (min-width: 769px) and (max-width: 1024px) {
+  // Small Screens - Laptops
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  // iPads - Tablets
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  // Mobile Devices
+
+  .navbar__container {
+    .search__form {
+      width: 100%;
+    }
+  }
 }
 
 // Media Queries for Header::End

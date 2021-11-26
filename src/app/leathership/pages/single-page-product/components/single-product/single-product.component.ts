@@ -40,7 +40,7 @@ export class SingleProductComponent implements OnInit, OnDestroy {
   // Product Part
   productForm!: FormGroup;
   product_ID: string = 'No Value';
-  product_Price: string = "Choisissez votre modèle d'iPhone";
+  product_Price!: string;
   variant_Group_ID: string = 'No Value';
   variant_Option_ID: string = 'No Value';
   variant_Data!: VariantData;

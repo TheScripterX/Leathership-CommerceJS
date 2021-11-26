@@ -16,10 +16,12 @@ export class CartComponent implements OnInit {
   // RxJS Part
   cart_Items$ = new Subject<LineItem[]>();
   subscriptions: Subscription = new Subscription();
+  total_Items$ = new Subject<number>();
 
   constructor(private cartService: CartService) {}
 
   ngOnInit(): void {
+    this.total_Items$ = this.cartService._totalItems$;
     this.getCartItems();
   }
 

@@ -27,10 +27,12 @@
 
   .btn {
     transition: 0.5s;
+    border: none;
     &:hover {
+      font-weight: bolder;
       transition: 0.5s;
-      border-color: #e35d6a;
-      background-color: #e35d6a;
+      color: #fff;
+      background-color: #777777;
     }
   }
 }

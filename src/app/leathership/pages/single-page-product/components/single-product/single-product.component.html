@@ -1,43 +1,7 @@
 <section class="single__product">
-  <div class="card__wrapper">
-    <div class="card">
-      <!-- card left -->
-      <div class="product__images">
-        <div class="image__display">
-          <div class="image__showcase">
-            <swiper
-              style="
-                --swiper-navigation-color: #fff;
-                --swiper-pagination-color: #fff;
-              "
-              [spaceBetween]="10"
-              [navigation]="true"
-              [thumbs]="{ swiper: thumbsSwiper }"
-              class="swiper1"
-            >
-              <ng-template swiperSlide *ngFor="let asset of assets"
-                ><img [src]="asset?.url" alt="ngFor"
-              /></ng-template>
-            </swiper>
-            <swiper
-              (swiper)="thumbsSwiper = $event"
-              [spaceBetween]="10"
-              [slidesPerView]="4"
-              [freeMode]="true"
-              [watchSlidesProgress]="true"
-              class="swiper2"
-            >
-              <ng-template swiperSlide *ngFor="let asset of assets"
-                ><img [src]="asset?.url" alt="ngFor"
-              /></ng-template>
-            </swiper>
-          </div>
-        </div>
-      </div>
-      <!-- card right -->
+  <!-- <div class="card__wrapper">
       <div class="product__content">
         <form [formGroup]="productForm">
-          <!-- <h2 class="product__title">Black Hero</h2> -->
           <h2 class="product__title">
             {{ product?.name }}
           </h2>
@@ -50,8 +14,7 @@
           >
 
           <div class="product__price">
-            <!-- <p class="last__price">Prix Initial: <span>257.00 MAD</span></p> -->
-            <!-- <p class="new__price">Prix Promo: <span>249.00 MAD (5%)</span></p> -->
+          
             <p class="new__price">
               Prix:
               <span>
@@ -164,6 +127,146 @@
             <a>
               <i class="fab fa-pinterest"></i>
             </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div> -->
+
+  <div class="row p-3">
+    <div class="col-12 col-md-6">
+      <!-- Part Left -->
+      <div class="container p-3">
+        <swiper
+          style="
+            --swiper-navigation-color: #fff;
+            --swiper-pagination-color: #fff;
+          "
+          [spaceBetween]="10"
+          [navigation]="true"
+          [thumbs]="{ swiper: thumbsSwiper }"
+          class="swiper1 w-50 pb-2"
+        >
+          <ng-template swiperSlide *ngFor="let asset of assets"
+            ><img [src]="asset?.url" alt="ngFor"
+          /></ng-template>
+        </swiper>
+        <swiper
+          (swiper)="thumbsSwiper = $event"
+          [spaceBetween]="10"
+          [slidesPerView]="4"
+          [freeMode]="true"
+          [watchSlidesProgress]="true"
+          class="swiper2"
+        >
+          <ng-template swiperSlide *ngFor="let asset of assets"
+            ><img [src]="asset?.url" alt="ngFor"
+          /></ng-template>
+        </swiper>
+      </div>
+    </div>
+    <div class="col-12 col-md-6">
+      <div class="container">
+        <form [formGroup]="productForm">
+          <div class="card border border-0">
+            <div class="card-body">
+              <h6
+                class="
+                  card-subtitle
+                  mb-2
+                  text-muted text-center text-md-start
+                  fw-bold
+                "
+              >
+                Leathership
+              </h6>
+
+              <h4 class="card-title fs-4 py-2 text-center text-md-start">
+                {{ product?.name }}
+              </h4>
+
+              <h6 class="card-subtitle pb-3 fw-bolder text-danger fs-6">
+                <span class="text-dark">Prix :</span>
+                {{ product_Price || "Choisissez le modèle SVP..." }}
+              </h6>
+
+              <label for="brand" class="form-label">Brand : </label>
+              <select
+                id="brand"
+                class="form-select mb-2 w-50 text-secondary fw-bold"
+                formControlName="variant_Group_ID"
+                (change)="onVariantGroupChange($event.currentTarget)"
+              >
+                <option selected disabled value="Brand">-- Brand --</option>
+                <option
+                  [value]="variant.id"
+                  *ngFor="let variant of variant_Group; let i = index"
+                  class="fw-bold text-dark"
+                >
+                  {{ variant.name }}
+                </option>
+              </select>
+
+              <label for="model" class="form-label">Model : </label>
+              <select
+                id="model"
+                class="form-select mb-2 w-50 text-secondary fw-bold"
+                formControlName="variant_Options_ID"
+                (change)="onVariantOptionsChange($event.currentTarget)"
+              >
+                <option selected disabled value="Modele de Téléphone">
+                  -- Modèle de Téléphone --
+                </option>
+                <option
+                  [value]="option.id"
+                  *ngFor="let option of variantOptions; let i = index"
+                  class="fw-bold text-dark"
+                >
+                  {{ option?.name }}
+                </option>
+              </select>
+
+              <p class="card-text text-justify">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum
+                laudantium numquam quod, aut maxime quam magni eaque commodi ex,
+                qui culpa! Aut in, fugit temporibus vitae voluptatem
+                perspiciatis laboriosam doloribus!
+              </p>
+            </div>
+            <div class="card-body">
+              <div class="row gy-3 justify-content-center">
+                <div class="col-12 col-md-4">
+                  <input
+                    class="form-control w-25 text-center fw-bold"
+                    type="number"
+                    min="0"
+                    value="1"
+                    placeholder="Quantity"
+                    formControlName="quantity"
+                  />
+                </div>
+                <div class="col-12 col-md-4">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    (click)="commander()"
+                    [disabled]="productForm.invalid"
+                  >
+                    Commander
+                  </button>
+                </div>
+                <div class="col-12 col-md-4">
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    (click)="addToCart()"
+                    [disabled]="productForm.invalid"
+                  >
+                    Ajouter au Panier <i class="fas fa-shopping-cart"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </form>
       </div>

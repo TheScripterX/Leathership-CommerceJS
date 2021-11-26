@@ -11,10 +11,15 @@ body {
   font-family: "Lato", sans-serif;
   box-sizing: border-box;
   transition: 0.1s linear;
+  text-decoration: none;
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+.text-justify {
+  text-align: justify;
 }
 
 // Global Media Queries::Start

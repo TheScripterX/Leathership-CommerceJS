@@ -1,64 +1,149 @@
-<section class="cart">
-  <div class="cart__container">
-    <div class="cart__header">
-      <h3 class="cart__title">Shopping Cart</h3>
-      <!-- <h5 class="cart__action" (click)="emptyCart()">Remove all</h5> -->
-      <button class="btn btn-danger" (click)="emptyCart()">Remove all</button>
-    </div>
-    <div class="cart__items" *ngFor="let item of cart_Items$ | async">
-      <div class="item__image">
-        <img [src]="item.image.url" alt="Product Image" />
-      </div>
-      <div class="item__about">
-        <!-- <h2 class="about__title">Apple Juice</h2> -->
-        <h2 class="about__title">{{ item.name }}</h2>
-        <!-- <h5 class="about__subtitle">250ml</h5> -->
+<section class="cart__section d-flex">
+  <div class="card">
+    <form>
+      <div class="row">
+        <div class="col-md-8 p-5">
+          <div class="title">
+            <div class="row">
+              <div class="col-12 col-md-6">
+                <h5 class="fw-bold">Shopping Cart</h5>
+              </div>
+              <div
+                class="
+                  col-12 col-md-6
+                  align-self-center
+                  text-start text-md-end text-muted
+                "
+              >
+                <p class="m-0">
+                  <span class="fw-bold">Total :</span>
+                  <span class="me-2">
+                    {{ total_Items$ | async }} produit(s)</span
+                  ><a (click)="emptyCart()"
+                    ><i class="fas fa-times text-danger fs-5"></i
+                  ></a>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="row border-top" *ngFor="let item of cart_Items$ | async">
+            <div class="row py-3 w-100 align-items-center">
+              <div class="col-12 col-md-2 px-3">
+                <img class="img-fluid" [src]="item.image.url" />
+              </div>
+              <div class="col-12 col-md-4 px-3">
+                <div class="row">
+                  <h5 class="d-flex fs-6 justify-content-between mt-1 mt-md-0">
+                    <span class="m-0 d-block d-md-none">Couleur :</span>
+                    <span class="fw-bold text-info">
+                      {{ item.name }}
+                    </span>
+                  </h5>
+                </div>
+                <div class="row">
+                  <h6
+                    class="d-flex justify-content-between mt-1 mt-md-0"
+                    *ngFor="let variant of item.selected_options"
+                  >
+                    <span class="m-0 d-block d-md-none">Modèle :</span>
+                    <span class="fw-bold text-muted">{{
+                      variant.option_name
+                    }}</span>
+                  </h6>
+                </div>
+              </div>
+              <div class="d-none d-md-block d-block col-12 col-md-2 px-3">
+                <a href="#">-</a
+                ><input
+                  type="number"
+                  class="border w-25 text-center"
+                  [value]="2"
+                /><a href="#">+</a>
+              </div>
+              <div
+                class="
+                  col-12 col-md-4
+                  px-3
+                  d-flex
+                  justify-content-between justify-content-md-around
+                  align-items-center align-items-md-start
+                "
+              >
+                <h6
+                  class="
+                    fw-bold
+                    d-flex
+                    fs-6
+                    justify-content-between
+                    mt-1 mt-md-0
+                  "
+                >
+                  <span class="m-0 d-block d-md-none">Prix :</span>
+                  <span class="fw-bold text-muted">
+                    {{ item.line_total.formatted_with_code }}
+                  </span>
+                </h6>
+                <a
+                  (click)="removeCartItem(item.id)"
+                  class="float-none float-md-end"
+                  ><i class="fas fa-times text-danger fs-5"></i
+                ></a>
+              </div>
+            </div>
+          </div>
 
-        <h5
-          class="about__subtitle"
-          *ngFor="let variant of item.selected_options"
-        >
-          {{ variant.option_name }}
-        </h5>
-
-        <!-- <i class="fas fa-circle"></i> -->
-      </div>
-      <div class="item__counter">
-        <button type="button" class="counter__btn">-</button>
-        <!-- <span class="counter__count">2</span> -->
-        <span class="counter__count">{{ item.quantity }}</span>
-        <button type="button" class="counter__btn">+</button>
-      </div>
-      <div class="item__price">
-        <!-- <h3 class="price__title">Total :</h3> -->
-        <!-- <h3 class="item__amount">$2.99</h3> -->
-        <h3 class="item__amount">{{ item.line_total.formatted_with_code }}</h3>
-        <a (click)="removeCartItem(item.id)"
-          ><p class="item__remove">Remove</p></a
-        >
-      </div>
-    </div>
-    <hr />
-    <div class="cart__checkout">
-      <div class="checkout__total">
-        <div>
-          <h3 class="checkout__subtotal">Sub-Total</h3>
-          <!-- <h5 class="checkout__items">2 produit(s)</h5> -->
-          <h5 class="checkout__items">{{ cart?.total_items }} produit(s)</h5>
+          <div class="border-top back__to__shop">
+            <a href="#">&leftarrow;</a
+            ><span class="text-muted fw-bold">Back to shop</span>
+          </div>
         </div>
-        <!-- <h2 class="checkout__total-amount">$6.18</h2> -->
-        <h2 class="checkout__total-amount">
-          {{ cart?.subtotal?.formatted_with_code }}
-        </h2>
-      </div>
-      <button class="checkout__btn">Checkout</button>
-    </div>
-  </div>
+        <div class="col-md-4 cart__summary p-4">
+          <div>
+            <h5 class="fw-bold">Résumé</h5>
+          </div>
+          <hr />
+          <div class="row">
+            <div class="col-6 col-md-6">
+              <h6>{{ cart?.total_items }} produit(s)</h6>
+            </div>
+            <div class="col-6 col-md-6 text-end">
+              <h6 class="fw-bold">
+                {{ cart?.subtotal?.formatted_with_code }}
+              </h6>
+            </div>
+          </div>
 
-  <!-- <div class="cart__container" *ngIf="!(cart_Items$ | async)?.length">
-    <div class="container">
-      <h3>Cart Empty</h3>
-      <button class="btn btn-primary" routerLink="/">Go Shopping</button>
-    </div>
-  </div> -->
+          <hr />
+
+          <div class="row">
+            <div class="col-6 col-md-6"><p class="m-0">Livraison :</p></div>
+            <div class="col-6 col-md-6 text-end">
+              <p class="m-0 fw-bold">Gratuite</p>
+            </div>
+          </div>
+
+          <hr />
+          <div class="row">
+            <div class="col-6"><p class="m-1">Code Promo :</p></div>
+            <div class="col-6">
+              <input
+                id="code"
+                class="form-control"
+                placeholder="Entrez le code ..."
+              />
+            </div>
+          </div>
+          <div class="row my-3 align-items-center border-top border-secondary">
+            <div class="col px-3"><h5>Total :</h5></div>
+            <div class="col px-3 text-end">
+              <h6 class="fw-bold">
+                {{ cart?.subtotal?.formatted_with_code }}
+              </h6>
+            </div>
+          </div>
+          <button class="btn fw-bold w-100">Checkout</button>
+        </div>
+      </div>
+    </form>
+  </div>
 </section>
