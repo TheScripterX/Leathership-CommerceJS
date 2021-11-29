@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Cart, LineItem } from '../../models/commerce';
 //
 import { CartService } from '../../services/cart.service';
@@ -15,7 +15,6 @@ export class CartComponent implements OnInit {
 
   // RxJS Part
   subscriptions: Subscription = new Subscription();
-  cart_Items$ = new Subject<LineItem[]>();
   total_Items$ = new Subject<number>();
 
   constructor(private cartService: CartService) {}
@@ -31,7 +30,6 @@ export class CartComponent implements OnInit {
       this.cartService.retrieveCart(cart_Session!).subscribe(
         (cart) => {
           this.cart = cart;
-          this.cart_Items$.next(cart.line_items);
           this.cartService._totalItems$.next(cart.total_unique_items);
         },
 

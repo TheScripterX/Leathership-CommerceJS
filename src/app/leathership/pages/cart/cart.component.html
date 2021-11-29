@@ -1,5 +1,5 @@
-<section class="cart__section d-flex">
-  <div class="card">
+<section class="cart__section d-flex align-items-center">
+  <div class="card" *ngIf="cart?.line_items?.length; else isEmpty">
     <form>
       <div class="row">
         <div class="col-md-8 p-5">
@@ -29,7 +29,7 @@
               </div>
             </div>
           </div>
-          <div class="row border-top" *ngFor="let item of cart_Items$ | async">
+          <div class="row border-top" *ngFor="let item of cart?.line_items">
             <div class="row py-3 w-100 align-items-center">
               <div class="col-12 col-md-2 px-3">
                 <img class="img-fluid" [src]="item.image.url" />
@@ -153,4 +153,34 @@
       </div>
     </form>
   </div>
+
+  <ng-template #isEmpty>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h5>Mon Panier :</h5>
+            </div>
+            <div class="card-body">
+              <div class="col-12 text-center">
+                <img
+                  src="https://i.imgur.com/dCdflKN.png"
+                  width="130"
+                  height="130"
+                  class="img-fluid mb-4 me-3"
+                />
+                <h3><strong>Votre panier est vide</strong></h3>
+                <h4>
+                  Il semble que vous n'ayez pas encore ajouté de produits à
+                  votre panier.
+                </h4>
+                <a class="btn btn-primary text-white m-3">Let's Explore</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
 </section>
