@@ -14,8 +14,8 @@ export class CartComponent implements OnInit {
   cart!: Cart;
 
   // RxJS Part
-  cart_Items$ = new Subject<LineItem[]>();
   subscriptions: Subscription = new Subscription();
+  cart_Items$ = new Subject<LineItem[]>();
   total_Items$ = new Subject<number>();
 
   constructor(private cartService: CartService) {}
@@ -29,10 +29,10 @@ export class CartComponent implements OnInit {
     const cart_Session = sessionStorage.getItem('cart_Session');
     this.subscriptions.add(
       this.cartService.retrieveCart(cart_Session!).subscribe(
-        (items) => {
-          this.cart = items;
-          this.cart_Items$.next(items.line_items);
-          this.cartService._totalItems$.next(items.total_unique_items);
+        (cart) => {
+          this.cart = cart;
+          this.cart_Items$.next(cart.line_items);
+          this.cartService._totalItems$.next(cart.total_unique_items);
         },
 
         (err) => {
@@ -65,19 +65,21 @@ export class CartComponent implements OnInit {
   }
 
   emptyCart() {
-    this.subscriptions = this.cartService.emptyCart(this.cart.id).subscribe(
-      () => {
-        console.log('Cart Empty Sucess ! ');
-        this.getCartItems();
-      },
+    this.subscriptions.add(
+      this.cartService.emptyCart(this.cart.id).subscribe(
+        () => {
+          console.log('Cart Empty Sucess ! ', this.cart.id);
+          this.getCartItems();
+        },
 
-      (err) => {
-        console.warn('Error in emptyCart Function : ', err);
-      },
+        (err) => {
+          console.warn('Error in emptyCart Function : ', err);
+        },
 
-      () => {
-        console.log('Cart Empty Finish !');
-      }
+        () => {
+          console.log('Cart Empty Finish !');
+        }
+      )
     );
   }
 

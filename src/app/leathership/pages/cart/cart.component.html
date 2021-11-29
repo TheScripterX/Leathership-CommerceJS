@@ -20,7 +20,10 @@
                   <span class="me-2">
                     {{ total_Items$ | async }} produit(s)</span
                   ><a (click)="emptyCart()"
-                    ><i class="fas fa-times text-danger fs-5"></i
+                    ><i
+                      title="Tout retirer"
+                      class="fas fa-times text-danger fs-5"
+                    ></i
                   ></a>
                 </p>
               </div>
@@ -56,8 +59,9 @@
                 <a href="#">-</a
                 ><input
                   type="number"
-                  class="border w-25 text-center"
+                  class="border quantity text-center"
                   [value]="2"
+                  readonly
                 /><a href="#">+</a>
               </div>
               <div
@@ -86,7 +90,10 @@
                 <a
                   (click)="removeCartItem(item.id)"
                   class="float-none float-md-end"
-                  ><i class="fas fa-times text-danger fs-5"></i
+                  ><i
+                    title="Supprimer du panier"
+                    class="fas fa-times text-danger fs-5"
+                  ></i
                 ></a>
               </div>
             </div>

@@ -14,6 +14,10 @@
     box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 1rem;
     border: transparent;
+
+    .quantity {
+      width: 60%;
+    }
   }
 
   .cart__summary {
@@ -35,4 +39,16 @@
   a {
     cursor: pointer;
   }
+}
+
+// Custom Reset
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
 }
