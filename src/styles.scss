@@ -24,7 +24,7 @@ html {
 
 // Global Media Queries::Start
 
-// media queries
+// Media queries
 
 @media (min-width: 1201px) {
   // Extra Large Screens - TV
@@ -42,7 +42,7 @@ html {
   // iPads - Tablets
 }
 
-@media (min-width: 320px) and (max-width: 480px) {
+@media (max-width: 480px) {
   // Mobile Devices
 }
 

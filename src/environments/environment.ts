@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  _commerceApi: 'sk_34809d32c67977598702c70193a5d31e3941b086828f6',
+  _commerceApi: 'sk_test_3480938c200a55747619555979931a0aec83b9d1ebef7',
 };
 
 /*

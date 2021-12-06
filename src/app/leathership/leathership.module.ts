@@ -35,11 +35,5 @@ import { ProductsPageComponent } from './pages/products-page/products-page.compo
     ReactiveFormsModule,
     CartModule,
   ],
-  exports: [
-    HomepageComponent,
-    HomeSliderComponent,
-    SinglePageProductComponent,
-    SingleProductComponent,
-  ],
 })
 export class LeathershipModule {}
