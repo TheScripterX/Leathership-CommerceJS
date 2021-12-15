@@ -1,0 +1,19 @@
+.checkout {
+  textarea {
+    height: 5.5rem;
+  }
+  p {
+    margin-bottom: 0;
+  }
+
+  .font-size-caption {
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+    --bs-text-opacity: 1;
+    color: #6c757d;
+  }
+  .hr-black {
+    border: 0.5px solid #181717;
+    opacity: 1;
+  }
+}

@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { ProductsPageComponent } from './pages/products-page/products-page.component';
 import { SinglePageProductComponent } from './pages/single-page-product/single-page-product.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,7 @@ const routes: Routes = [
       { path: '', component: HomepageComponent, pathMatch: 'full' },
       { path: 'product-detail/:id', component: SinglePageProductComponent },
       { path: 'collections', component: ProductsPageComponent },
+      { path: 'checkout/:id', component: CheckoutComponent },
       { path: '**', redirectTo: '' },
     ],
   },

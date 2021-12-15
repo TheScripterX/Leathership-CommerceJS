@@ -15,6 +15,7 @@ import { HomeSliderComponent } from './pages/homepage/components/home-slider/hom
 import { ExclusiveProductComponent } from './pages/homepage/components/exclusive-product/exclusive-product.component';
 import { CategorySliderComponent } from './pages/homepage/components/category-slider/category-slider.component';
 import { ProductsPageComponent } from './pages/products-page/products-page.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ProductsPageComponent } from './pages/products-page/products-page.compo
     SinglePageProductComponent,
     CategorySliderComponent,
     ProductsPageComponent,
+    CheckoutComponent,
   ],
   imports: [
     CommonModule,

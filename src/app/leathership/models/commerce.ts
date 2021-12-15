@@ -94,6 +94,203 @@ export interface Cart {
   discount: any[];
 }
 
+export interface Checkout {
+  id: string;
+  cart_id: string;
+  created: number;
+  expires: number;
+  conditionals: Conditionals;
+  meta: null;
+  collects: Collects;
+  has: CheckoutHas;
+  is: CheckoutIs;
+  products: Product[];
+  merchant: Merchant;
+  extra_fields: ExtraField[];
+  gateways: Gateway[];
+  shipping_methods: any[];
+  live: Live;
+  analytics: Analytics;
+  adjustments: any[];
+}
+
+export interface Analytics {
+  google: Google;
+}
+
+export interface Google {
+  settings: Settings;
+}
+
+export interface Settings {
+  tracking_id: null;
+  linked_domains: any[];
+}
+
+export interface Live {
+  merchant_id: number;
+  currency: Currency;
+  subtotal: Subtotal;
+  total: Subtotal;
+  total_with_tax: Subtotal;
+  adjustments: Adjustments;
+  giftcard: any[];
+  total_due: Subtotal;
+  pay_what_you_want: PayWhatYouWant;
+  line_items: LineItem[];
+  discount: any[];
+  shipping: Shipping;
+  tax: LiveTax;
+}
+
+export interface Shipping {
+  price: Subtotal;
+  available_options: any[];
+}
+
+export interface LiveTax {
+  amount: Subtotal;
+  included_in_price: boolean;
+  provider: string;
+  breakdown: any[];
+  zone: any[];
+}
+
+export interface PayWhatYouWant {
+  enabled: boolean;
+  minimum: null;
+  customer_set_price: null;
+}
+
+export interface Adjustments {
+  taxable: Subtotal;
+  untaxable: Subtotal;
+  total: Subtotal;
+}
+
+export interface Gateway {
+  id: string;
+  code: string;
+  sandbox: boolean;
+  config: any[];
+}
+
+export interface ExtraField {
+  id: string;
+  name: string;
+  type?: string;
+  required?: boolean;
+  options: Option[] | null;
+  meta: null;
+  created: number;
+  updated: number;
+}
+
+export interface CheckoutHas {
+  physical_delivery: boolean;
+  digital_delivery: boolean;
+  pay_what_you_want: boolean;
+  available_discounts: boolean;
+}
+
+export interface CheckoutIs {
+  cart_free: boolean;
+}
+
+export interface Merchant {
+  id: number;
+  name: string;
+  description: string;
+  status: string;
+  country: string;
+  currency: Currency;
+  has: MerchantHas;
+  support_email: string;
+  logo_shape: null;
+  intercom: boolean;
+  analytics: Analytics;
+  address: Address;
+  billing: Billing;
+  signup_purpose: string;
+  statistics: MerchantStatistics;
+  notifications: Notifications;
+  cors_domains: any[];
+  images: Images;
+}
+
+export interface Images {
+  logo: Logo;
+  cover: null;
+}
+
+export interface Logo {
+  id: string;
+  url: string;
+  description: null;
+  is_image: boolean;
+  filename: string;
+  file_size: number;
+  file_extension: FileExtension;
+  image_dimensions: ImageDimensions;
+  meta: any[];
+  created_at: number;
+  updated_at: number;
+}
+
+export enum FileExtension {
+  Jpg = 'jpg',
+  PNG = 'png',
+}
+
+export interface Notifications {
+  token: string;
+  dashboard: string;
+}
+
+export interface MerchantStatistics {
+  orders: number;
+  test_orders: number;
+  products: number;
+  shipping_zones: number;
+  tax_rates: number;
+  rays: number;
+  has_payment_gateway: boolean;
+}
+
+export interface Billing {
+  has_payment_method: boolean;
+  plan: string;
+  features: Features;
+  usage: Usage;
+}
+
+export interface Usage {
+  rays: number;
+}
+
+export interface Features {
+  rays: number;
+  variants: number;
+}
+
+export interface Address {
+  street: string;
+  city: string;
+  region: string;
+  country: string;
+  postal_zip_code: string;
+  public: boolean;
+}
+
+export interface MerchantHas {
+  logo: boolean;
+  cover: boolean;
+  analytics: boolean;
+  description: boolean;
+  enabled_hosted_checkouts: boolean;
+  enabled_hosted_storefront: boolean;
+}
+
 export interface Currency {
   code: string;
   symbol: string;

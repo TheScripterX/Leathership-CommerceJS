@@ -148,7 +148,13 @@
               </h6>
             </div>
           </div>
-          <button class="btn fw-bold w-100">Checkout</button>
+          <button
+            type="submit"
+            class="btn fw-bold w-100"
+            [routerLink]="['/checkout', cart?.id]"
+          >
+            Checkout
+          </button>
         </div>
       </div>
     </form>
