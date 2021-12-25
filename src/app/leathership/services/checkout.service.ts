@@ -5,7 +5,14 @@ import { environment } from 'src/environments/environment';
 //
 import { Observable } from 'rxjs';
 //
-import { Checkout } from '../models/commerce';
+import {
+  Checkout,
+  Order,
+  LineItemsData,
+  Shipping,
+  Test_Gateway,
+} from '../models/commerce';
+import { Customer } from '@chec/commerce.js/types/customer';
 
 @Injectable({
   providedIn: 'root',
@@ -26,5 +33,28 @@ export class CheckoutService {
       headers: this.headers,
       params: this.params,
     });
+  }
+
+  captureOrder(
+    checkout_ID: string,
+    lineItemsObject: LineItemsData[],
+    customer: Customer,
+    shipping: Shipping,
+    payment: Test_Gateway
+  ): Observable<Order> {
+    const body = {
+      line_items: lineItemsObject,
+      customer: customer,
+      shipping: shipping,
+      payment: payment,
+    };
+
+    return this.http.post<Order>(
+      `${this._apiUrl}/checkouts/${checkout_ID}`,
+      body,
+      {
+        headers: this.headers,
+      }
+    );
   }
 }

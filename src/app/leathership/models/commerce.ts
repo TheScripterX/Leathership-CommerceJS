@@ -1,3 +1,4 @@
+import { Customer } from '@chec/commerce.js/types/customer';
 export interface Product {
   id: string;
   created: number;
@@ -57,10 +58,6 @@ export interface RootVariantGroup {
   meta: Meta;
 }
 
-export interface VariantData {
-  [key: string]: string; // Dynamic Interface
-}
-
 export interface Price {
   raw: number;
   formatted: string;
@@ -112,6 +109,131 @@ export interface Checkout {
   live: Live;
   analytics: Analytics;
   adjustments: any[];
+}
+
+export interface Order {
+  id: string;
+  cart_id: string;
+  checkout_token_id: string;
+  created: number;
+  redirect: boolean;
+  customer_reference: string;
+  status_payment: string;
+  status_fulfillment: string;
+  customer: Customer;
+  extra_fields: ExtraField[];
+  shipping: OrderShippingClass;
+  billing: any[];
+  order: OrderClass;
+  transactions: Transaction[];
+  fulfillment: Fulfillment;
+  conditionals: Conditionals;
+  merchant: Merchant;
+  meta: null;
+}
+export interface Fulfillment {
+  physical: Physical;
+  digital: Digital;
+}
+
+export interface Digital {
+  downloads: any[];
+}
+
+export interface Physical {
+  items: Item[];
+  shipments: any[];
+}
+
+export interface Item {
+  id: string;
+  shipping_method_id: string;
+  line_item_id: string;
+  product_id: string;
+  shipping_description: string;
+  provider: string;
+  provider_type: string;
+  product_name: string;
+  status: string;
+  quantity: Quantity;
+  quantity_fulfilled: number;
+  quantity_remaining: number;
+  last_updated: number;
+  linked_shipments: any[];
+  variants: Variant[];
+}
+
+export interface Quantity {
+  total: number;
+  fulfilled: number;
+  remaining: number;
+}
+
+export interface Transaction {
+  id: string;
+  type: string;
+  status: string;
+  status_reason: string;
+  charge_date: number;
+  gateway: string;
+  gateway_name: string;
+  gateway_transaction_id: string;
+  gateway_reference: string;
+  notes: string;
+  amount: Subtotal;
+  payment_source_type: string;
+  payment_source: PaymentSource;
+  created: number;
+  updated: number;
+  dunning: Dunning;
+}
+
+export interface Dunning {
+  is_dunning: boolean;
+  failed_attempts: number;
+  last_failed_attempt: null;
+  next_attempt: null;
+}
+
+export interface PaymentSource {
+  brand: string;
+  country: string;
+  billing_zip_postal_code: string;
+}
+
+export interface OrderClass {
+  line_items: LineItem[];
+  subtotal: Subtotal;
+  discount: any[];
+  shipping: OrderShipping;
+  tax: Tax;
+  total: Subtotal;
+  total_with_tax: Subtotal;
+  pay_what_you_want: PayWhatYouWant;
+}
+
+export interface Tax {
+  amount: Subtotal;
+  included_in_price: boolean;
+  provider: string;
+  provider_type: string;
+  breakdown: any[];
+  zone: Zone;
+}
+
+export interface OrderShipping {
+  id: string;
+  description: string;
+  price: Subtotal;
+}
+
+export interface OrderShippingClass {
+  name: string;
+  street: string;
+  town_city: string;
+  county_state: string;
+  postal_zip_code: string;
+  country: string;
 }
 
 export interface Analytics {
@@ -309,8 +431,23 @@ export interface LineItem {
   is_valid: boolean;
   product_meta: any[];
   selected_options: any[];
-  variant: Object;
+  variant: Variant;
   image: Image;
+}
+
+export interface Variant {
+  id: string;
+  sku: string;
+  description: string;
+  inventory: number;
+  price: Price;
+  is_valid: boolean;
+  invalid_reason_code: null;
+  meta: null;
+  created: number;
+  updated: number;
+  options: Option;
+  assets: any[];
 }
 
 export interface Subtotal {
@@ -510,4 +647,24 @@ export interface Pagination {
 
 export interface Meta {
   pagination: Pagination;
+}
+
+export interface VariantData {
+  [key: string]: string; // Dynamic Interface
+}
+
+export interface LineItemsData {
+  [key: string]: {
+    variant_id: string;
+    quantity: number;
+  };
+}
+
+export interface Test_Gateway {
+  payment: {
+    gateway: string;
+    card: {
+      number: number;
+    };
+  };
 }

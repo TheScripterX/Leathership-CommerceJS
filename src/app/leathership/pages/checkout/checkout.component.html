@@ -3,274 +3,308 @@
     <main>
       <div class="row gx-5 h-100">
         <div class="col-12 col-md-7 order-last order-md-first">
-          <div class="row align-items-center">
-            <div class="col-6"><h5>Informations Contact</h5></div>
-            <div class="col-6"><p>Already have an account ?</p></div>
-            <hr class="w-100" />
-          </div>
-          <div class="row">
-            <div class="col-12 col-md-6">
-              <div class="my-3">
-                <label for="fname" class="font-size-caption"
-                  >First Name :</label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="fname"
-                  placeholder="Enter your First Name"
-                />
+          <form [formGroup]="checkoutForm" (ngSubmit)="getData()">
+            <ng-container formGroupName="customer">
+              <div class="row align-items-center">
+                <div class="col-6"><h5>Informations Contact</h5></div>
+                <div class="col-6"><p>Already have an account ?</p></div>
+                <hr class="w-100" />
               </div>
-            </div>
-            <div class="col-12 col-md-6">
-              <div class="my-3">
-                <label for="lname" class="font-size-caption">Last Name :</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="lname"
-                  placeholder="Enter your Last Name"
-                />
-              </div>
-            </div>
-            <div class="col-6">
-              <div>
-                <label for="gdm" class="font-size-caption">GSM :</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="gsm"
-                  placeholder="Enter your GSM number"
-                />
-              </div>
-            </div>
-            <div class="col-6">
-              <div>
-                <label for="email" class="font-size-caption">E-mail :</label>
-                <input
-                  type="email"
-                  class="form-control"
-                  id="email"
-                  placeholder="Enter your E-mail"
-                />
-              </div>
-            </div>
-          </div>
-          <div class="row my-3">
-            <div class="col-12">
-              <hr class="w-100" />
-              <h5>Shipping Adress :</h5>
-              <hr class="w-100" />
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12">
-              <div class="mb-3">
-                <label for="fullName" class="font-size-caption"
-                  >Full Name :</label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="fullName"
-                  placeholder="Enter your Full Name"
-                />
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-6">
-              <div class="my-3">
-                <label for="country" class="font-size-caption">Country</label>
-                <select class="form-select" aria-label="Default select example">
-                  <option selected>Select country :</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="my-3">
-                <label for="city" class="font-size-caption">City :</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="city"
-                  placeholder="Enter your city"
-                />
-              </div>
-            </div>
-            <div class="col-6">
-              <div>
-                <label for="adress1" class="font-size-caption"
-                  >Adress line 1 :</label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="adress1"
-                  placeholder="House number, street number, etc"
-                />
-              </div>
-            </div>
-            <div class="col-6">
-              <div>
-                <label for="adress2" class="font-size-caption"
-                  >Adress line 2 : (optional)</label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="adress2"
-                  placeholder="Appartment, suite number, etc"
-                />
-              </div>
-            </div>
-            <div class="col-6">
-              <div>
-                <label for="region" class="font-size-caption">Region : </label>
-                <select class="form-select" aria-label="Default select example">
-                  <option selected>Select region :</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
-              </div>
-            </div>
-            <div class="col-6">
-              <div>
-                <label for="codePostal" class="font-size-caption"
-                  >Postal Code :
-                </label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="codePostal"
-                  placeholder="Enter your Postal Code"
-                />
-              </div>
-            </div>
-          </div>
-          <div class="row my-3">
-            <div class="col-12">
-              <div>
-                <label for="shippingMethod" class="font-size-caption"
-                  >Shipping method :
-                </label>
-                <select class="form-select" aria-label="Default select example">
-                  <option selected>Select a shipping method :</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="row mb-3">
-            <div class="col-12">
-              <div class="form-floating">
-                <textarea
-                  class="form-control"
-                  placeholder="Order notes ..."
-                  id="orderNotes"
-                ></textarea>
-                <label for="orderNotes" class="font-size-caption"
-                  >Order notes ( Optional )</label
-                >
-              </div>
-            </div>
-          </div>
-
-          <div class="row my-3">
-            <div class="col-12">
-              <hr class="w-100" />
-              <h5>Payment Detail :</h5>
-              <hr class="w-100" />
-            </div>
-          </div>
-          <div class="row p-2">
-            <div class="col-12 p-3 border">
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="creditCard"
-                  id="creditCard"
-                  checked
-                />
-                <label class="form-check-label" for="creditCard">
-                  Credit/debit card
-                </label>
-              </div>
-              <div class="container my-3">
-                <div class="row">
-                  <div class="col-9">
-                    <div>
-                      <label for="cardNumber" class="font-size-caption"
-                        >Card Number :</label
-                      >
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="cardNumber"
-                        placeholder="1111 1111 1111 1111"
-                      />
-                    </div>
-                  </div>
-                  <div class="col-3">
-                    <div>
-                      <label for="cvc" class="font-size-caption"
-                        >CVC (CVV) :</label
-                      >
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="cvc"
-                        placeholder="123"
-                      />
-                    </div>
+              <div class="row">
+                <div class="col-12 col-md-6">
+                  <div class="my-3">
+                    <label for="fname" class="font-size-caption"
+                      >First Name :</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="fname"
+                      placeholder="Enter your First Name"
+                      formControlName="firstname"
+                    />
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-3">
-                    <div>
-                      <label for="expMonth" class="font-size-caption"
-                        >Exp. Month :</label
-                      >
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="expMonth"
-                        placeholder="05"
-                      />
-                    </div>
+                <div class="col-12 col-md-6">
+                  <div class="my-3">
+                    <label for="lname" class="font-size-caption"
+                      >Last Name :</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="lname"
+                      placeholder="Enter your Last Name"
+                      formControlName="lastname"
+                    />
                   </div>
-                  <div class="col-3">
-                    <div>
-                      <label for="expYear" class="font-size-caption"
-                        >Exp. Year :</label
-                      >
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="expYear"
-                        placeholder="23"
-                      />
-                    </div>
+                </div>
+                <div class="col-6">
+                  <div>
+                    <label for="gdm" class="font-size-caption">GSM :</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="gsm"
+                      placeholder="Enter your GSM number"
+                      formControlName="phone"
+                    />
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div>
+                    <label for="email" class="font-size-caption"
+                      >E-mail :</label
+                    >
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="email"
+                      placeholder="Enter your E-mail"
+                      formControlName="email"
+                    />
                   </div>
                 </div>
               </div>
+            </ng-container>
+            <ng-container formGroupName="shipping">
+              <div class="row my-3">
+                <div class="col-12">
+                  <hr class="w-100" />
+                  <h5>Shipping Adress :</h5>
+                  <hr class="w-100" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <div class="mb-3">
+                    <label for="fullName" class="font-size-caption"
+                      >Full Name :</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="fullName"
+                      placeholder="Enter your Full Name"
+                      formControlName="name"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <div class="my-3">
+                    <label for="country" class="font-size-caption"
+                      >Country</label
+                    >
+                    <select
+                      class="form-select"
+                      aria-label="Default select example"
+                      formControlName="country"
+                    >
+                      <option selected>Select country :</option>
+                      <option value="US">US</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="my-3">
+                    <label for="city" class="font-size-caption">City :</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="city"
+                      placeholder="Enter your city"
+                      formControlName="town_city"
+                    />
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div>
+                    <label for="adress1" class="font-size-caption"
+                      >Adress line 1 :</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="adress1"
+                      placeholder="House number, street number, etc"
+                      formControlName="street"
+                    />
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div>
+                    <label for="adress2" class="font-size-caption"
+                      >Adress line 2 : (optional)</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="adress2"
+                      placeholder="Appartment, suite number, etc"
+                    />
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div>
+                    <label for="region" class="font-size-caption"
+                      >Region :
+                    </label>
+                    <select
+                      class="form-select"
+                      aria-label="Default select example"
+                      formControlName="county_state"
+                    >
+                      <option>Select region :</option>
+                      <option value="AR">AR</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div>
+                    <label for="codePostal" class="font-size-caption"
+                      >Postal Code :
+                    </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="codePostal"
+                      placeholder="Enter your Postal Code"
+                      formControlName="postal_zip_code"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="row my-3">
+                <div class="col-12">
+                  <div>
+                    <label for="shippingMethod" class="font-size-caption"
+                      >Shipping method :
+                    </label>
+                    <select
+                      class="form-select"
+                      aria-label="Default select example"
+                    >
+                      <option selected disabled>Free Shipping</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-12">
+                  <div class="form-floating">
+                    <textarea
+                      class="form-control"
+                      placeholder="Order notes ..."
+                      id="orderNotes"
+                    ></textarea>
+                    <label for="orderNotes" class="font-size-caption"
+                      >Order notes ( Optional )</label
+                    >
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+            <!-- Payment Gateway -->
+            <ng-container formGroupName="payment">
+              <div class="row my-3">
+                <div class="col-12">
+                  <hr class="w-100" />
+                  <h5>Payment Detail :</h5>
+                  <hr class="w-100" />
+                </div>
+              </div>
+              <div class="row p-2">
+                <div class="col-12 p-3 border">
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="creditCard"
+                      id="creditCard"
+                      checked
+                    />
+                    <label class="form-check-label" for="creditCard">
+                      Credit/debit card
+                    </label>
+                  </div>
+                  <!-- Card number control -->
+                  <ng-container formGroupName="card">
+                    <div class="container my-3">
+                      <div class="row">
+                        <div class="col-9">
+                          <div>
+                            <label for="cardNumber" class="font-size-caption"
+                              >Card Number :</label
+                            >
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="cardNumber"
+                              placeholder="1111 1111 1111 1111"
+                              formControlName="number"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-3">
+                          <div>
+                            <label for="cvc" class="font-size-caption"
+                              >CVC (CVV) :</label
+                            >
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="cvc"
+                              placeholder="123"
+                              formControlName="cvc"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-3">
+                          <div>
+                            <label for="expMonth" class="font-size-caption"
+                              >Exp. Month :</label
+                            >
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="expMonth"
+                              placeholder="05"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-3">
+                          <div>
+                            <label for="expYear" class="font-size-caption"
+                              >Exp. Year :</label
+                            >
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="expYear"
+                              placeholder="23"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-container>
+                </div>
+              </div>
+            </ng-container>
+            <div class="row my-3">
+              <div class="col-12">
+                <button class="btn btn-dark w-100 text-center fw-bold p-2">
+                  Make Payment
+                </button>
+              </div>
             </div>
-          </div>
-          <div class="row my-3">
-            <div class="col-12">
-              <button class="btn btn-dark w-100 text-center fw-bold p-2">
-                Make Payment
-              </button>
-            </div>
-          </div>
+          </form>
         </div>
+
         <div class="col-12 col-md-5 order-first order-md-last">
           <div class="row">
             <div class="col-md-12">
@@ -278,21 +312,25 @@
             </div>
           </div>
           <hr />
-          <div class="row">
+          <!-- Loop Cart products -->
+          <div
+            class="row my-2"
+            *ngFor="let product of checkout?.live?.line_items"
+          >
             <div class="col-md-3">
-              <img
-                src="https://via.placeholder.com/150x170"
-                alt=""
-                class="w-100"
-              />
+              <img [src]="product?.image?.url" alt="" class="w-100" />
             </div>
             <div class="col-md-6">
-              <p class="fw-bolder mb-0">Eye Purity Gels</p>
-              <p class="mb-0">Quantity : <span>1</span></p>
-              <p>Size: <span>100ml</span></p>
+              <p class="fw-bolder mb-0">{{ product.name }}</p>
+              <p class="mb-0">
+                Quantity : <span>{{ product.quantity }}</span>
+              </p>
+              <p *ngFor="let variant of product.selected_options">
+                {{ variant.option_name }}
+              </p>
             </div>
             <div class="col-md-3">
-              <p class="fw-bolder">18.00 $</p>
+              <p class="fw-bolder">{{ product.price.formatted_with_code }}</p>
             </div>
           </div>
           <hr />
@@ -322,7 +360,9 @@
               <p>Subtotal :</p>
             </div>
             <div class="col-md-8">
-              <p class="text-end fw-bolder">18.00$</p>
+              <p class="text-end fw-bolder">
+                {{ checkout?.live?.subtotal?.formatted_with_code }}
+              </p>
             </div>
           </div>
           <div class="row">
@@ -330,7 +370,7 @@
               <p>Tax :</p>
             </div>
             <div class="col-md-8">
-              <p class="text-end fw-bolder">0.00$</p>
+              <p class="text-end fw-bolder">0.00 MAD</p>
             </div>
           </div>
           <div class="row">
@@ -355,7 +395,9 @@
               <h5 class="fw-bolder">Total amount :</h5>
             </div>
             <div class="col-6 col-md-6 text-end">
-              <h5 class="fw-bolder">18.00 $USD</h5>
+              <h5 class="fw-bolder">
+                {{ checkout?.live?.total?.formatted_with_code }}
+              </h5>
             </div>
           </div>
         </div>
