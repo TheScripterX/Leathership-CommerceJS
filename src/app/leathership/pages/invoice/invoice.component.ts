@@ -1,10 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 //
-import { CheckoutService } from '../../services/checkout.service';
-//
 import { Subscription } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+//
+import { CheckoutService } from '../../services/checkout.service';
+import { CartService } from '../../services/cart.service';
+//
 import { Order } from '../../models/commerce';
 
 @Component({
@@ -20,12 +22,14 @@ export class InvoiceComponent implements OnInit, OnDestroy {
   sub: Subscription = new Subscription();
 
   constructor(
+    private activatedRoute: ActivatedRoute,
     private checkoutService: CheckoutService,
-    private activatedRoute: ActivatedRoute
+    private cartService: CartService
   ) {}
 
   ngOnInit(): void {
     this.getInvoice();
+    sessionStorage.clear();
   }
 
   getInvoice() {
@@ -40,7 +44,6 @@ export class InvoiceComponent implements OnInit, OnDestroy {
           (invoice) => {
             console.log(invoice);
             this.order = invoice;
-            this.getDate();
           },
 
           (err) => console.warn('Error in initInvoice : ', err),

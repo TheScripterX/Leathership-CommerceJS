@@ -731,3 +731,9 @@ export interface Test_Gateway {
     };
   };
 }
+
+export interface DeleteCart {
+  success: boolean;
+  event: string;
+  cart_id: string;
+}

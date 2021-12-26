@@ -1,4 +1,4 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 //
@@ -31,7 +31,8 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   constructor(
     private checkoutService: CheckoutService,
     private activatedRoute: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -111,7 +112,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     });
   }
 
-  getData() {
+  generateOrder() {
     const { customer, shipping, payment } = this.checkoutForm.value;
     // console.warn('PUSH : ', customer, shipping, this.captureObject);
     this.sub.add(
@@ -124,8 +125,9 @@ export class CheckoutComponent implements OnInit, OnDestroy {
           payment
         )
         .subscribe(
-          (data) => {
-            console.log('Success : ', data);
+          (order) => {
+            console.log('Success : ', order);
+            this.router.navigate(['invoice', order.id]);
           },
 
           (err) => {

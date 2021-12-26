@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Cart, LineItem } from '../../models/commerce';
+import { Router } from '@angular/router';
+//
+import { Cart } from '../../models/commerce';
 //
 import { CartService } from '../../services/cart.service';
 //
@@ -17,7 +19,7 @@ export class CartComponent implements OnInit {
   subscriptions: Subscription = new Subscription();
   total_Items$ = new Subject<number>();
 
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService, private router: Router) {}
 
   ngOnInit(): void {
     this.total_Items$ = this.cartService._totalItems$;
@@ -79,6 +81,10 @@ export class CartComponent implements OnInit {
         }
       )
     );
+  }
+
+  checkout() {
+    this.router.navigate(['/checkout', this.cart.id]);
   }
 
   ngOnDestroy(): void {

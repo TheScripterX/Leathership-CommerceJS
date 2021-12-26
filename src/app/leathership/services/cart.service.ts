@@ -1,9 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, ReplaySubject, of, Subject } from 'rxjs';
-import { pluck, tap } from 'rxjs/operators';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Cart, RootCart, VariantData, LineItem } from '../models/commerce';
+import { Cart, VariantData, LineItem, DeleteCart } from '../models/commerce';
 
 @Injectable({
   providedIn: 'root',
@@ -65,6 +64,12 @@ export class CartService {
 
   emptyCart(cart_ID: string): Observable<Cart> {
     return this.http.delete<Cart>(`${this._apiUrl}/carts/${cart_ID}/items`, {
+      headers: this.headers,
+    });
+  }
+
+  deleteCart(cart_ID: string): Observable<DeleteCart> {
+    return this.http.delete<DeleteCart>(`${this._apiUrl}/carts/${cart_ID}`, {
       headers: this.headers,
     });
   }

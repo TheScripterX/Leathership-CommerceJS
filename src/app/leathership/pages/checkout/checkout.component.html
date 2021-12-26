@@ -3,7 +3,7 @@
     <main>
       <div class="row gx-5 h-100">
         <div class="col-12 col-md-7 order-last order-md-first">
-          <form [formGroup]="checkoutForm" (ngSubmit)="getData()">
+          <form [formGroup]="checkoutForm" (ngSubmit)="generateOrder()">
             <ng-container formGroupName="customer">
               <div class="row align-items-center">
                 <div class="col-6"><h5>Informations Contact</h5></div>
@@ -297,8 +297,11 @@
             </ng-container>
             <div class="row my-3">
               <div class="col-12">
-                <button class="btn btn-dark w-100 text-center fw-bold p-2">
-                  Make Payment
+                <button
+                  type="submit"
+                  class="btn btn-dark w-100 text-center fw-bold p-2"
+                >
+                  Pay - Checkout
                 </button>
               </div>
             </div>
