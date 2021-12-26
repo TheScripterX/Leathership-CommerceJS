@@ -16,6 +16,7 @@ import { ExclusiveProductComponent } from './pages/homepage/components/exclusive
 import { CategorySliderComponent } from './pages/homepage/components/category-slider/category-slider.component';
 import { ProductsPageComponent } from './pages/products-page/products-page.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { InvoiceComponent } from './pages/invoice/invoice.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { CheckoutComponent } from './pages/checkout/checkout.component';
     CategorySliderComponent,
     ProductsPageComponent,
     CheckoutComponent,
+    InvoiceComponent,
   ],
   imports: [
     CommonModule,

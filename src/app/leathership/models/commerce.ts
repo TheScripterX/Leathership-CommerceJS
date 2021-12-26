@@ -111,7 +111,7 @@ export interface Checkout {
   adjustments: any[];
 }
 
-export interface Order {
+export interface captureOrder {
   id: string;
   cart_id: string;
   checkout_token_id: string;
@@ -131,6 +131,69 @@ export interface Order {
   merchant: Merchant;
   meta: null;
 }
+
+export interface Order {
+  version: string;
+  sandbox: boolean;
+  id: string;
+  checkout_token_id: string;
+  cart_id: string;
+  customer_reference: string;
+  created: number;
+  status: string;
+  status_payment: string;
+  status_fulfillment: string;
+  currency: Currency;
+  order_value: Subtotal;
+  conditionals: { [key: string]: boolean };
+  meta: null;
+  redirect: boolean;
+  collected: Collected;
+  has: Has;
+  is: Is;
+  order: OrderClass;
+  shipping: Shipping;
+  billing: any[];
+  transactions: Transaction[];
+  fulfillment: Fulfillment;
+  customer: Customer;
+  extra_fields: ExtraField[];
+  client_details: ClientDetails;
+  tax: Tax;
+  adjustments: any[];
+}
+
+export interface Shipping {
+  name: string;
+  street: string;
+  street_2: null;
+  town_city: string;
+  postal_zip_code: string;
+  county_state: string;
+  country: string;
+  meta: null;
+}
+
+export interface ClientDetails {
+  ip_address: string;
+  country_code: string;
+  country_name: string;
+  region_code: string;
+  region_name: string;
+  city: string;
+  postal_zip_code: string;
+  _copyright: string;
+}
+
+export interface Collected {
+  fullname: boolean;
+  shipping_address: boolean;
+  billing_address: boolean;
+  extra_fields: boolean;
+  tax: boolean;
+  eu_vat_moss_evidence: boolean;
+}
+
 export interface Fulfillment {
   physical: Physical;
   digital: Digital;

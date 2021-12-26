@@ -1,0 +1,123 @@
+<section class="invoice">
+  <main class="m-4 p-4 border bg__light">
+    <div class="container p-5 border bg-white">
+      <div class="row">
+        <div class="col-6 col-md-6">
+          <img
+            src="https://leathership.s3.eu-central-1.amazonaws.com/images/ls_logo/ls_logo_r.png"
+            alt="ls_logo"
+          />
+        </div>
+        <div class="col-6 col-md-6 text-end text__invoice--title">
+          <h3>Invoice</h3>
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col-6 col-md-6">
+          <p>
+            <span class="fw-bold">Date: </span>{{ date | date: "longDate" }}
+          </p>
+        </div>
+        <div class="col-6 col-md-6 text-end">
+          <p>
+            <span class="fw-bold">Invoice ID: </span
+            >{{ order?.customer_reference }}
+          </p>
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col-6 col-md-6">
+          <p class="mb-1"><span class="fw-bold">Invoiced To: </span></p>
+          <p>
+            {{ order?.customer?.lastname | uppercase }}
+            {{ order?.customer?.firstname }}
+          </p>
+          <p>{{ order?.customer?.phone }}</p>
+          <p>{{ order?.shipping?.street }}</p>
+          <p *ngIf="order?.shipping?.street_2">
+            {{ order?.shipping?.street_2 }}
+          </p>
+          <p>{{ order?.shipping?.country }}</p>
+        </div>
+        <div class="col-6 col-md-6 text-end">
+          <p class="mb-1"><span class="fw-bold">Bill To: </span></p>
+          <p>Leathership</p>
+          <p>Casablanca, Maroc</p>
+        </div>
+      </div>
+      <hr />
+      <!-- Invoice Ref::Start -->
+      <div class="row my-3">
+        <div class="col-12">
+          <p>
+            <a class="fw-bold text-dark pb-1 border-bottom text-decoration-none"
+              >Invoice Details:</a
+            >
+          </p>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row border rounded mb-2 p-2 invoice__details">
+          <div class="col-12 col-md-4">
+            <label for="invoice">Invoice</label>
+            <p>{{ order?.customer_reference }}</p>
+          </div>
+          <div class="col-12 col-md-4">
+            <label for="date">Date</label>
+            <p>{{ date | date: "longDate" }}</p>
+          </div>
+          <div class="col-12 col-md-4">
+            <label for="status">Status</label>
+            <p class="text-success fw-bolder">Paid</p>
+          </div>
+        </div>
+      </div>
+      <!-- Invoice Ref::End -->
+
+      <!-- Table Start -->
+      <div class="table-responsive">
+        <table class="table table-bordered rounded align-middle">
+          <thead>
+            <tr class="table-light border border-1 text-secondary">
+              <th class="fw-normal p-3" scope="col">#</th>
+              <th class="fw-normal p-3" scope="col">Product</th>
+              <th class="fw-normal p-3" scope="col">Quantity</th>
+              <th class="fw-normal p-3" scope="col">Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of order?.order?.line_items; let i = index">
+              <th class="" scope="row">{{ i + 1 }}</th>
+              <td class="text__table--product">
+                <p>{{ item.product_name }}</p>
+                <div *ngFor="let variant of item.selected_options">
+                  <label class="product__label" for="options"
+                    >{{ variant.group_name }} : {{ variant.option_name }}
+                  </label>
+                </div>
+              </td>
+              <td class="text__table--product">{{ item.quantity }}</td>
+              <td class="text__table--product">
+                {{ item.price.formatted_with_code }}
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td class="text-end fw-bold text-muted p-3" colspan="3">
+                Total:
+              </td>
+              <td class="text-end text-primary fw-bolder p-3">
+                {{ order?.order?.total?.formatted_with_code }}
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <!-- Table End -->
+    </div>
+  </main>
+</section>

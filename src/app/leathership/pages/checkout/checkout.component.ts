@@ -1,7 +1,8 @@
 import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 //
+import { Subscription } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 //
 import { CheckoutService } from '../../services/checkout.service';
@@ -17,15 +18,15 @@ import {
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.scss'],
 })
-export class CheckoutComponent implements OnInit {
+export class CheckoutComponent implements OnInit, OnDestroy {
   checkout!: Checkout;
   lineItems!: LineItem[];
   //
   checkoutForm!: FormGroup;
   //
   captureObject: LineItemsData[] = [];
-  lineItems_ID: string[] = [];
-  variantItems_ID: string[] = [];
+  // RxJS
+  sub: Subscription = new Subscription();
 
   constructor(
     private checkoutService: CheckoutService,
@@ -39,66 +40,41 @@ export class CheckoutComponent implements OnInit {
   }
 
   getCheckout() {
-    this.activatedRoute.params
-      .pipe(
-        switchMap(({ id }) => {
-          return this.checkoutService.initCheckout(id);
-        })
-      )
-      .subscribe(
-        (checkout) => {
-          console.log('Checkout : ', checkout);
-          this.checkout = checkout;
-          this.lineItems = checkout.live.line_items;
-          // Test
-          this.getLineItems();
-        },
+    this.sub.add(
+      this.activatedRoute.params
+        .pipe(
+          switchMap(({ id }) => {
+            return this.checkoutService.initCheckout(id);
+          })
+        )
+        .subscribe(
+          (checkout) => {
+            console.log('Checkout : ', checkout);
+            this.checkout = checkout;
+            this.lineItems = checkout.live.line_items;
 
-        (err) => {
-          console.log('Error in Checkout Component : ', err);
-        },
-        () => {
-          console.log('Checkout Done!');
-        }
-      );
+            this.getLineItems();
+          },
+
+          (err) => {
+            console.log('Error in Checkout Component : ', err);
+          },
+          () => {
+            console.log('Checkout Done!');
+          }
+        )
+    );
   }
 
   getLineItems() {
-    // if (this.lineItems) {
-    //   this.lineItems.forEach((element, index, elements) => {
-    //     console.log('MD : ', elements[index].id);
-    //     // this.lineItems_ID = elements[index].id;
-    //     this.captureObject = {
-    //       line_items: {
-    //         [elements[index].id]: {
-    //           variant_id :
-    //  }
-    //       },
-    //     };
-    //   });
-    // } else {
-    //   console.warn('lineItems Empty!!!');
-    // }
-
     this.lineItems.forEach((item) => {
-      // this.lineItems_ID.push(item.id);
-      // this.variantItems_ID.push(item.variant.id);
       this.captureObject.push({
         [item.id]: {
           variant_id: item.variant.id,
           quantity: item.quantity,
         },
       });
-
-      //
-      //
-      //
     });
-
-    // // Test 1
-    // console.log('Test 1 : ', this.lineItems_ID);
-    // // Test 2
-    // console.log('Test 2 : ', this.variantItems_ID);
 
     console.log('Final : ', this.captureObject);
   }
@@ -123,7 +99,7 @@ export class CheckoutComponent implements OnInit {
       }),
 
       payment: this.fb.group({
-        gateway: ['test_gateway'],
+        gateway: ['test_gateway'], // Test Payment Gateway
         card: this.fb.group({
           number: ['4242424242424242'],
           expiry_month: ['02'],
@@ -137,27 +113,33 @@ export class CheckoutComponent implements OnInit {
 
   getData() {
     const { customer, shipping, payment } = this.checkoutForm.value;
-    console.warn('PUSH : ', customer, shipping, this.captureObject);
-    this.checkoutService
-      .captureOrder(
-        this.checkout.id,
-        this.captureObject,
-        customer,
-        shipping,
-        payment
-      )
-      .subscribe(
-        (data) => {
-          console.log('Success : ', data);
-        },
+    // console.warn('PUSH : ', customer, shipping, this.captureObject);
+    this.sub.add(
+      this.checkoutService
+        .captureOrder(
+          this.checkout.id,
+          this.captureObject,
+          customer,
+          shipping,
+          payment
+        )
+        .subscribe(
+          (data) => {
+            console.log('Success : ', data);
+          },
 
-        (err) => {
-          console.warn('Error in Push method : ', err);
-        },
+          (err) => {
+            console.warn('Error in Push method : ', err);
+          },
 
-        () => {
-          console.info('Bravoo !!!');
-        }
-      );
+          () => {
+            console.info('Bravoo !!!');
+          }
+        )
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 }

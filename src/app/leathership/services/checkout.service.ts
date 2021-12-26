@@ -11,6 +11,7 @@ import {
   LineItemsData,
   Shipping,
   Test_Gateway,
+  captureOrder,
 } from '../models/commerce';
 import { Customer } from '@chec/commerce.js/types/customer';
 
@@ -41,7 +42,7 @@ export class CheckoutService {
     customer: Customer,
     shipping: Shipping,
     payment: Test_Gateway
-  ): Observable<Order> {
+  ): Observable<captureOrder> {
     const body = {
       line_items: lineItemsObject,
       customer: customer,
@@ -49,12 +50,18 @@ export class CheckoutService {
       payment: payment,
     };
 
-    return this.http.post<Order>(
+    return this.http.post<captureOrder>(
       `${this._apiUrl}/checkouts/${checkout_ID}`,
       body,
       {
         headers: this.headers,
       }
     );
+  }
+
+  initInvoice(order_ID: string): Observable<Order> {
+    return this.http.get<Order>(`${this._apiUrl}/orders/${order_ID}`, {
+      headers: this.headers,
+    });
   }
 }
