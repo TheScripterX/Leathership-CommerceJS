@@ -93,6 +93,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
       shipping: this.fb.group({
         name: [''], // Full name customer
         street: [''], // Rue
+        street_2: [''],
         town_city: [''], // Ville
         postal_zip_code: [''],
         country: [''],

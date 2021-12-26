@@ -44,6 +44,7 @@ export class InvoiceComponent implements OnInit, OnDestroy {
           (invoice) => {
             console.log(invoice);
             this.order = invoice;
+            this.getDate();
           },
 
           (err) => console.warn('Error in initInvoice : ', err),
