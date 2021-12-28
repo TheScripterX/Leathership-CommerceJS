@@ -1,0 +1,53 @@
+.ngneat-dialog {
+  .ngneat-dialog-backdrop {
+    // backdrop styles
+    background: rgba(0, 0, 0, 0.82);
+
+    .ngneat-dialog-content {
+      // dialog content, where your component/template is placed
+
+      a {
+        cursor: pointer;
+      }
+
+      .fa-check-circle {
+        color: #0cbde1;
+      }
+      .btn-outline-info:hover {
+        color: #f7f7f7;
+      }
+    }
+  }
+}
+
+// Media queries
+
+@media (min-width: 1201px) {
+  // Extra Large Screens - TV
+}
+
+@media (min-width: 1025px) and (max-width: 1200px) {
+  // Desktops - Large Screens
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  // Small Screens - Laptops
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  // iPads - Tablets
+}
+
+@media (max-width: 480px) {
+  // Mobile Devices
+  .btn {
+    width: 100%;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-size: smaller;
+  }
+}

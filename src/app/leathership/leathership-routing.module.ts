@@ -19,6 +19,11 @@ const routes: Routes = [
       { path: '**', redirectTo: '' },
     ],
   },
+  {
+    path: 'cart',
+    loadChildren: () =>
+      import('./pages/cart/cart.module').then((m) => m.CartModule),
+  },
 ];
 
 @NgModule({

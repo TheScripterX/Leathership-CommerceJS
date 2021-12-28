@@ -4,7 +4,7 @@ import { CartComponent } from './cart.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'cart',
 
     children: [
       { path: '', component: CartComponent },

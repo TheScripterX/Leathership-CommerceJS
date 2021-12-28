@@ -53,7 +53,7 @@
 
               <h6 class="card-subtitle pb-3 fw-bolder text-danger fs-6">
                 <span class="text-dark">Prix :</span>
-                {{ product_Price || "Choisissez le modèle SVP..." }}
+                {{ product_Price || "Pick the Model..." }}
               </h6>
 
               <label for="brand" class="form-label">Brand : </label>
@@ -100,10 +100,10 @@
               </p>
             </div>
             <div class="card-body">
-              <div class="row gy-3 justify-content-center">
-                <div class="col-12 col-md-4">
+              <div class="row gy-3">
+                <div class="col-12 col-md-2">
                   <input
-                    class="form-control w-50 text-center fw-bold"
+                    class="form-control text-center fw-bold"
                     type="number"
                     min="0"
                     value="1"
@@ -111,21 +111,11 @@
                     formControlName="quantity"
                   />
                 </div>
-                <div class="col-12 col-md-4">
+
+                <div class="col-12 col-md-5">
                   <button
                     type="button"
-                    class="btn btn-secondary"
-                    (click)="commander()"
-                    [routerLink]="['/checkout', product?.id]"
-                    [disabled]="productForm.invalid"
-                  >
-                    Commander
-                  </button>
-                </div>
-                <div class="col-12 col-md-4">
-                  <button
-                    type="button"
-                    class="btn btn-primary"
+                    class="btn btn-outline-primary"
                     (click)="addToCart()"
                     [disabled]="productForm.invalid"
                   >

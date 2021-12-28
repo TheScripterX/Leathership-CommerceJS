@@ -9,15 +9,17 @@ const routes: Routes = [
         (m) => m.LeathershipModule
       ),
   },
-  {
-    path: 'cart',
-    loadChildren: () =>
-      import('./leathership/pages/cart/cart.module').then((m) => m.CartModule),
-  },
+  // {
+  //   path: 'cart',
+  //   loadChildren: () =>
+  //     import('./leathership/pages/cart/cart.module').then((m) => m.CartModule),
+  // },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

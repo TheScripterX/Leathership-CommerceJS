@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 //
+import { DialogModule } from '@ngneat/dialog';
+//
 import { LeathershipRoutingModule } from './leathership-routing.module';
 import { SwiperModule } from 'swiper/angular';
 import { CartModule } from './pages/cart/cart.module';
@@ -17,6 +19,7 @@ import { CategorySliderComponent } from './pages/homepage/components/category-sl
 import { ProductsPageComponent } from './pages/products-page/products-page.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { InvoiceComponent } from './pages/invoice/invoice.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -34,10 +37,14 @@ import { InvoiceComponent } from './pages/invoice/invoice.component';
   ],
   imports: [
     CommonModule,
+    //
+    DialogModule.forRoot(),
+    //
     LeathershipRoutingModule,
     SwiperModule,
     ReactiveFormsModule,
     CartModule,
+    SharedModule,
   ],
 })
 export class LeathershipModule {}

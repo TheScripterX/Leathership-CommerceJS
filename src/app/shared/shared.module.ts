@@ -1,14 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 //
-import { NavbarComponent } from './navbar/navbar.component';
-import { FooterComponent } from './footer/footer.component';
+import { CartModule } from '../leathership/pages/cart/cart.module';
 import { RouterModule } from '@angular/router';
 //
+import { NavbarComponent } from './navbar/navbar.component';
+import { FooterComponent } from './footer/footer.component';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
-  declarations: [NavbarComponent, FooterComponent],
-  imports: [CommonModule, RouterModule],
-  exports: [NavbarComponent, FooterComponent],
+  declarations: [NavbarComponent, FooterComponent, ModalComponent],
+  imports: [CommonModule, RouterModule, CartModule],
+  exports: [NavbarComponent, FooterComponent, ModalComponent],
 })
 export class SharedModule {}

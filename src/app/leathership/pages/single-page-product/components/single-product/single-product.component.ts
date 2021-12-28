@@ -2,6 +2,10 @@ import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 //
+import { DialogService } from '@ngneat/dialog';
+//
+import { ModalComponent } from 'src/app/shared/modal/modal.component';
+//
 import { ProductService } from '../../../../services/product.service';
 import { CartService } from '../../../../services/cart.service';
 //
@@ -11,8 +15,8 @@ import {
   Option,
   VariantGroup,
   VariantData,
-  Cart,
   LineItem,
+  Cart,
 } from '../../../../models/commerce';
 //
 import { mapTo, switchMap } from 'rxjs/operators';
@@ -30,6 +34,10 @@ SwiperCore.use([Navigation, Thumbs]);
   encapsulation: ViewEncapsulation.None,
 })
 export class SingleProductComponent implements OnInit, OnDestroy {
+  // For Modal Popup
+  cartModal!: Cart;
+
+  // SwiperJS
   thumbsSwiper: any;
   //
   product!: Product;
@@ -56,6 +64,7 @@ export class SingleProductComponent implements OnInit, OnDestroy {
     private activeRoute: ActivatedRoute,
     private productService: ProductService,
     private cartService: CartService,
+    private dialog: DialogService,
     private fb: FormBuilder
   ) {}
 
@@ -111,8 +120,6 @@ export class SingleProductComponent implements OnInit, OnDestroy {
     };
   }
 
-  commander() {}
-
   addToCart() {
     const { quantity } = this.productForm.value;
     const sessionCart = sessionStorage.getItem('cart_Session');
@@ -133,12 +140,34 @@ export class SingleProductComponent implements OnInit, OnDestroy {
             return this.cartService.retrieveCart(cart_ID);
           })
         )
-        .subscribe((cart) => {
-          this.cart_Items = cart.line_items;
-          this.total_Items = cart.total_unique_items;
-          this.cartService._totalItems$.next(this.total_Items);
-        })
+        .subscribe(
+          (cart) => {
+            this.cart_Items = cart.line_items; // For Checkout
+            this.total_Items = cart.total_unique_items;
+            this.cartService._totalItems$.next(this.total_Items); // For Navbar Cart
+          },
+
+          (err) => {
+            console.log('Error on adding to Cart : ', err);
+          },
+
+          () => {
+            console.log('Finishing adding to Cart.');
+            this.openModal();
+          }
+        )
     );
+  }
+
+  openModal() {
+    const dialogRef = this.dialog.open(ModalComponent, {
+      data: {
+        //TODO: Cart & Product
+        product_name: this.product.name,
+        cart_quantity: this.total_Items,
+      },
+      closeButton: false,
+    });
   }
 
   ngOnDestroy() {
