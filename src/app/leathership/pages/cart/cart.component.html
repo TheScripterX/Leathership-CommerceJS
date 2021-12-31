@@ -1,3 +1,18 @@
+<app-navbar></app-navbar>
+<!-- Spinner:Start -->
+<div class="spinner_part" *ngIf="loading">
+  <div>
+    <div class="bg-light vw-100 vh-100">
+      <div class="d-flex align-items-center justify-content-center w-100 h-100">
+        <div class="spinner-border text-dark" role="status">
+          <span class="sr-only">Processing...</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Spinner:End -->
+
 <section class="cart__section d-flex align-items-center">
   <div class="card" *ngIf="cart?.line_items?.length; else isEmpty">
     <form>
@@ -176,7 +191,12 @@
                   Il semble que vous n'ayez pas encore ajouté de produits à
                   votre panier.
                 </h4>
-                <a class="btn btn-primary text-white m-3">Let's Explore</a>
+                <a
+                  class="btn btn-outline-dark text-muted m-3"
+                  routerLink="/collections"
+                >
+                  Explore</a
+                >
               </div>
             </div>
           </div>
@@ -185,3 +205,5 @@
     </div>
   </ng-template>
 </section>
+
+<app-footer></app-footer>

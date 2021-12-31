@@ -1,4 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  NavigationCancel,
+  NavigationEnd,
+  NavigationError,
+  NavigationStart,
+  Router,
+} from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Cart } from './leathership/models/commerce';
 //
@@ -10,6 +17,8 @@ import { CartService } from './leathership/services/cart.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit, OnDestroy {
+  loading = false;
+
   title: string = 'Leathership Casablanca - Be a Leader! Not a Follower';
 
   cart_Session_ID!: string | null;
@@ -17,7 +26,19 @@ export class AppComponent implements OnInit, OnDestroy {
   // RxJS Part
   subscriptions: Subscription = new Subscription();
 
-  constructor(private cartService: CartService) {}
+  constructor(public router: Router, private cartService: CartService) {
+    this.router.events.subscribe((ev) => {
+      if (ev instanceof NavigationStart) {
+        this.loading = true;
+      } else if (
+        ev instanceof NavigationEnd ||
+        ev instanceof NavigationCancel ||
+        ev instanceof NavigationError
+      ) {
+        this.loading = false;
+      }
+    });
+  }
 
   ngOnInit(): void {
     this.cart_Session_ID = sessionStorage.getItem('cart_Session');

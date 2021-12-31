@@ -1,3 +1,5 @@
+<app-navbar></app-navbar>
+
 <!-- Hero Slider::Start -->
 
 <app-home-slider></app-home-slider>
@@ -6,7 +8,27 @@
 
 <!-- Category Slider::Start -->
 
-<app-category-slider></app-category-slider>
+<div class="container">
+  <div class="category__container">
+    <div class="category__slider p-2">
+      <swiper class="swiper" [config]="config">
+        <ng-template swiperSlide *ngFor="let category of categories">
+          <!-- Card::Start -->
+          <div
+            class="card align-items-center"
+            *ngFor="let image of category.assets"
+          >
+            <img [src]="image.url" class="card-img-top w-50" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">{{ category.name }} Cases</h5>
+            </div>
+          </div>
+          <!-- Card::End -->
+        </ng-template>
+      </swiper>
+    </div>
+  </div>
+</div>
 
 <!-- Category Slider::End -->
 
@@ -59,7 +81,28 @@
 
 <!-- All Products Section::Start -->
 
-<app-exclusive-product></app-exclusive-product>
+<section class="products">
+  <div class="container">
+    <!-- Product Box::Start -->
+    <div class="row p-2 text-center justify-content-center">
+      <div
+        class="col-6 col-md-3 g-2"
+        *ngFor="let product of products; let i = index"
+      >
+        <div
+          class="card border-0"
+          [routerLink]="['/product-detail', product.id]"
+        >
+          <img [src]="product.assets[0].url" [alt]="product.name" />
+          <div class="card-body border">
+            <h5 class="card-title">{{ product.name }}</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Product Box::End -->
+  </div>
+</section>
 
 <!-- All Products Section::End -->
 
@@ -126,8 +169,6 @@
 
 <!-- Banner Leader::End -->
 
-<!-- Reviews Section::Start -->
+<!-- Footer -->
 
-<!-- <app-review-slider></app-review-slider> -->
-
-<!-- Reviews Section::End -->
+<app-footer></app-footer>

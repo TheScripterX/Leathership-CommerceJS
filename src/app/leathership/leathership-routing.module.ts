@@ -6,23 +6,55 @@ import { ProductsPageComponent } from './pages/products-page/products-page.compo
 import { SinglePageProductComponent } from './pages/single-page-product/single-page-product.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { InvoiceComponent } from './pages/invoice/invoice.component';
+import { CartComponent } from './pages/cart/cart.component';
+//
+import { CollectionsResolveService } from './resolvers/collections-resolve.service';
+import { ProductResolveService } from './resolvers/product-resolve.service';
+import { CartResolveService } from './resolvers/cart-resolve.service';
+import { CheckoutResolveService } from './resolvers/checkout-resolve.service';
+import { InvoiceResolveService } from './resolvers/invoice-resolve.service';
+import { CategoriesResolveService } from './resolvers/categories-resolve.service';
 
 const routes: Routes = [
   {
     path: '',
     children: [
-      { path: '', component: HomepageComponent, pathMatch: 'full' },
-      { path: 'product-detail/:id', component: SinglePageProductComponent },
-      { path: 'collections', component: ProductsPageComponent },
-      { path: 'checkout/:id', component: CheckoutComponent },
-      { path: 'invoice/:id', component: InvoiceComponent },
+      {
+        path: '',
+        component: HomepageComponent,
+        pathMatch: 'full',
+        resolve: {
+          collections: CollectionsResolveService,
+          categories: CategoriesResolveService,
+        },
+      },
+      {
+        path: 'product-detail/:id',
+        component: SinglePageProductComponent,
+        resolve: { product: ProductResolveService },
+      },
+      {
+        path: 'collections',
+        component: ProductsPageComponent,
+        resolve: { collections: CollectionsResolveService },
+      },
+      {
+        path: 'checkout/:id',
+        component: CheckoutComponent,
+        resolve: { checkout: CheckoutResolveService },
+      },
+      {
+        path: 'invoice/:id',
+        component: InvoiceComponent,
+        resolve: { invoice: InvoiceResolveService },
+      },
+      {
+        path: 'cart',
+        component: CartComponent,
+        resolve: { cart: CartResolveService },
+      },
       { path: '**', redirectTo: '' },
     ],
-  },
-  {
-    path: 'cart',
-    loadChildren: () =>
-      import('./pages/cart/cart.module').then((m) => m.CartModule),
   },
 ];
 

@@ -11,6 +11,14 @@ import { CartService } from '../../leathership/services/cart.service';
 import { LineItem } from '../../leathership/models/commerce';
 //
 import { Subscription } from 'rxjs';
+// Test Resolve
+import {
+  NavigationCancel,
+  NavigationEnd,
+  NavigationError,
+  NavigationStart,
+  Router,
+} from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -18,6 +26,8 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit, OnDestroy {
+  loading = false;
+
   @ViewChild('searchForm') searchForm!: ElementRef;
   @ViewChild('menuBtn') menuBtn!: ElementRef;
 
@@ -28,7 +38,19 @@ export class NavbarComponent implements OnInit, OnDestroy {
   // RxJS Part
   subscriptions: Subscription = new Subscription();
 
-  constructor(private cartService: CartService) {}
+  constructor(public router: Router, private cartService: CartService) {
+    this.router.events.subscribe((ev) => {
+      if (ev instanceof NavigationStart) {
+        this.loading = true;
+      } else if (
+        ev instanceof NavigationEnd ||
+        ev instanceof NavigationCancel ||
+        ev instanceof NavigationError
+      ) {
+        this.loading = false;
+      }
+    });
+  }
 
   ngOnInit(): void {
     this.getCartSession();

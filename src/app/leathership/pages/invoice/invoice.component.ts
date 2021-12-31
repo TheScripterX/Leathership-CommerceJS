@@ -21,11 +21,7 @@ export class InvoiceComponent implements OnInit, OnDestroy {
   // RxJS
   sub: Subscription = new Subscription();
 
-  constructor(
-    private activatedRoute: ActivatedRoute,
-    private checkoutService: CheckoutService,
-    private cartService: CartService
-  ) {}
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.getInvoice();
@@ -34,25 +30,20 @@ export class InvoiceComponent implements OnInit, OnDestroy {
 
   getInvoice() {
     this.sub.add(
-      this.activatedRoute.params
-        .pipe(
-          switchMap(({ id }) => {
-            return this.checkoutService.initInvoice(id);
-          })
-        )
-        .subscribe(
-          (invoice) => {
-            console.log(invoice);
-            this.order = invoice;
-            this.getDate();
-          },
+      this.route.data.subscribe(
+        (data) => {
+          this.order = data.invoice;
+          this.getDate();
+        },
 
-          (err) => console.warn('Error in initInvoice : ', err),
+        (err) => {
+          console.warn('Error on Invoice Resolve : ', err);
+        },
 
-          () => {
-            console.info('Finish !!!');
-          }
-        )
+        () => {
+          console.info('Success Invoice Resolve');
+        }
+      )
     );
   }
 

@@ -1,9 +1,8 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 //
 import { Subscription } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
 //
 import { CheckoutService } from '../../services/checkout.service';
 import {
@@ -19,6 +18,9 @@ import {
   styleUrls: ['./checkout.component.scss'],
 })
 export class CheckoutComponent implements OnInit, OnDestroy {
+  // Spinner Part
+  loading: boolean = false;
+
   checkout!: Checkout;
   lineItems!: LineItem[];
   //
@@ -30,7 +32,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
 
   constructor(
     private checkoutService: CheckoutService,
-    private activatedRoute: ActivatedRoute,
+    private route: ActivatedRoute,
     private fb: FormBuilder,
     private router: Router
   ) {}
@@ -42,28 +44,19 @@ export class CheckoutComponent implements OnInit, OnDestroy {
 
   getCheckout() {
     this.sub.add(
-      this.activatedRoute.params
-        .pipe(
-          switchMap(({ id }) => {
-            return this.checkoutService.initCheckout(id);
-          })
-        )
-        .subscribe(
-          (checkout) => {
-            console.log('Checkout : ', checkout);
-            this.checkout = checkout;
-            this.lineItems = checkout.live.line_items;
+      this.route.data.subscribe(
+        (data) => {
+          this.checkout = data.checkout;
+        },
 
-            this.getLineItems();
-          },
+        (err) => {
+          console.warn('Error on Checkout Resolve :', err);
+        },
 
-          (err) => {
-            console.log('Error in Checkout Component : ', err);
-          },
-          () => {
-            console.log('Checkout Done!');
-          }
-        )
+        () => {
+          console.info('Checkout Resolve Success');
+        }
+      )
     );
   }
 
@@ -114,6 +107,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   }
 
   generateOrder() {
+    this.loading = true;
     const { customer, shipping, payment } = this.checkoutForm.value;
     // console.warn('PUSH : ', customer, shipping, this.captureObject);
     this.sub.add(
@@ -137,6 +131,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
 
           () => {
             console.info('Bravoo !!!');
+            this.loading = false;
           }
         )
     );

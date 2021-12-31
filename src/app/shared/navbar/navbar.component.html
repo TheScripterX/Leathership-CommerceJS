@@ -46,7 +46,9 @@
       <div class="navbar__icons text-decoration-none">
         <div>
           <a routerLink="/cart">
-            <img src="../../../assets/ico/cart_icon.png" alt="Cart"
+            <img
+              src="https://leathership.s3.eu-central-1.amazonaws.com/images/ls_logo/ls_cart_logo.png"
+              alt="Cart"
           /></a>
           <span class="badge bg-secondary">{{ _totalItems }}</span>
         </div>
@@ -56,5 +58,8 @@
 </header>
 
 <div class="router__container">
+  <div *ngIf="loading" class="vh-100 vw-100">
+    <h3>Test Resolve Loading ....</h3>
+  </div>
   <router-outlet></router-outlet>
 </div>

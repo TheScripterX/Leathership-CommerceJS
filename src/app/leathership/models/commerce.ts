@@ -613,9 +613,9 @@ export interface Category {
   updated: number;
   meta: null;
   assets: any[];
-  children: Child[];
+  children: CategoryChildren[];
 }
-export interface Child {
+export interface CategoryChildren {
   id: string;
   slug: string;
   name: string;

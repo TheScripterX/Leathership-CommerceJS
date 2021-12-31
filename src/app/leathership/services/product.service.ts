@@ -3,14 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 //
 import { environment } from 'src/environments/environment';
-import {
-  Cart,
-  RootVariants,
-  RootCart,
-  VariantData,
-  Category,
-  RootCategory,
-} from '../models/commerce';
+import { RootVariants, Category } from '../models/commerce';
 import {
   RootProduct,
   Product,
@@ -36,7 +29,7 @@ export class ProductService {
       headers: this.headers,
     });
   }
-  getProduct(id: string): Observable<Product> {
+  getProduct(id: string | null): Observable<Product> {
     return this.http.get<Product>(`${this._apiUrl}/products/${id}`, {
       headers: this.headers,
     });

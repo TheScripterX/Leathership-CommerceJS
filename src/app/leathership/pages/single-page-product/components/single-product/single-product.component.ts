@@ -37,6 +37,9 @@ export class SingleProductComponent implements OnInit, OnDestroy {
   // For Modal Popup
   cartModal!: Cart;
 
+  // Spinner Part
+  loading: boolean = false;
+
   // SwiperJS
   thumbsSwiper: any;
   //
@@ -61,7 +64,7 @@ export class SingleProductComponent implements OnInit, OnDestroy {
   subscriptions: Subscription = new Subscription();
 
   constructor(
-    private activeRoute: ActivatedRoute,
+    private route: ActivatedRoute,
     private productService: ProductService,
     private cartService: CartService,
     private dialog: DialogService,
@@ -69,20 +72,18 @@ export class SingleProductComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.productId();
+    this.getProductId();
     this.initProductForm();
   }
 
-  productId() {
+  getProductId() {
     this.subscriptions.add(
-      this.activeRoute.params
-        .pipe(switchMap(({ id }) => this.productService.getProduct(id)))
-        .subscribe((product) => {
-          this.product = product;
-          this.product_ID = product.id; // --> For binding with Product_Variant_Group
-          this.variant_Group = product.variant_groups;
-          this.assets = product.assets;
-        })
+      this.route.data.subscribe((data) => {
+        this.product = data['product'];
+        this.product_ID = this.product.id; // --> For binding with Product_Variant_Group
+        this.variant_Group = this.product.variant_groups;
+        this.assets = this.product.assets;
+      })
     );
   }
 
@@ -123,13 +124,14 @@ export class SingleProductComponent implements OnInit, OnDestroy {
   addToCart() {
     const { quantity } = this.productForm.value;
     const sessionCart = sessionStorage.getItem('cart_Session');
-
+    this.loading = true;
     this.subscriptions.add(
       this.cartService
         .retrieveCart(sessionCart!)
         .pipe(
           switchMap(({ id: cart_ID }) => {
-            console.log('SwitchMap', cart_ID);
+            // console.log('SwitchMap', cart_ID);
+
             return this.cartService
               .addToCart(cart_ID, this.product_ID, quantity, this.variant_Data)
               .pipe(
@@ -152,6 +154,7 @@ export class SingleProductComponent implements OnInit, OnDestroy {
           },
 
           () => {
+            this.loading = false;
             console.log('Finishing adding to Cart.');
             this.openModal();
           }

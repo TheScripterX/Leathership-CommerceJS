@@ -1,15 +1,10 @@
-import {
-  AfterContentChecked,
-  Component,
-  OnInit,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 //
 import { ProductService } from '../../../../services/product.service';
 //
 // import Swiper core and required modules
 import { SwiperOptions } from 'swiper';
-import { Category, Child } from '../../../../models/commerce';
+import { Category, CategoryChildren } from '../../../../models/commerce';
 @Component({
   selector: 'app-category-slider',
   templateUrl: './category-slider.component.html',
@@ -18,7 +13,7 @@ import { Category, Child } from '../../../../models/commerce';
 })
 export class CategorySliderComponent implements OnInit {
   // Product Part
-  categories!: Child[];
+  categories!: CategoryChildren[];
 
   config: SwiperOptions = {
     slidesPerView: 3,
@@ -44,10 +39,18 @@ export class CategorySliderComponent implements OnInit {
   }
 
   getCategories() {
-    this.productService
-      .getIPhoneCategories()
-      .subscribe((category: Category) => {
+    this.productService.getIPhoneCategories().subscribe(
+      (category: Category) => {
         this.categories = category.children;
-      });
+      },
+
+      (err) => {
+        console.warn('Error on getting categories : ', err);
+      },
+
+      () => {
+        console.info('Success Get categories');
+      }
+    );
   }
 }
