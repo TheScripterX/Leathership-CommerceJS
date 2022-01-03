@@ -3,7 +3,7 @@
 <!-- Spinner:Start -->
 <div class="spinner_part" *ngIf="loading">
   <div>
-    <div class="bg-light vw-100 vh-100">
+    <div class="bg-light vw-100 vh-100 fixed-top">
       <div class="d-flex align-items-center justify-content-center w-100 h-100">
         <div class="spinner-border text-dark" role="status">
           <span class="sr-only">Processing...</span>
@@ -21,13 +21,15 @@
         <div class="col-12 col-md-7 order-last order-md-first">
           <form [formGroup]="checkoutForm" (ngSubmit)="generateOrder()">
             <ng-container formGroupName="customer">
+              <hr class="d-md-none my-4" />
               <div class="row align-items-center">
-                <div class="col-6"><h5>Informations Contact</h5></div>
-                <div class="col-6"><p>Already have an account ?</p></div>
+                <div class="col-12 text-center mb-3 mb-md-0">
+                  <h5>Informations Contact</h5>
+                </div>
                 <hr class="w-100" />
               </div>
               <div class="row">
-                <div class="col-12 col-md-6">
+                <div class="col-6">
                   <div class="my-3">
                     <label for="fname" class="font-size-caption"
                       >First Name :</label
@@ -41,7 +43,7 @@
                     />
                   </div>
                 </div>
-                <div class="col-12 col-md-6">
+                <div class="col-6">
                   <div class="my-3">
                     <label for="lname" class="font-size-caption"
                       >Last Name :</label
@@ -115,11 +117,10 @@
                     >
                     <select
                       class="form-select"
-                      aria-label="Default select example"
-                      formControlName="country"
+                      aria-label="Select Country"
+                      disabled
                     >
-                      <option selected>Select country :</option>
-                      <option value="MA">Morocco</option>
+                      <option value="MA" selected>Morocco</option>
                     </select>
                   </div>
                 </div>
@@ -337,10 +338,10 @@
             class="row my-2"
             *ngFor="let product of checkout?.live?.line_items"
           >
-            <div class="col-md-3">
+            <div class="col-3">
               <img [src]="product?.image?.url" alt="" class="w-100" />
             </div>
-            <div class="col-md-6">
+            <div class="col-6">
               <p class="fw-bolder mb-0">{{ product.name }}</p>
               <p class="mb-0">
                 Quantity : <span>{{ product.quantity }}</span>
@@ -349,7 +350,7 @@
                 {{ variant.option_name }}
               </p>
             </div>
-            <div class="col-md-3">
+            <div class="col-3">
               <p class="fw-bolder">{{ product.price.formatted_with_code }}</p>
             </div>
           </div>

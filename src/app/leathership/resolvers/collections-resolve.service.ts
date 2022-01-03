@@ -6,6 +6,7 @@ import {
 } from '@angular/router';
 //
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 //
 import { RootProduct } from '../models/commerce';
 //

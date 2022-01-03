@@ -89,7 +89,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
         street_2: [''],
         town_city: [''], // Ville
         postal_zip_code: [''],
-        country: [''],
+        country: ['MA'],
         county_state: [''],
       }),
 

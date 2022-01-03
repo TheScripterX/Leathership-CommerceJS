@@ -10,7 +10,7 @@
             rgba(0, 0, 0, 0.7),
             rgba(0, 0, 0, 0.7)
           ),
-          url("https://leathership.s3.eu-central-1.amazonaws.com/images/ls_banner--1.jpg");
+          url("https://leathership.s3.eu-central-1.amazonaws.com/images/ls__banners/ls_banner--1.jpg");
         background-size: cover;
       }
     }
@@ -47,11 +47,6 @@
 
 @media (max-width: 480px) {
   // Mobile Devices
-
-  .swiper-button-next,
-  .swiper-button-prev {
-    display: none;
-  }
 }
 
 // Media Queries::End

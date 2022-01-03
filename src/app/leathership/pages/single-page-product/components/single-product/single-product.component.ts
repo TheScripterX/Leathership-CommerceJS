@@ -38,7 +38,7 @@ export class SingleProductComponent implements OnInit, OnDestroy {
   cartModal!: Cart;
 
   // Spinner Part
-  loading: boolean = false;
+  loading$: boolean = false;
 
   // SwiperJS
   thumbsSwiper: any;
@@ -124,7 +124,7 @@ export class SingleProductComponent implements OnInit, OnDestroy {
   addToCart() {
     const { quantity } = this.productForm.value;
     const sessionCart = sessionStorage.getItem('cart_Session');
-    this.loading = true;
+    this.loading$ = true;
     this.subscriptions.add(
       this.cartService
         .retrieveCart(sessionCart!)
@@ -154,7 +154,7 @@ export class SingleProductComponent implements OnInit, OnDestroy {
           },
 
           () => {
-            this.loading = false;
+            this.loading$ = false;
             console.log('Finishing adding to Cart.');
             this.openModal();
           }

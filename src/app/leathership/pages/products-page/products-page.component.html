@@ -1,44 +1,93 @@
 <app-navbar></app-navbar>
 
 <section class="collections__section">
-  <div class="container-fluid">
-    <div class="row bg-secondary banner__collection">
-      <div class="col-12 text-center"></div>
-    </div>
-    <div class="container py-4">
-      <div class="row g-3 collections__grid">
-        <div
-          class="col-12 col-md-4"
-          *ngFor="let product of products; let i = index"
-        >
-          <div
-            class="card text-center"
-            style="width: 18rem"
-            [routerLink]="['/product-detail', product.id]"
-          >
+  <!-- V2::Start -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-3 p-3 category__nav order-1 order-md-0">
+        <hr class="d-md-none" />
+        <h5 class="p-0 text-center">Categories</h5>
+        <hr class="mt-1 mb-3" />
+        <ul class="list-group text-center mt-4">
+          <li class="list-group-item">
+            <i class="fas fa-mobile-alt"></i>
+            iPhone 11
+          </li>
+          <li class="list-group-item">
+            <i class="fas fa-mobile-alt"></i> iPhone 11 Pro
+          </li>
+          <li class="list-group-item">
+            <i class="fas fa-mobile-alt"></i> iPhone 11 Pro Max
+          </li>
+          <hr />
+          <li class="list-group-item">
+            <i class="fas fa-mobile-alt"></i> iPhone 12
+          </li>
+          <li class="list-group-item">
+            <i class="fas fa-mobile-alt"></i> iPhone 12 Pro
+          </li>
+          <li class="list-group-item">
+            <i class="fas fa-mobile-alt"></i> iPhone 12 Pro Max
+          </li>
+          <hr />
+          <li class="list-group-item">
+            <i class="fas fa-mobile-alt"></i> iPhone 13
+          </li>
+          <li class="list-group-item">
+            <i class="fas fa-mobile-alt"></i> iPhone 13 Pro
+          </li>
+          <li class="list-group-item">
+            <i class="fas fa-mobile-alt"></i> iPhone 13 Pro Max
+          </li>
+        </ul>
+      </div>
+      <div class="col-12 col-md-9 p-3 order-0 order-md-1">
+        <div class="row">
+          <div class="col-12">
             <img
-              [src]="product.assets[0].url"
-              class="card-img-top"
-              [alt]="product.name"
+              src="https://leathership.s3.eu-central-1.amazonaws.com/images/ls__banners/ls_banner--2.png"
+              alt="banner"
+              class="w-100 ls_banner"
             />
-            <div class="card-body">
-              <h5
-                class="card-title fw-bold"
-                [ngStyle]="{ color: product.attributes[0].value[0].value }"
-              >
-                {{ product.name }}
-              </h5>
-              <hr class="dropdown-divider w-50 m-auto" />
-              <p class="card-text">
-                {{ product.description }}
-              </p>
-              <a class="btn border fw-bold">Take Me!</a>
+          </div>
+        </div>
+        <hr />
+        <div class="row g-3">
+          <div
+            class="col-6 col-md-4"
+            *ngFor="let product of products; let i = index"
+          >
+            <div
+              class="card text-center"
+              [routerLink]="['/product-detail', product.id]"
+            >
+              <img
+                [src]="product.assets[0].url"
+                class="card-img-top"
+                [alt]="product.name"
+              />
+              <div class="card-body p-2">
+                <h5
+                  class="card-title"
+                  [ngStyle]="{ color: product.attributes[0].value[0].value }"
+                >
+                  {{ product.name }}
+                </h5>
+                <hr class="dropdown-divider w-50 m-auto" />
+                <p class="card-text">
+                  <!-- TODO -->
+                </p>
+                <a class="btn btn-outline-dark border fw-bold">Take Me!</a>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- V2::End -->
 </section>
 
 <app-footer></app-footer>

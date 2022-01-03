@@ -2,9 +2,15 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 //
 import { Subscription } from 'rxjs';
-//
+
+// SwiperJS::Start
+
 import { SwiperOptions } from 'swiper';
-//
+// import SwiperCore, { Navigation, Thumbs } from 'swiper';
+// SwiperCore.use([Navigation, Thumbs]);
+
+// SwiperJS::End
+
 import { CategoryChildren, Product } from '../../models/commerce';
 
 @Component({
@@ -22,7 +28,6 @@ export class HomepageComponent implements OnInit {
 
   // SwiperJS Part
   config: SwiperOptions = {
-    slidesPerView: 3,
     spaceBetween: 15,
     pagination: {
       clickable: true,
@@ -32,6 +37,10 @@ export class HomepageComponent implements OnInit {
     breakpoints: {
       320: {
         slidesPerView: 1,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
       },
       900: {
         slidesPerView: 3,

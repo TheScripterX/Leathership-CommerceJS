@@ -11,7 +11,6 @@ import { HomepageComponent } from './pages/homepage/homepage.component';
 import { SingleProductComponent } from './pages/single-page-product/components/single-product/single-product.component';
 import { SinglePageProductComponent } from './pages/single-page-product/single-page-product.component';
 import { HomeSliderComponent } from './pages/homepage/components/home-slider/home-slider.component';
-import { CategorySliderComponent } from './pages/homepage/components/category-slider/category-slider.component';
 import { ProductsPageComponent } from './pages/products-page/products-page.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { InvoiceComponent } from './pages/invoice/invoice.component';
@@ -24,7 +23,6 @@ import { CartComponent } from './pages/cart/cart.component';
     HomeSliderComponent,
     SingleProductComponent,
     SinglePageProductComponent,
-    CategorySliderComponent,
     ProductsPageComponent,
     CheckoutComponent,
     InvoiceComponent,

@@ -17,3 +17,25 @@
     opacity: 1;
   }
 }
+
+// Media queries
+
+@media (min-width: 1201px) {
+  // Extra Large Screens - TV
+}
+
+@media (min-width: 1025px) and (max-width: 1200px) {
+  // Desktops - Large Screens
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  // Small Screens - Laptops
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  // iPads - Tablets
+}
+
+@media (max-width: 480px) {
+  // Mobile Devices
+}

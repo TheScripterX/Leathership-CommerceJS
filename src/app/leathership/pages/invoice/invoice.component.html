@@ -1,25 +1,28 @@
 <section class="invoice">
-  <main class="m-4 p-4 border bg__light">
-    <div class="container p-5 border bg-white">
-      <div class="row">
-        <div class="col-6 col-md-6">
+  <main class="m-2 m-md-4 p-2 p-md-4 border bg__light">
+    <div class="container p-4 p-md-5 border bg-white">
+      <div class="g-2 g-md-0 row">
+        <div class="col-12 col-md-6">
           <img
             src="https://leathership.s3.eu-central-1.amazonaws.com/images/ls_logo/ls_logo_r.png"
             alt="ls_logo"
+            class="ls__logo--invoice"
           />
         </div>
-        <div class="col-6 col-md-6 text-end text__invoice--title">
+        <div
+          class="col-12 col-md-6 text__invoice--title text-center text-md-end"
+        >
           <h3>Invoice</h3>
         </div>
       </div>
       <hr />
       <div class="row">
-        <div class="col-6 col-md-6">
+        <div class="col-12 col-md-6">
           <p>
             <span class="fw-bold">Date: </span>{{ date | date: "longDate" }}
           </p>
         </div>
-        <div class="col-6 col-md-6 text-end">
+        <div class="col-12 col-md-6 text-start text-md-end">
           <p>
             <span class="fw-bold">Invoice ID: </span
             >{{ order?.customer_reference }}
@@ -28,7 +31,7 @@
       </div>
       <hr />
       <div class="row">
-        <div class="col-6 col-md-6">
+        <div class="col-12 col-md-6">
           <p class="mb-1"><span class="fw-bold">Invoiced To: </span></p>
           <p>
             {{ order?.customer?.lastname | uppercase }}
@@ -41,7 +44,7 @@
           </p>
           <p>{{ order?.client_details?.country_name }}</p>
         </div>
-        <div class="col-6 col-md-6 text-end">
+        <div class="col-12 col-md-6 text-end">
           <p class="mb-1"><span class="fw-bold">Bill To: </span></p>
           <p>Leathership</p>
           <p>Casablanca, Maroc</p>

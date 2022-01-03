@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 //
 import { Product } from 'src/app/leathership/models/commerce';
+import { map } from 'rxjs/operators';
 //
 
 @Component({
@@ -25,7 +26,7 @@ export class ProductsPageComponent implements OnInit {
 
   getProducts() {
     this.subscriptions.add(
-      this.route.data.subscribe(
+      this.route.data.pipe().subscribe(
         (data) => {
           this.products = data['collections'].data;
         },

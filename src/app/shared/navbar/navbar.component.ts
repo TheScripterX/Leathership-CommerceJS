@@ -1,10 +1,4 @@
-import {
-  Component,
-  ElementRef,
-  OnDestroy,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 //
 import { CartService } from '../../leathership/services/cart.service';
 //
@@ -27,9 +21,6 @@ import {
 })
 export class NavbarComponent implements OnInit, OnDestroy {
   loading = false;
-
-  @ViewChild('searchForm') searchForm!: ElementRef;
-  @ViewChild('menuBtn') menuBtn!: ElementRef;
 
   cart_Session: any;
   cart_Items!: LineItem[];
@@ -55,21 +46,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.getCartSession();
     this.getTotalItems();
-  }
-
-  togglerSearch() {
-    this.searchForm.nativeElement.classList.toggle('active');
-  }
-
-  togglerMenu() {
-    this.menuBtn.nativeElement.classList.toggle('active');
-  }
-
-  windowToggler() {
-    window.onscroll = () => {
-      this.searchForm.nativeElement.classList.remove('active');
-      this.menuBtn.nativeElement.classList.remove('active');
-    };
   }
 
   getCartSession() {

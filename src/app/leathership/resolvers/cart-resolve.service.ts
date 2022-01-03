@@ -24,3 +24,61 @@ export class CartResolveService implements Resolve<Cart> {
     return this.cartService.retrieveCart(cart_Session!);
   }
 }
+
+// export class CategoriesResolveService implements Resolve<Category> {
+//   constructor(private productService: ProductService) {}
+
+//   resolve(
+//     route: ActivatedRouteSnapshot,
+//     state: RouterStateSnapshot
+//   ): Category | Observable<Category> | Promise<Category> {
+//     return this.productService.getIPhoneCategories();
+//   }
+// }
+
+// export class CheckoutResolveService implements Resolve<Checkout> {
+//   constructor(private checkoutService: CheckoutService) {}
+
+//   resolve(
+//     route: ActivatedRouteSnapshot,
+//     state: RouterStateSnapshot
+//   ): Checkout | Observable<Checkout> | Promise<Checkout> {
+//     const checkout_ID = route.paramMap.get('id');
+//     return this.checkoutService.initCheckout(checkout_ID!);
+//   }
+// }
+
+// export class CollectionsResolveService implements Resolve<RootProduct> {
+//   constructor(private productService: ProductService) {}
+
+//   resolve(
+//     route: ActivatedRouteSnapshot,
+//     state: RouterStateSnapshot
+//   ): RootProduct | Observable<RootProduct> | Promise<RootProduct> {
+//     return this.productService.getAllProducts();
+//   }
+// }
+
+// export class InvoiceResolveService implements Resolve<Order> {
+//   constructor(private checkoutService: CheckoutService) {}
+
+//   resolve(
+//     route: ActivatedRouteSnapshot,
+//     state: RouterStateSnapshot
+//   ): Order | Observable<Order> | Promise<Order> {
+//     const checkout_ID = route.paramMap.get('id');
+
+//     return this.checkoutService.initInvoice(checkout_ID!);
+//   }
+// }
+
+// export class ProductResolveService implements Resolve<Product> {
+//   constructor(private productService: ProductService) {}
+
+//   resolve(
+//     route: ActivatedRouteSnapshot,
+//     state: RouterStateSnapshot
+//   ): Product | Observable<Product> | Promise<Product> {
+//     return this.productService.getProduct(route.paramMap.get('id'));
+//   }
+// }
