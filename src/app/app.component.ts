@@ -26,7 +26,15 @@ export class AppComponent implements OnInit, OnDestroy {
   // RxJS Part
   subscriptions: Subscription = new Subscription();
 
-  constructor(public router: Router, private cartService: CartService) {
+  constructor(public router: Router, private cartService: CartService) {}
+
+  ngOnInit(): void {
+    this.initResolve();
+    this.cart_Session_ID = sessionStorage.getItem('cart_Session');
+    this.initCart();
+  }
+
+  initResolve() {
     this.router.events.subscribe((ev) => {
       if (ev instanceof NavigationStart) {
         this.loading = true;
@@ -38,11 +46,6 @@ export class AppComponent implements OnInit, OnDestroy {
         this.loading = false;
       }
     });
-  }
-
-  ngOnInit(): void {
-    this.cart_Session_ID = sessionStorage.getItem('cart_Session');
-    this.initCart();
   }
 
   initCart() {

@@ -49,7 +49,11 @@
                   Smartphone.
                 </p>
                 <p class="fst-italic">N’oubliez pas ! Qui dit cuir dit luxe.</p>
-                <a href="#" class="btn btn-light px-3 float-start">Explore</a>
+                <a
+                  routerLink="collections"
+                  class="btn btn-light px-3 float-start"
+                  >Explore</a
+                >
               </div>
             </div>
           </div>
@@ -67,7 +71,11 @@
                   Smartphone.
                 </p>
                 <!-- <p class="fst-italic">N’oubliez pas ! Qui dit cuir dit luxe.</p> -->
-                <a href="#" class="btn btn-light px-3 float-start">Explore</a>
+                <a
+                  routerLink="collections"
+                  class="btn btn-light px-3 float-start"
+                  >Explore</a
+                >
               </div>
             </div>
           </div>
@@ -84,9 +92,9 @@
 <section class="products">
   <div class="container">
     <!-- Product Box::Start -->
-    <div class="row p-2 text-center justify-content-center">
+    <div class="row p-2 text-center">
       <div
-        class="col-6 col-md-3 g-2"
+        class="col-6 col-md-2 g-2"
         *ngFor="let product of products; let i = index"
       >
         <div
@@ -95,7 +103,7 @@
         >
           <img [src]="product.assets[0].url" [alt]="product.name" />
           <div class="card-body border">
-            <h5 class="card-title">{{ product.name }}</h5>
+            <h5 class="card-title fs-5">{{ product.name }}</h5>
           </div>
         </div>
       </div>
@@ -157,7 +165,11 @@
                   pittoresque en vous offrant une coque de la meilleure qualité
                   de cuir luxueuse et au meilleur prix.
                 </p>
-                <a href="#" class="btn btn-warning px-3 float-start">Explore</a>
+                <a
+                  routerLink="collections"
+                  class="btn btn-warning px-3 float-start"
+                  >Explore</a
+                >
               </div>
             </div>
           </div>

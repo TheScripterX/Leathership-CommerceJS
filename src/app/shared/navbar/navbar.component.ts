@@ -7,10 +7,10 @@ import { LineItem } from '../../leathership/models/commerce';
 import { Subscription } from 'rxjs';
 // Test Resolve
 import {
-  NavigationCancel,
-  NavigationEnd,
-  NavigationError,
-  NavigationStart,
+  // NavigationCancel,
+  // NavigationEnd,
+  // NavigationError,
+  // NavigationStart,
   Router,
 } from '@angular/router';
 
@@ -20,8 +20,6 @@ import {
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit, OnDestroy {
-  loading = false;
-
   cart_Session: any;
   cart_Items!: LineItem[];
   _totalItems: any;
@@ -29,19 +27,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   // RxJS Part
   subscriptions: Subscription = new Subscription();
 
-  constructor(public router: Router, private cartService: CartService) {
-    this.router.events.subscribe((ev) => {
-      if (ev instanceof NavigationStart) {
-        this.loading = true;
-      } else if (
-        ev instanceof NavigationEnd ||
-        ev instanceof NavigationCancel ||
-        ev instanceof NavigationError
-      ) {
-        this.loading = false;
-      }
-    });
-  }
+  constructor(public router: Router, private cartService: CartService) {}
 
   ngOnInit(): void {
     this.getCartSession();

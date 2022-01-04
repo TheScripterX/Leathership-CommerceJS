@@ -4,10 +4,6 @@
   .navbar-collapse {
     flex-grow: 0;
   }
-
-  .search__form {
-    width: 33rem;
-  }
 }
 
 .router__container {
@@ -34,12 +30,6 @@
 
 @media (min-width: 320px) and (max-width: 480px) {
   // Mobile Devices
-
-  .navbar__container {
-    .search__form {
-      width: 100%;
-    }
-  }
 }
 
 // Media Queries for Header::End
