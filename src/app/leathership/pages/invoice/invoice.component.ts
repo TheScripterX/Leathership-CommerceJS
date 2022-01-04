@@ -2,10 +2,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 //
 import { Subscription } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
-//
-import { CheckoutService } from '../../services/checkout.service';
-import { CartService } from '../../services/cart.service';
 //
 import { Order } from '../../models/commerce';
 
