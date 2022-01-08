@@ -94,14 +94,18 @@
     <!-- Product Box::Start -->
     <div class="row p-2 text-center">
       <div
-        class="col-6 col-md-2 g-2"
+        class="col-6 col-sm-4 col-md-2 g-2"
         *ngFor="let product of products; let i = index"
       >
         <div
           class="card border-0"
           [routerLink]="['product-detail', product.id]"
         >
-          <img [src]="product.assets[0].url" [alt]="product.name" />
+          <img
+            [src]="product.assets[0].url"
+            [alt]="product.name"
+            class="w-100"
+          />
           <div class="card-body border">
             <h5 class="card-title fs-5">{{ product.name }}</h5>
           </div>
