@@ -32,9 +32,9 @@ import { CartComponent } from './pages/cart/cart.component';
     CommonModule,
     //
     DialogModule.forRoot(),
+    SwiperModule,
     //
     LeathershipRoutingModule,
-    SwiperModule,
     ReactiveFormsModule,
     SharedModule,
   ],

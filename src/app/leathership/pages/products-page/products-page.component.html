@@ -59,7 +59,7 @@
             *ngFor="let product of products; let i = index"
           >
             <div
-              class="card text-center"
+              class="card h-100 text-center"
               [routerLink]="['/product-detail', product.id]"
             >
               <img
@@ -75,8 +75,8 @@
                   {{ product.name }}
                 </h5>
                 <hr class="dropdown-divider w-50 m-auto" />
-                <p class="card-text">
-                  <!-- TODO -->
+                <p class="card-text text-center">
+                  {{ product.description }}
                 </p>
                 <a class="btn btn-outline-dark border fw-bold">Take Me!</a>
               </div>

@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 //
 import { Subscription } from 'rxjs';
-import { map, pluck } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 //
 import { Product } from 'src/app/leathership/models/commerce';
 //
+import striptags from 'striptags';
 
 @Component({
   selector: 'app-products-page',
@@ -31,13 +32,13 @@ export class ProductsPageComponent implements OnInit {
           map((data) =>
             data.collections.data.map((product: Product) => ({
               ...product,
-              description: (product.description = 'TEST 3'),
+              description: striptags(product.description),
             }))
           )
         )
         .subscribe(
-          (res) => {
-            // this.products = res.collections.data;
+          (res: Product[]) => {
+            this.products = res;
             console.log('Collections : ', res);
           },
 
