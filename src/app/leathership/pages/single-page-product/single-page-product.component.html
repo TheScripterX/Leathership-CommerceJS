@@ -90,7 +90,7 @@
               (change)="onVariantOptionsChange($event.currentTarget)"
             >
               <option selected disabled value="Modele de Téléphone">
-                -- Modèle de Téléphone --
+                -- Phone Model --
               </option>
               <option
                 [value]="option.id"
@@ -102,10 +102,7 @@
             </select>
 
             <p class="card-text text-justify">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum
-              laudantium numquam quod, aut maxime quam magni eaque commodi ex,
-              qui culpa! Aut in, fugit temporibus vitae voluptatem perspiciatis
-              laboriosam doloribus!
+              {{ product_Description || " No Description " }}
             </p>
           </div>
           <div class="card-body">
@@ -128,7 +125,7 @@
                   (click)="addToCart()"
                   [disabled]="productForm.invalid"
                 >
-                  Ajouter au Panier <i class="fas fa-shopping-cart"></i>
+                  Add to Cart <i class="fas fa-shopping-cart"></i>
                 </button>
               </div>
             </div>

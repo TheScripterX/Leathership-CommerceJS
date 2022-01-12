@@ -1,18 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 //
 import { CartService } from '../../leathership/services/cart.service';
 //
 import { LineItem } from '../../leathership/models/commerce';
 //
 import { Subscription } from 'rxjs';
-// Test Resolve
-import {
-  // NavigationCancel,
-  // NavigationEnd,
-  // NavigationError,
-  // NavigationStart,
-  Router,
-} from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -49,7 +42,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
       this.cartService.getCartContents(cart_Session).subscribe(
         (items) => {
           this.cart_Items = items;
-          // this.totalItem = items.length;
         },
         (err) => {
           console.error('Navbar Count Error ', err);

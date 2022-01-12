@@ -80,6 +80,23 @@
 }
 // Category Part::End
 
+// All Products Part::Start
+
+.products {
+  .card {
+    transition: 0.3s;
+
+    &:hover {
+      box-shadow: 0px 3px 9px 4px rgba(0, 0, 0, 0.75);
+      -webkit-box-shadow: 0px 3px 9px 4px rgba(0, 0, 0, 0.75);
+      -moz-box-shadow: 0px 3px 9px 4px rgba(0, 0, 0, 0.75);
+      transition: 0.4s;
+    }
+  }
+}
+
+// All Products Part::End
+
 // Media Queries::Start
 
 @media (min-width: 991px) {

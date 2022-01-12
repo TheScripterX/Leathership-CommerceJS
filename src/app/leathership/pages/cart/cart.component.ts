@@ -34,7 +34,6 @@ export class CartComponent implements OnInit {
   }
 
   getCartItems() {
-    // const cart_Session = sessionStorage.getItem('cart_Session');
     this.subscriptions.add(
       this.route.data.subscribe(
         (data) => {

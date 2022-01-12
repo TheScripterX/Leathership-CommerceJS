@@ -24,11 +24,7 @@
                 <h5 class="fw-bold">Shopping Cart</h5>
               </div>
               <div
-                class="
-                  col-12 col-md-6
-                  align-self-center
-                  text-start text-md-end text-muted
-                "
+                class="col-12 col-md-6 align-self-center text-start text-md-end text-muted"
               >
                 <p class="m-0">
                   <span class="fw-bold">Total :</span>
@@ -79,22 +75,10 @@
                 />
               </div>
               <div
-                class="
-                  col-12 col-md-4
-                  px-3
-                  d-flex
-                  justify-content-between justify-content-md-around
-                  align-items-center align-items-md-start
-                "
+                class="col-12 col-md-4 px-3 d-flex justify-content-between justify-content-md-around align-items-center align-items-md-start"
               >
                 <h6
-                  class="
-                    fw-bold
-                    d-flex
-                    fs-6
-                    justify-content-between
-                    mt-1 mt-md-0
-                  "
+                  class="fw-bold d-flex fs-6 justify-content-between mt-1 mt-md-0"
                 >
                   <span class="m-0 d-block d-md-none">Prix :</span>
                   <span class="fw-bold text-muted">
@@ -113,19 +97,19 @@
             </div>
           </div>
 
-          <div class="border-top back__to__shop">
-            <a href="#">&leftarrow;</a
+          <div class="border-top back__to__shop py-2" routerLink="/collections">
+            <a><i class="fas fa-long-arrow-alt-left"></i></a
             ><span class="text-muted fw-bold">Back to shop</span>
           </div>
         </div>
         <div class="col-md-4 cart__summary p-4">
           <div>
-            <h5 class="fw-bold">Résumé</h5>
+            <h5 class="fw-bold">Summary</h5>
           </div>
           <hr />
           <div class="row">
             <div class="col-6 col-md-6">
-              <h6>{{ cart?.total_items }} produit(s)</h6>
+              <h6>{{ cart?.total_items }} product(s)</h6>
             </div>
             <div class="col-6 col-md-6 text-end">
               <h6 class="fw-bold">
@@ -137,24 +121,21 @@
           <hr />
 
           <div class="row">
-            <div class="col-6 col-md-6"><p class="m-0">Livraison :</p></div>
+            <div class="col-6 col-md-6"><p class="m-0">Shipping :</p></div>
             <div class="col-6 col-md-6 text-end">
-              <p class="m-0 fw-bold">Gratuite</p>
+              <p class="m-0 fw-bold">Free</p>
             </div>
           </div>
 
           <hr />
           <div class="row">
-            <div class="col-6"><p class="m-1">Code Promo :</p></div>
+            <div class="col-6"><p class="m-1">Discount :</p></div>
             <div class="col-6">
-              <input
-                id="code"
-                class="form-control"
-                placeholder="Entrez le code ..."
-              />
+              <input id="code" class="form-control" placeholder="Code ..." />
             </div>
           </div>
-          <div class="row my-3 align-items-center border-top border-secondary">
+          <hr class="w-100" />
+          <div class="row my-3 align-items-center border-secondary">
             <div class="col px-3"><h5>Total :</h5></div>
             <div class="col px-3 text-end">
               <h6 class="fw-bold">

@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 //
 import { DialogService } from '@ngneat/dialog';
 //
-import { mapTo, switchMap } from 'rxjs/operators';
+import { map, mapTo, switchMap, tap } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 //
 import { ModalComponent } from 'src/app/shared/modal/modal.component';
@@ -22,6 +22,7 @@ import { ProductService } from '../../services/product.service';
 import { CartService } from '../../services/cart.service';
 // SwiperJS::Start
 import SwiperCore, { Navigation, Thumbs } from 'swiper';
+import striptags from 'striptags';
 
 SwiperCore.use([Navigation, Thumbs]);
 // SwiperJS::End
@@ -51,6 +52,7 @@ export class SinglePageProductComponent implements OnInit, OnDestroy {
   productForm!: FormGroup;
   product_ID: string = 'No Value';
   product_Price!: string;
+  product_Description!: string;
   variant_Group_ID: string = 'No Value';
   variant_Option_ID: string = 'No Value';
   variant_Data!: VariantData;
@@ -78,8 +80,9 @@ export class SinglePageProductComponent implements OnInit, OnDestroy {
   getProductId() {
     this.subscriptions.add(
       this.route.data.subscribe((data) => {
-        this.product = data['product'];
+        this.product = data.product;
         this.product_ID = this.product.id; // --> For binding with Product_Variant_Group
+        this.product_Description = striptags(this.product.description); // --> Stripetags HTML for Description
         this.variant_Group = this.product.variant_groups;
         this.assets = this.product.assets;
       })
