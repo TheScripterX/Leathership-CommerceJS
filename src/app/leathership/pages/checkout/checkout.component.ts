@@ -1,6 +1,6 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 //
 import { Subscription } from 'rxjs';
 //
@@ -78,19 +78,19 @@ export class CheckoutComponent implements OnInit, OnDestroy {
       line_items: this.fb.array([[this.captureObject]]),
 
       customer: this.fb.group({
-        firstname: [''],
-        lastname: [''],
-        email: [''],
-        phone: [''],
+        firstname: ['', [Validators.required, Validators.minLength(3)]],
+        lastname: [, [Validators.required]],
+        email: [, [Validators.required, Validators.email]],
+        phone: [, [Validators.required]],
       }),
       shipping: this.fb.group({
-        name: [''], // Full name customer
-        street: [''], // Rue
+        name: ['', [Validators.required]], // Full name customer
+        street: ['', [Validators.required]], // Rue
         street_2: [''],
-        town_city: [''], // Ville
-        postal_zip_code: [''],
-        country: ['MA'],
-        county_state: [''],
+        town_city: ['', [Validators.required]], // Ville
+        postal_zip_code: ['', [Validators.required]],
+        country: ['MA', [Validators.required]],
+        county_state: ['', [Validators.required]], // Region
       }),
 
       payment: this.fb.group({
@@ -104,6 +104,13 @@ export class CheckoutComponent implements OnInit, OnDestroy {
         }),
       }),
     });
+  }
+
+  isValid(control: string) {
+    return (
+      this.checkoutForm.get(control)?.touched &&
+      this.checkoutForm.get(control)?.errors
+    );
   }
 
   generateOrder() {

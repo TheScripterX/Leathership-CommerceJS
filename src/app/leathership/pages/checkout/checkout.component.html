@@ -41,6 +41,12 @@
                       placeholder="Enter your First Name"
                       formControlName="firstname"
                     />
+                    <span
+                      *ngIf="isValid('customer.firstname')"
+                      class="form-text text-danger"
+                    >
+                      First Name is Required or Invalid</span
+                    >
                   </div>
                 </div>
                 <div class="col-6">
@@ -55,6 +61,12 @@
                       placeholder="Enter your Last Name"
                       formControlName="lastname"
                     />
+                    <span
+                      *ngIf="isValid('customer.lastname')"
+                      class="form-text text-danger"
+                    >
+                      Last Name is Required or Invalid</span
+                    >
                   </div>
                 </div>
                 <div class="col-6">
@@ -67,6 +79,12 @@
                       placeholder="Enter your GSM number"
                       formControlName="phone"
                     />
+                    <span
+                      *ngIf="isValid('customer.phone')"
+                      class="form-text text-danger"
+                    >
+                      GSM is Required or Invalid</span
+                    >
                   </div>
                 </div>
                 <div class="col-6">
@@ -81,6 +99,12 @@
                       placeholder="Enter your E-mail"
                       formControlName="email"
                     />
+                    <span
+                      *ngIf="isValid('customer.email')"
+                      class="form-text text-danger"
+                    >
+                      E-mail is Required or Invalid</span
+                    >
                   </div>
                 </div>
               </div>
@@ -106,6 +130,12 @@
                       placeholder="Enter your Full Name"
                       formControlName="name"
                     />
+                    <span
+                      *ngIf="isValid('shipping.name')"
+                      class="form-text text-danger"
+                    >
+                      Full Name is Required or Invalid</span
+                    >
                   </div>
                 </div>
               </div>
@@ -134,6 +164,12 @@
                       placeholder="Enter your city"
                       formControlName="town_city"
                     />
+                    <span
+                      *ngIf="isValid('shipping.town_city')"
+                      class="form-text text-danger"
+                    >
+                      City is Required or Invalid</span
+                    >
                   </div>
                 </div>
                 <div class="col-6">
@@ -148,6 +184,12 @@
                       placeholder="House number, street number, etc"
                       formControlName="street"
                     />
+                    <span
+                      *ngIf="isValid('shipping.street')"
+                      class="form-text text-danger"
+                    >
+                      Adress Line is Required or Invalid</span
+                    >
                   </div>
                 </div>
                 <div class="col-6">
@@ -174,9 +216,15 @@
                       aria-label="Default select example"
                       formControlName="county_state"
                     >
-                      <option>Select region :</option>
+                      <option value="">Select region :</option>
                       <option value="06">Casablanca</option>
                     </select>
+                    <span
+                      *ngIf="isValid('shipping.county_state')"
+                      class="form-text text-danger"
+                    >
+                      Region is Required or Invalid</span
+                    >
                   </div>
                 </div>
                 <div class="col-6">
@@ -191,6 +239,12 @@
                       placeholder="Enter your Postal Code"
                       formControlName="postal_zip_code"
                     />
+                    <span
+                      *ngIf="isValid('shipping.postal_zip_code')"
+                      class="form-text text-danger"
+                    >
+                      Postal Code is Required or Invalid</span
+                    >
                   </div>
                 </div>
               </div>
@@ -318,6 +372,7 @@
                 <button
                   type="submit"
                   class="btn btn-dark w-100 text-center fw-bold p-2"
+                  [disabled]="checkoutForm.invalid"
                 >
                   Pay - Checkout
                 </button>
@@ -426,5 +481,25 @@
     </main>
   </div>
 </section>
+
+<!-- Form Status::Start -->
+
+<div class="row">
+  <div class="col-6 m-auto">
+    <span>Valid</span>
+    <pre>{{ checkoutForm.valid }}</pre>
+
+    <span>Pristine</span>
+    <pre>{{ checkoutForm.pristine }}</pre>
+
+    <span>Touched</span>
+    <pre>{{ checkoutForm.touched }}</pre>
+
+    <span>Value</span>
+    <pre>{{ checkoutForm.value | json }}</pre>
+  </div>
+</div>
+
+<!-- Form Status::End -->
 
 <app-footer></app-footer>

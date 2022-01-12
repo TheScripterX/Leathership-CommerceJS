@@ -8,7 +8,6 @@ import { LeathershipRoutingModule } from './leathership-routing.module';
 import { SwiperModule } from 'swiper/angular';
 //
 import { HomepageComponent } from './pages/homepage/homepage.component';
-import { SingleProductComponent } from './pages/single-page-product/components/single-product/single-product.component';
 import { SinglePageProductComponent } from './pages/single-page-product/single-page-product.component';
 import { HomeSliderComponent } from './pages/homepage/components/home-slider/home-slider.component';
 import { ProductsPageComponent } from './pages/products-page/products-page.component';
@@ -21,7 +20,6 @@ import { CartComponent } from './pages/cart/cart.component';
   declarations: [
     HomepageComponent,
     HomeSliderComponent,
-    SingleProductComponent,
     SinglePageProductComponent,
     ProductsPageComponent,
     CheckoutComponent,

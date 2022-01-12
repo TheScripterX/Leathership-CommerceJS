@@ -1,0 +1,90 @@
+.swiper {
+  width: 100%;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    color: cornflowerblue;
+  }
+
+  .swiper1 {
+    height: 80%;
+    width: 100%;
+  }
+
+  .swiper2 {
+    height: 20%;
+    box-sizing: border-box;
+    padding: 10px 0;
+
+    .swiper-slide {
+      width: 25%;
+      height: 100%;
+      opacity: 0.4;
+    }
+
+    .swiper-slide-thumb-active {
+      opacity: 1;
+    }
+  }
+}
+
+// Spinner::Start
+
+.spinner_part {
+  position: fixed;
+  z-index: 9999;
+}
+
+// Media Queries::Start
+
+@media (min-width: 1201px) {
+  // Extra Large Screens - TV
+}
+
+@media (min-width: 1025px) and (max-width: 1200px) {
+  // Desktops - Large Screens
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  // Small Screens - Laptops
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  // iPads - Tablets
+}
+
+@media (max-width: 480px) {
+  // Mobile Devices
+  .card-body {
+    select,
+    input,
+    button {
+      width: 100% !important;
+    }
+  }
+
+  .swiper-button-next:after,
+  .swiper-rtl .swiper-button-prev:after,
+  .swiper-button-prev:after,
+  .swiper-rtl .swiper-button-next:after {
+    font-size: 1.5rem;
+  }
+}
+
+// Media Queries::End
