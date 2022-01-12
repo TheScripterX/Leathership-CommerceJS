@@ -4,11 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 // SwiperJS::Start
-
 import { SwiperOptions } from 'swiper';
-// import SwiperCore, { Navigation, Thumbs } from 'swiper';
-// SwiperCore.use([Navigation, Thumbs]);
-
 // SwiperJS::End
 
 import { CategoryChildren, Product } from '../../models/commerce';

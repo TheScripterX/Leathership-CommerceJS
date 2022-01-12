@@ -1,10 +1,10 @@
 // Header Style::Start
 
-.navbar__container {
-  .navbar-collapse {
-    flex-grow: 0;
-  }
-}
+// .navbar__container {
+//   .navbar-collapse {
+//     flex-grow: 0;
+//   }
+// }
 
 .router__container {
   padding-top: 3.7rem;
@@ -28,7 +28,7 @@
   // iPads - Tablets
 }
 
-@media (min-width: 320px) and (max-width: 480px) {
+@media (max-width: 480px) {
   // Mobile Devices
 }
 

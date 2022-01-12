@@ -30,14 +30,16 @@
       color: white;
     }
   }
+  .back__to__shop {
+    span {
+      cursor: pointer;
+    }
+  }
 
   a {
+    cursor: pointer;
     text-decoration: none;
     color: black;
-  }
-  select,
-  a {
-    cursor: pointer;
   }
 }
 
