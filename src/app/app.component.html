@@ -10,6 +10,8 @@
   </div>
 </div>
 <!--  -->
+<app-navbar *ngIf="switchFN"></app-navbar>
 <div class="router__container">
   <router-outlet></router-outlet>
 </div>
+<app-footer *ngIf="switchFN"></app-footer>

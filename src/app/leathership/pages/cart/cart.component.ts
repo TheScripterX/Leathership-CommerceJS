@@ -35,78 +35,38 @@ export class CartComponent implements OnInit {
 
   getCartItems() {
     this.subscriptions.add(
-      this.route.data.subscribe(
-        (data) => {
-          this.cart = data.cart;
-        },
-        (err) => {
-          console.warn('Error on Cart Resolve : ', err);
-        },
-
-        () => {
-          console.info('Success Cart Resolve');
-        }
-      )
+      this.route.data.subscribe((data) => {
+        this.cart = data.cart;
+      })
     );
   }
 
   removeCartItem(id: string) {
     this.loading = true;
     this.subscriptions.add(
-      this.cartService.removeItemFromCart(this.cart.id, id).subscribe(
-        () => {
-          this.getCartItems$();
-        },
-
-        (err) => {
-          console.warn('Error in Remove Item : ', err);
-        },
-
-        () => {
-          console.log('Remove Items Finish ...');
-        }
-      )
+      this.cartService.removeItemFromCart(this.cart.id, id).subscribe(() => {
+        this.getCartItems$();
+      })
     );
   }
 
   getCartItems$() {
     const cart_Session = sessionStorage.getItem('cart_Session');
     this.subscriptions.add(
-      this.cartService.retrieveCart(cart_Session!).subscribe(
-        (data) => {
-          this.cart = data;
-          this.cartService._totalItems$.next(data.total_unique_items);
-        },
-
-        (err) => {
-          console.warn('Error retrieving new List : ', err);
-        },
-
-        () => {
-          console.info('Success retrieve list');
-          this.loading = false;
-        }
-      )
+      this.cartService.retrieveCart(cart_Session!).subscribe((data) => {
+        this.cart = data;
+        this.cartService._totalItems$.next(data.total_unique_items);
+      })
     );
   }
 
   emptyCart() {
     this.loading = true;
     this.subscriptions.add(
-      this.cartService.emptyCart(this.cart.id).subscribe(
-        () => {
-          console.log('Cart Empty Sucess ! ', this.cart.id);
-          this.getCartItems$();
-        },
-
-        (err) => {
-          console.warn('Error in emptyCart Function : ', err);
-        },
-
-        () => {
-          console.log('Cart Empty Finish !');
-        }
-      )
+      this.cartService.emptyCart(this.cart.id).subscribe(() => {
+        console.log('Cart Empty Sucess ! ', this.cart.id);
+        this.getCartItems$();
+      })
     );
   }
 

@@ -53,37 +53,17 @@ export class HomepageComponent implements OnInit {
 
   getProducts() {
     this.subscriptions.add(
-      this.route.data.subscribe(
-        (data) => {
-          this.products = data['collections'].data;
-        },
-
-        (err) => {
-          console.warn('Error on Collections Resolve : ', err);
-        },
-
-        () => {
-          console.info('Success Collections');
-        }
-      )
+      this.route.data.subscribe((data) => {
+        this.products = data['collections'].data;
+      })
     );
   }
 
   getCategories() {
     this.subscriptions.add(
-      this.route.data.subscribe(
-        (data) => {
-          this.categories = data.categories.children;
-        },
-
-        (err) => {
-          console.warn('Error on Categories Resolve : ', err);
-        },
-
-        () => {
-          console.info('Success Categories Resolve');
-        }
-      )
+      this.route.data.subscribe((data) => {
+        this.categories = data.categories.children;
+      })
     );
   }
 

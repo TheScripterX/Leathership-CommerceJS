@@ -36,20 +36,10 @@ export class ProductsPageComponent implements OnInit {
             }))
           )
         )
-        .subscribe(
-          (res: Product[]) => {
-            this.products = res;
-            console.log('Collections : ', res);
-          },
-
-          (err) => {
-            console.warn('Error on Collections Resolve : ', err);
-          },
-
-          () => {
-            console.info('Success Collections');
-          }
-        )
+        .subscribe((res: Product[]) => {
+          this.products = res;
+          console.log('Collections : ', res);
+        })
     );
   }
 

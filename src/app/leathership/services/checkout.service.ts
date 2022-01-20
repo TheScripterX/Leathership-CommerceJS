@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 //
 import { environment } from 'src/environments/environment';
 //
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 //
 import {
   Checkout,
@@ -20,6 +20,12 @@ import { Customer } from '@chec/commerce.js/types/customer';
 })
 export class CheckoutService {
   _apiUrl = 'https://api.chec.io/v1';
+
+  // Navbar - Footer Switch::Start
+
+  switchFN: Subject<boolean> = new Subject();
+
+  // Navbar - Footer Switch::End
 
   constructor(private http: HttpClient) {}
   private headers = new HttpHeaders({

@@ -39,18 +39,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   getCartItems(cart_Session: string) {
     this.subscriptions.add(
-      this.cartService.getCartContents(cart_Session).subscribe(
-        (items) => {
-          this.cart_Items = items;
-        },
-        (err) => {
-          console.error('Navbar Count Error ', err);
-        },
-
-        () => {
-          console.log('Navbar Count Complete', this.cart_Items);
-        }
-      )
+      this.cartService.getCartContents(cart_Session).subscribe((items) => {
+        this.cart_Items = items;
+      })
     );
   }
 

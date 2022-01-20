@@ -44,19 +44,9 @@ export class CheckoutComponent implements OnInit, OnDestroy {
 
   getCheckout() {
     this.sub.add(
-      this.route.data.subscribe(
-        (data) => {
-          this.checkout = data.checkout;
-        },
-
-        (err) => {
-          console.warn('Error on Checkout Resolve :', err);
-        },
-
-        () => {
-          console.info('Checkout Resolve Success');
-        }
-      )
+      this.route.data.subscribe((data) => {
+        this.checkout = data.checkout;
+      })
     );
   }
 
@@ -126,21 +116,10 @@ export class CheckoutComponent implements OnInit, OnDestroy {
           shipping,
           payment
         )
-        .subscribe(
-          (order) => {
-            console.log('Success : ', order);
-            this.router.navigate(['invoice', order.id]);
-          },
-
-          (err) => {
-            console.warn('Error in Push method : ', err);
-          },
-
-          () => {
-            console.info('Bravoo !!!');
-            this.loading = false;
-          }
-        )
+        .subscribe((order) => {
+          console.log('Success : ', order);
+          this.router.navigate(['invoice', order.id]);
+        })
     );
   }
 

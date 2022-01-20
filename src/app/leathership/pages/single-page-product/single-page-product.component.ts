@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 //
 import { DialogService } from '@ngneat/dialog';
 //
-import { map, mapTo, switchMap, tap } from 'rxjs/operators';
+import { mapTo, switchMap } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 //
 import { ModalComponent } from 'src/app/shared/modal/modal.component';
@@ -144,23 +144,11 @@ export class SinglePageProductComponent implements OnInit, OnDestroy {
             return this.cartService.retrieveCart(cart_ID);
           })
         )
-        .subscribe(
-          (cart) => {
-            this.cart_Items = cart.line_items; // For Checkout
-            this.total_Items = cart.total_unique_items;
-            this.cartService._totalItems$.next(this.total_Items); // For Navbar Cart
-          },
-
-          (err) => {
-            console.log('Error on adding to Cart : ', err);
-          },
-
-          () => {
-            this.loading$ = false;
-            console.log('Finishing adding to Cart.');
-            this.openModal();
-          }
-        )
+        .subscribe((cart) => {
+          this.cart_Items = cart.line_items; // For Checkout
+          this.total_Items = cart.total_unique_items;
+          this.cartService._totalItems$.next(this.total_Items); // For Navbar Cart
+        })
     );
   }
 

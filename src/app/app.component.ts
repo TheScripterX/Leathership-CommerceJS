@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs';
 import { Cart } from './leathership/models/commerce';
 //
 import { CartService } from './leathership/services/cart.service';
+import { CheckoutService } from './leathership/services/checkout.service';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +20,8 @@ import { CartService } from './leathership/services/cart.service';
 export class AppComponent implements OnInit, OnDestroy {
   loading = false;
 
+  switchFN: boolean = true;
+
   title: string = 'Leathership Casablanca - Be a Leader! Not a Follower';
 
   cart_Session_ID!: string | null;
@@ -26,11 +29,18 @@ export class AppComponent implements OnInit, OnDestroy {
   // RxJS Part
   subscriptions: Subscription = new Subscription();
 
-  constructor(public router: Router, private cartService: CartService) {}
+  constructor(
+    public router: Router,
+    private cartService: CartService,
+    private checkoutService: CheckoutService
+  ) {}
 
   ngOnInit(): void {
-    this.initResolve();
     this.cart_Session_ID = sessionStorage.getItem('cart_Session');
+    this.checkoutService.switchFN.subscribe((value) => {
+      this.switchFN = value;
+    });
+    this.initResolve();
     this.initCart();
   }
 

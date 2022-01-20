@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 //
 import { Order } from '../../models/commerce';
+//
+import { CheckoutService } from '../../services/checkout.service';
 
 @Component({
   selector: 'app-invoice',
@@ -17,29 +19,23 @@ export class InvoiceComponent implements OnInit, OnDestroy {
   // RxJS
   sub: Subscription = new Subscription();
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private checkoutService: CheckoutService
+  ) {}
 
   ngOnInit(): void {
+    this.checkoutService.switchFN.next(false);
     this.getInvoice();
     sessionStorage.clear();
   }
 
   getInvoice() {
     this.sub.add(
-      this.route.data.subscribe(
-        (data) => {
-          this.order = data.invoice;
-          this.getDate();
-        },
-
-        (err) => {
-          console.warn('Error on Invoice Resolve : ', err);
-        },
-
-        () => {
-          console.info('Success Invoice Resolve');
-        }
-      )
+      this.route.data.subscribe((data) => {
+        this.order = data.invoice;
+        this.getDate();
+      })
     );
   }
 
