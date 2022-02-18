@@ -36,9 +36,10 @@ export class ProductsPageComponent implements OnInit {
             }))
           )
         )
-        .subscribe((res: Product[]) => {
-          this.products = res;
-          console.log('Collections : ', res);
+        .subscribe({
+          next: (res: Product[]) => (this.products = res),
+          error: (err) => console.warn('Error on getProducts method. ', err),
+          complete: () => console.info('getProducts Complete.'),
         })
     );
   }

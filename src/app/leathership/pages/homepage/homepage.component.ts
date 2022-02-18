@@ -53,8 +53,12 @@ export class HomepageComponent implements OnInit {
 
   getProducts() {
     this.subscriptions.add(
-      this.route.data.subscribe((data) => {
-        this.products = data['collections'].data;
+      this.route.data.subscribe({
+        next: (data) => (this.products = data['collections'].data),
+
+        error: (err) => console.warn('Error on Route data. ', err),
+
+        complete: () => console.info('Collections Complete . '),
       })
     );
   }

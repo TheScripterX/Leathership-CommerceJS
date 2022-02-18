@@ -1,13 +1,19 @@
-// Header Style::Start
-
-// .navbar__container {
-//   .navbar-collapse {
-//     flex-grow: 0;
-//   }
-// }
+// Header Style
 
 .router__container {
   padding-top: 3.7rem;
+}
+
+.navbar {
+  padding: 2.5rem 2rem;
+
+  .figure__logo {
+    width: 15rem;
+  }
+
+  .figure__cart {
+    width: 1.6rem;
+  }
 }
 
 // Media Queries for Header::Start
@@ -30,8 +36,9 @@
 
 @media (max-width: 480px) {
   // Mobile Devices
+  .navbar {
+    padding: 1rem 0;
+  }
 }
 
 // Media Queries for Header::End
-
-// Header Style::End
